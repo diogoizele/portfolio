@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --white: #ffffff;
+
+  --gray-50: #e1e1e6;
+  --gray-100: #a8a8b3;
+  --gray-200: #9c9c9c;
+  --gray-800: #222;
+  --gray-900: #121214;
+
+  --cian-500: #4ce3c2;
+}
+
+html {
+  scroll-behavior: smooth;
+  cursor: none;
+}
+
+@media (max-width: 1080px) {
+  html {
+    font-size: 93.65%;
+  }
+}
+
+@media (max-width: 720px) {
+  html {
+    font-size: 87.5%;
+  }
+}
+
+@media (max-width: 490px) {
+  html {
+    font-size: 87.5%;
+  }
+  .cursor {
+    visibility: hidden;
+  }
+}
+
+body {
+  background: var(--gray-900);
+  color: var(--white);
+  font-family: "Inconsolata", monospace;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+body,
+input,
+textarea,
+select,
+button {
+  font: 400 1rem "Inconsolata", monospace;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: none;
+}
+
+.cursor {
+  width: 1.1rem;
+  height: 1.1rem;
+
+  box-shadow: 0 0 10px 1px var(--cian-500);
+
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none;
+}
+
+@keyframes cursorAnim {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(4);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+.expand {
+  animation: cursorAnim 0.5s forwards;
+}

@@ -1,0 +1,43 @@
+import Image from "../../../node_modules/next/image";
+import styles from "./header.module.scss";
+
+import miniProfilePic from "../../assets/mini-profile-pic.webp";
+import Link from "../../../node_modules/next/link";
+
+const Header = () => {
+  return (
+    <header
+      className={styles.header}
+      data-aos="fade-down"
+      data-aos-offset="20"
+      data-aos-duration="300"
+      data-aos-easing="ease-in-sine"
+      data-aos-mirror="true"
+    >
+      <div>
+        <Image
+          src={miniProfilePic}
+          alt="Foto do rosto de Diogo Izele"
+          width={48}
+          height={48}
+          quality={80}
+        />
+        <h5>Diogo Izele</h5>
+      </div>
+      <nav>
+        <ul>
+          <li>Home</li>
+          <li>
+            <Link href="#about">
+              <a>About</a>
+            </Link>
+          </li>
+          <li>Tools</li>
+          <li>Contact</li>
+        </ul>
+      </nav>
+    </header>
+  );
+};
+
+export default Header;
