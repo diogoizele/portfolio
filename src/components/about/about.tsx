@@ -15,7 +15,7 @@ const About = () => {
         />
         <div>
           <p>
-            Hi, my name is Diogo Gabriel Izele, I'm 20 years old and my job is
+            Hi, my name is Diogo Gabriel Izele, I&apos;m 20 years old and my job is
             to create cool stuff for the web. Since 2015, I really enjoy
             creating content for the internet, which has given me good design
             bases for editing images and videos. A little older, I became even
