@@ -1,8 +1,8 @@
-import Image from "../../../node_modules/next/image";
+import Image from "next/image";
 import styles from "./header.module.scss";
 
 import miniProfilePic from "../../assets/mini-profile-pic.webp";
-import Link from "../../../node_modules/next/link";
+import Link from "next/link";
 
 const Header = () => {
   return (
