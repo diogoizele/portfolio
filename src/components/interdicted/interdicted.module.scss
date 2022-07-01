@@ -10,7 +10,8 @@
 
   overflow: hidden;
 
-  position: fixed;
+  position: sticky;
+  top: 0;
   z-index: 2;
 
   background-image: repeating-linear-gradient(
