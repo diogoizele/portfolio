@@ -64,7 +64,7 @@ const About = () => {
         data-aos="fade-up"
         data-aos-duration="1000"
         data-aos-once="false"
-        data-aos-offset="200"
+        data-aos-offset="300"
       >
         <HiOutlineDocumentDownload size={20} />
         Download Resume
