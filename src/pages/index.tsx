@@ -4,6 +4,7 @@ import About from "../components/about/about";
 
 import Header from "../components/header/header";
 import Home from "../components/home/home";
+import Interdicted from "../components/interdicted/interdicted";
 
 export default function Main() {
   const cursorRef = useRef(null);
@@ -31,15 +32,16 @@ export default function Main() {
 
   return (
     <>
-      <div className="cursor" ref={cursorRef} />
       <Head>
         <title>Diogo Izele</title>
       </Head>
+      <Interdicted />
       <Header />
       <main>
         <Home />
         <About />
       </main>
+      <div className="cursor" ref={cursorRef} />
     </>
   );
 }
