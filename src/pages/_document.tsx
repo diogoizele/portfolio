@@ -1,14 +1,9 @@
-import Document, {
-  Html,
-  Main,
-  NextScript,
-  Head,
-} from "../../node_modules/next/document";
+import Document, { Html, Main, NextScript, Head } from "next/document";
 
 export default class MyDocument extends Document {
   render() {
     return (
-      <Html>
+      <Html lang="en-us">
         <Head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
