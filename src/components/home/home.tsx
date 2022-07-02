@@ -11,15 +11,10 @@ const Home = () => {
       >
         <span className={styles["cian-detail"]}>Hello, my name is</span>
       </h2>
-      <h1 data-aos="fade-right" data-aos-duration="700" data-aos-mirror="true">
+      <h1 data-aos="fade-right" data-aos-mirror="true">
         <span>Diogo Izele</span>
       </h1>
-      <h2
-        className={styles.role}
-        data-aos="fade-left"
-        data-aos-duration="700"
-        data-aos-mirror="true"
-      >
+      <h2 className={styles.role} data-aos="fade-left" data-aos-mirror="true">
         I’m a <span className={styles["cian-detail"]}>Web Developer.</span>
       </h2>
       <h3
