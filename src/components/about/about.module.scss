@@ -7,6 +7,7 @@
 
   display: flex;
   flex-direction: column;
+  position: relative;
 
   h4 {
     font-weight: 400;
@@ -31,8 +32,10 @@
       align-items: center;
       justify-content: center;
 
+      position: relative;
+
       min-width: 256px;
-      max-height: 256px;
+      height: 256px;
 
       background: var(--cian-500);
 
@@ -54,33 +57,56 @@
     position: fixed;
 
     bottom: 8rem;
-    right: 12rem;
+    left: calc(90% - 8rem);
+
+    max-width: 3rem;
+    overflow: hidden;
+    transition: max-width 400ms ease-in-out;
+
+    padding-right: 3rem;
 
     height: 3rem;
-    width: 3rem;
 
     overflow: hidden;
 
     border-radius: 3rem;
     border: 0;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     font-weight: bold;
     font-size: 1.1rem;
 
-    padding: 1rem;
     gap: 0.8rem;
 
     background: var(--cian-500);
-    box-shadow: 2px 2px 1px var(--cian-800);
 
-    transition: color, background-color, max-width 0.2s linear;
+    transition: max-width 700ms !important;
+
+    .button-content {
+      white-space: nowrap;
+
+      position: relative;
+
+      padding-right: 1rem;
+      left: 3rem;
+    }
+
+    .button-icon {
+      height: 3rem;
+      width: 3rem;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      position: absolute;
+      top: 0;
+
+      background: var(--cian-500);
+    }
 
     &:hover {
-      width: max-content;
+      max-width: 30rem;
+
     }
   }
 }
@@ -92,6 +118,11 @@
 
     & > div {
       gap: 4rem;
+
+      .profile-pic-container {
+        min-width: 196px;
+        height: 196px;
+      }
     }
   }
 }
@@ -106,7 +137,8 @@
       gap: 2rem;
 
       .profile-pic-container {
-        transform: scale(0.8);
+        min-width: 128px;
+        height: 128px;
       }
 
       .about-me {
@@ -131,15 +163,17 @@
 
       gap: 2rem;
 
-      .profile-pic-container {
-        min-width: 256px;
-        max-height: 256px;
+      .about-me {
+        width: 100%;
 
-        transform: scale(1);
+        p {
+          text-align: justify;
+        }
       }
 
-      p {
-        text-align: justify;
+      .profile-pic-container {
+        min-width: 256px;
+        min-height: 256px;
       }
     }
   }
