@@ -8,14 +8,16 @@ const ResumeButton = () => {
       data-aos="fade-up"
       data-aos-duration="500"
       data-aos-once="false"
-      // data-aos-offset="200"
     >
-      <button>
+      <a
+        href="https://github.com/diogoizele/DIOGO-IZELE-RESUME/raw/master/DIOGO-IZELE-RESUME.pdf"
+        download="DIOGO-IZELE-CURRICULUM"
+      >
         <span className={styles["button-icon"]}>
           <HiOutlineDocumentDownload size={20} />
         </span>
         <span className={styles["button-content"]}>Download Resume</span>
-      </button>
+      </a>
     </div>
   );
 };

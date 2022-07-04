@@ -4,7 +4,7 @@
   top: 3rem;
   left: -1.6rem;
 
-  button {
+  a {
     cursor: none;
 
     max-width: 3rem;
@@ -28,6 +28,11 @@
     background: var(--cian-500);
 
     transition: max-width 1000ms !important;
+
+    display: flex;
+    align-items: center;
+
+    color: var(--gray-900);
 
     .button-content {
       white-space: nowrap;
@@ -64,7 +69,7 @@
   .button-container {
     position: static;
 
-    button {
+    a {
       max-width: fit-content;
 
       gap: 0;
