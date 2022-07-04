@@ -6,8 +6,9 @@
   padding: 4rem 1.5rem;
 
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+
   gap: 0.5rem;
 
   .hello {
@@ -17,11 +18,11 @@
   }
 
   h1 {
-    font-size: 5.5rem;
+    font-size: 5.1rem;
   }
 
   .role {
-    font-size: 4rem;
+    font-size: 3.5rem;
     font-weight: 400;
     color: var(--gray-200);
   }
@@ -39,13 +40,21 @@
     display: inline-block;
   }
 
-  span {
+  .grow {
     display: inline-block;
     transition: transform 550ms cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
-  span:hover {
+  .grow:hover {
     transform: scale(108%);
+  }
+
+  .memoji {
+    height: 16rem;
+    width: 16rem;
+
+    background-color: var(--cian-500);
+    border-radius: 16rem;
   }
 }
 
@@ -61,6 +70,15 @@
 
     .role {
       font-size: 3.5rem;
+    }
+  }
+}
+
+@media screen and (max-width: 890px) {
+  .home {
+    .memoji {
+      visibility: hidden;
+      display: none;
     }
   }
 }
