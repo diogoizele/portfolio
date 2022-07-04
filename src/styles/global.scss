@@ -17,9 +17,12 @@
   --cian-800: #1a9c80;
 }
 
-html {
+html,
+main {
   scroll-behavior: smooth;
   cursor: none;
+
+  overflow-x: hidden;
 }
 
 @media (max-width: 1080px) {
