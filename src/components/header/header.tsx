@@ -18,7 +18,7 @@ const Header = () => {
       <div>
         <Image
           src={miniProfilePic}
-          alt="Foto do rosto de Diogo Izele"
+          alt="Diogo Izele's avatar"
           width={48}
           height={48}
           quality={80}
@@ -33,7 +33,7 @@ const Header = () => {
               <a>About</a>
             </Link>
           </li>
-          <li>Tools</li>
+          <li>Skills</li>
           <li>Contact</li>
         </ul>
       </nav>
