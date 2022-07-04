@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
 import Head from "next/head";
 
-import About from "components/about/about";
+import About from "containers/about/about";
 import Header from "components/header/header";
-import Home from "components/home/home";
+import Home from "containers/home/home";
 import Interdicted from "components/interdicted/interdicted";
 
 export default function HomePage() {

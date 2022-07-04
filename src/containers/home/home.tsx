@@ -21,7 +21,7 @@ const Home = () => {
           <span className={styles.grow}>Diogo Izele</span>
         </h1>
         <h2 className={styles.role} data-aos="fade-left" data-aos-mirror="true">
-          I’m a{" "}
+          I&apos;m a{" "}
           <span className={`${styles["cian-detail"]} ${styles.grow}`}>
             Web Developer.
           </span>

@@ -1,0 +1,58 @@
+.profile-pic-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  min-width: 256px;
+  height: 256px;
+
+  background: var(--cian-500);
+
+  border-radius: 50%;
+  box-shadow: 3px -3px 1px var(--cian-500), -3px 3px 1px var(--cian-500);
+
+  &:hover {
+    animation: roll 800ms infinite;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .profile-pic-container {
+    min-width: 196px;
+    height: 196px;
+  }
+}
+
+@media screen and (max-width: 790px) {
+  .profile-pic-container {
+    min-width: 128px;
+    height: 128px;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .profile-pic-container {
+    min-width: 256px;
+    min-height: 256px;
+  }
+}
+
+@keyframes roll {
+  0% {
+    box-shadow: 3px -3px 1px var(--cian-500), -3px 3px 1px var(--cian-500);
+  }
+  25% {
+    box-shadow: 3px 3px 1px var(--cian-500), -3px -3px 1px var(--cian-500);
+  }
+  50% {
+    box-shadow: -3px 3px 1px var(--cian-500), 3px -3px 1px var(--cian-500);
+  }
+  75% {
+    box-shadow: -3px -3px 1px var(--cian-500), 3px 3px 1px var(--cian-500);
+  }
+  100% {
+    box-shadow: 3px -3px 1px var(--cian-500), -3px 3px 1px var(--cian-500);
+  }
+}
