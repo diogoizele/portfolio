@@ -39,8 +39,11 @@
         font-size: 1rem;
         color: var(--gray-50);
 
-        padding: 0.8rem 0.5rem;
         transition: 200ms ease-in-out;
+
+        a {
+          padding: 0.8rem 0.5rem;
+        }
 
         &:hover {
           color: var(--cian-500);

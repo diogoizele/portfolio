@@ -8,6 +8,7 @@ import miniProfilePic from "assets/mini-profile-pic.webp";
 const Header = () => {
   return (
     <header
+      id="home"
       className={styles.header}
       data-aos="fade-down"
       data-aos-offset="20"
@@ -27,14 +28,26 @@ const Header = () => {
       </div>
       <nav>
         <ul>
-          <li>Home</li>
           <li>
             <Link href="#about">
               <a>About</a>
             </Link>
           </li>
-          <li>Skills</li>
-          <li>Contact</li>
+          <li>
+            <Link href="#skills">
+              <a>Skills</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="#works">
+              <a>Works</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="#contact">
+              <a>Contact</a>
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>
