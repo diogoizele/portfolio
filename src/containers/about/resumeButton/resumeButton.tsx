@@ -14,7 +14,10 @@ const ResumeButton = () => {
         download="DIOGO-IZELE-CURRICULUM"
       >
         <span className={styles["button-icon"]}>
-          <HiOutlineDocumentDownload size={20} />
+          <HiOutlineDocumentDownload
+            size={20}
+            title="Download Diogo Izele's Resume PDF"
+          />
         </span>
         <span className={styles["button-content"]}>Download Resume</span>
       </a>
