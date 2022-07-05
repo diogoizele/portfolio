@@ -1,0 +1,107 @@
+.go-home-btn {
+  position: fixed;
+
+  top: 4rem;
+  right: 12rem;
+
+  height: 2.5rem;
+  width: 2.5rem;
+
+  border-radius: 2.5rem;
+  overflow: hidden;
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 4;
+
+  &::before,
+  &::after {
+    box-sizing: inherit;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    border-radius: 2.5rem;
+  }
+
+  &::before,
+  &::after {
+    top: 0;
+    left: 0;
+  }
+
+  &::before {
+    border: 2px solid transparent;
+  }
+
+  &:hover::before {
+    border-top-color: var(--cian-500);
+    border-right-color: var(--cian-500);
+    border-bottom-color: var(--cian-500);
+    transition: border-top-color 0.15s linear,
+      border-right-color 0.15s linear 0.1s,
+      border-bottom-color 0.15s linear 0.2s;
+  }
+
+  &::after {
+    border: 0 solid transparent;
+  }
+
+  &:hover::after {
+    border-top: 2px solid var(--cian-500);
+    border-left-width: 2px;
+    border-right-width: 2px;
+    transform: rotate(270deg);
+    transition: transform 0.4s linear 0s, border-left-width 0s linear 0.35s,
+      -webkit-transform 0.4s linear 0s;
+  }
+
+  a {
+    color: var(--cian-500);
+    border: 1px solid transparent;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .go-home-btn {
+    right: 8rem;
+  }
+}
+
+@media screen and (max-width: 790px) {
+  .go-home-btn {
+    right: 4rem;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .go-home-btn {
+    right: -2px;
+    top: auto;
+    bottom: 10rem;
+
+    border: 2px solid var(--gray-800);
+    border-radius: 0;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+
+    background: var(--gray-50);
+
+    &::before,
+    &::after,
+    &:hover::before,
+    &:hover::after {
+      border: none;
+    }
+
+    a {
+      color: var(--gray-900);
+      font-weight: bold;
+    }
+  }
+}
