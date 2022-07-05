@@ -8,6 +8,7 @@ import ResumeButton from "./resumeButton/resumeButton";
 import Details from "./details/details";
 import Avatar from "./avatar/avatar";
 import AboutMe from "./aboutMe/aboutMe";
+import GoHomeButton from "components/goHomeButton/goHomeButton";
 
 const About = () => {
   return (
@@ -22,6 +23,7 @@ const About = () => {
       >
         <Link href="#about">About Me</Link>
       </SectionTitle>
+      <GoHomeButton />
       <div className={styles["details-and-avatar"]}>
         <Avatar />
         <Details />
