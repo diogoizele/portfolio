@@ -11,13 +11,7 @@
 
   gap: 0.5rem;
 
-  .hello {
-    font-size: 1rem;
-    font-weight: 400;
-    color: var(--cian-500);
-  }
-
-  h1 {
+  .name {
     font-size: 5.1rem;
   }
 
@@ -27,17 +21,17 @@
     color: var(--gray-200);
   }
 
-  .description {
-    font-size: 1rem;
-    font-weight: 400;
-    color: var(--gray-200);
-    width: 24rem;
-    line-height: 1.3rem;
-  }
-
-  span.cian-detail {
+  .cian-detail {
     color: var(--cian-500);
     display: inline-block;
+  }
+
+  .memoji {
+    height: 16rem;
+    width: 16rem;
+
+    background-color: var(--cian-500);
+    border-radius: 16rem;
   }
 
   .grow {
@@ -49,22 +43,22 @@
     transform: scale(108%);
   }
 
-  .memoji {
-    height: 16rem;
-    width: 16rem;
-
-    background-color: var(--cian-500);
-    border-radius: 16rem;
+  p {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--gray-200);
+    width: 24rem;
+    line-height: 1.3rem;
   }
 }
 
 @media screen and (max-width: 1080px) {
   .home {
-    height: calc(100vh - 15rem);
+    height: calc(100vh - 13rem);
     margin: 0 5rem;
     padding: 5rem 1.5rem;
 
-    h1 {
+    .name {
       font-size: 4.5rem;
     }
 
@@ -76,6 +70,8 @@
 
 @media screen and (max-width: 890px) {
   .home {
+    height: calc(100vh - 13rem);
+
     .memoji {
       visibility: hidden;
       display: none;
@@ -85,10 +81,11 @@
 
 @media screen and (max-width: 720px) {
   .home {
+    height: calc(100vh - 12rem);
     margin: 0 3rem;
     padding: 8rem 1.5rem;
 
-    h1 {
+    .name {
       font-size: 4.5rem;
     }
 
@@ -100,30 +97,33 @@
 
 @media screen and (max-width: 490px) {
   .home {
-    margin: 0 3rem;
-    padding: 0 3rem;
+    margin: 0;
+    padding: 0 2rem;
 
     align-items: center;
     justify-content: center;
     text-align: center;
-    gap: 2rem;
 
     div {
+      width: 100%;
       display: flex;
       flex-direction: column;
       gap: 2rem;
     }
 
-    h1 {
+    .name {
       font-size: 2.8rem;
+      width: 100%;
     }
 
     .role {
       font-size: 2rem;
+      width: 100%;
     }
 
-    .hello,
-    .description {
+    p {
+      width: 100%;
+
       font-size: 1.5rem;
       line-height: 2rem;
     }

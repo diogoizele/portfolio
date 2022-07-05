@@ -7,31 +7,25 @@ const Home = () => {
   return (
     <section className={styles.home}>
       <div>
-        <h2
-          className={styles.hello}
-          data-aos="fade-down"
-          data-aos-duration="500"
-          data-aos-mirror="true"
-        >
+        <p data-aos="fade-down" data-aos-duration="500" data-aos-mirror="true">
           <span className={`${styles["cian-detail"]} ${styles.grow}`}>
             Hello, my name is
           </span>
-        </h2>
-        <h1 data-aos="fade-right" data-aos-mirror="true">
+        </p>
+        <h3
+          data-aos="fade-right"
+          data-aos-mirror="true"
+          className={styles.name}
+        >
           <span className={styles.grow}>Diogo Izele</span>
-        </h1>
+        </h3>
         <h2 className={styles.role} data-aos="fade-left" data-aos-mirror="true">
           I&apos;m a{" "}
           <span className={`${styles["cian-detail"]} ${styles.grow}`}>
             Web Developer.
           </span>
         </h2>
-        <h3
-          className={styles.description}
-          data-aos="fade-up"
-          data-aos-duration="900"
-          data-aos-mirror="true"
-        >
+        <p data-aos="fade-up" data-aos-duration="900" data-aos-mirror="true">
           I develop creative apps and websites, building the{" "}
           <span className={`${styles["cian-detail"]} ${styles.grow}`}>
             Frontend
@@ -44,7 +38,7 @@ const Home = () => {
           <span className={`${styles["cian-detail"]} ${styles.grow}`}>
             Mobile apps.
           </span>
-        </h3>
+        </p>
       </div>
       <div
         className={styles.memoji}
@@ -55,7 +49,7 @@ const Home = () => {
         <span className={styles.grow}>
           <Image
             src={memojiImg}
-            quality={100}
+            quality={99}
             width={256}
             height={256}
             layout="fixed"
