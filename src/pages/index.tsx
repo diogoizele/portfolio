@@ -58,12 +58,32 @@ export default function HomePage() {
         <meta name="theme-color" content="#121214" />
         <meta
           name="description"
-          content="Web Developer Diogo Izele's portfolio website"
+          content="Hello, my name is Diogo Izele, I'm a web developer and this is my portfolio."
         />
         <meta property="og:title" content="Diogo Izele" />
-        <meta property="og:description" content="Web Developer" />
+        <meta
+          property="og:description"
+          content="I'm a web developer and this is my portfolio."
+        />
         <meta property="og:url" content="https://diogoizele.com/" />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://i.imgur.com/igc7k1N.png" />
+        <meta name="keywords" content="Web Developer" />
+        <meta name="author" content="Diogo Izele" />
+        <meta name="copyright" content="© 2021 Diogo Izele" />
+        <meta name="robots" content="all" />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:url" content="http://www.diogoizele.com" />
+        <meta name="twitter:title" content="Diogo Izele" />
+        <meta
+          name="twitter:description"
+          content="I'm a web developer and this is my portfolio."
+        />
+        <meta
+          property="twitter:image"
+          content="https://i.imgur.com/igc7k1N.png"
+        />
       </Head>
       <Interdicted />
       <Header />
