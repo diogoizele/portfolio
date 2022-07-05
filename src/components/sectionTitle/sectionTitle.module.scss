@@ -1,0 +1,21 @@
+.title {
+  font-weight: 400;
+  font-size: 1.6rem;
+  color: var(--cian-500);
+
+  margin-left: 3rem;
+}
+
+.hasBefore {
+  &::before {
+    content: ">. ";
+    font-size: 1.2rem;
+    color: var(--gray-50);
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .title {
+    margin-left: 0;
+  }
+}
