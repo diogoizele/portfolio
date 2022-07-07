@@ -34,15 +34,6 @@
     border-radius: 16rem;
   }
 
-  .grow {
-    display: inline-block;
-    transition: transform 550ms cubic-bezier(0.075, 0.82, 0.165, 1);
-  }
-
-  .grow:hover {
-    transform: scale(108%);
-  }
-
   p {
     font-size: 1rem;
     font-weight: 400;
@@ -50,6 +41,16 @@
     width: 24rem;
     line-height: 1.3rem;
   }
+}
+
+.emphasis {
+  display: inline-block;
+  transition: transform 550ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  font-style: normal;
+}
+
+.emphasis:hover {
+  transform: scale(108%);
 }
 
 @media screen and (max-width: 1080px) {
