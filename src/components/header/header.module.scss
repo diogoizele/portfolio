@@ -11,44 +11,17 @@
 
   user-select: none;
 
-  div {
+  .header__info {
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     gap: 1rem;
 
-    h5 {
+    .info__name {
       font-size: 1rem;
       font-weight: 400;
       color: var(--gray-50);
-    }
-  }
-
-  nav {
-    ul {
-      list-style: none;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      gap: 1rem;
-
-      li {
-        font-size: 1rem;
-        color: var(--gray-50);
-
-        transition: 200ms ease-in-out;
-
-        a {
-          padding: 0.8rem 0.5rem;
-        }
-
-        &:hover {
-          color: var(--cian-500);
-        }
-      }
     }
   }
 }
@@ -66,8 +39,8 @@
     margin: 0 5rem;
     height: 7rem;
 
-    div {
-      h5 {
+    .header__info {
+      .info__name {
         visibility: hidden;
         display: none;
       }
@@ -82,19 +55,9 @@
 
     justify-content: center;
 
-    div {
+    .header__info {
       visibility: hidden;
       display: none;
-    }
-
-    nav {
-      width: 100%;
-
-      ul {
-        li {
-          font-size: 1.2rem;
-        }
-      }
     }
   }
 }
