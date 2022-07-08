@@ -35,6 +35,10 @@ export default function HomePage() {
   return (
     <>
       <Head>
+        <meta
+          name="google-site-verification"
+          content="A1TKe7Phyl32i1AUX65XFETd0u8blEM119nHMIx6yY0"
+        />
         <title>Diogo Izele</title>
         <link
           rel="apple-touch-icon"
@@ -87,10 +91,6 @@ export default function HomePage() {
           content="https://i.imgur.com/igc7k1N.png"
         />
         <link rel="canonical" href="https://diogoizele.com" />
-        <meta
-          name="google-site-verification"
-          content="A1TKe7Phyl32i1AUX65XFETd0u8blEM119nHMIx6yY0"
-        />
       </Head>
       <Interdicted />
       <Header />
