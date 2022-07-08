@@ -6,6 +6,7 @@ import Interdicted from "components/interdicted/interdicted";
 import About from "containers/about/about";
 import Header from "components/header/header";
 import Home from "containers/home/home";
+import Tools from "containers/tools/tools";
 
 export default function HomePage() {
   const cursorRef = useRef(null);
@@ -85,12 +86,18 @@ export default function HomePage() {
           property="twitter:image"
           content="https://i.imgur.com/igc7k1N.png"
         />
+        <link rel="canonical" href="https://diogoizele.com" />
+        <meta
+          name="google-site-verification"
+          content="A1TKe7Phyl32i1AUX65XFETd0u8blEM119nHMIx6yY0"
+        />
       </Head>
       <Interdicted />
       <Header />
       <main>
         <Home />
         <About />
+        <Tools />
       </main>
       <div className="cursor" ref={cursorRef} />
     </>
