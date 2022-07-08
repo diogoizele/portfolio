@@ -6,7 +6,6 @@ import Interdicted from "components/interdicted/interdicted";
 import About from "containers/about/about";
 import Header from "components/header/header";
 import Home from "containers/home/home";
-import Skills from "containers/skills/skills";
 
 export default function HomePage() {
   const cursorRef = useRef(null);
@@ -92,7 +91,6 @@ export default function HomePage() {
       <main>
         <Home />
         <About />
-        <Skills />
       </main>
       <div className="cursor" ref={cursorRef} />
     </>
