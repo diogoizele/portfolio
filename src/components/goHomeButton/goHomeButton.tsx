@@ -12,9 +12,7 @@ const GoHomeButton = () => {
         data-aos-offset="800"
         data-aos-duration="700"
       >
-        <a>
-          <IoIosArrowUp />
-        </a>
+        <IoIosArrowUp />
       </div>
     </Link>
   );
