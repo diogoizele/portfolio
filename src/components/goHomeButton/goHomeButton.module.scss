@@ -2,7 +2,7 @@
   position: fixed;
 
   top: 4rem;
-  right: 12rem;
+  right: 8rem;
 
   height: 2.5rem;
   width: 2.5rem;
@@ -69,26 +69,26 @@
 
 @media screen and (max-width: 1080px) {
   .go-home-btn {
-    right: 8rem;
+    right: 3rem;
   }
 }
 
 @media screen and (max-width: 790px) {
   .go-home-btn {
-    right: 4rem;
+    right: 1rem;
   }
 }
 
 @media screen and (max-width: 590px) {
   .go-home-btn {
-    right: -2px;
+    left: -2px;
     top: auto;
     bottom: 10rem;
 
     border: 2px solid var(--gray-800);
     border-radius: 0;
-    border-top-left-radius: 1rem;
-    border-bottom-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
 
     background: var(--gray-50);
 
