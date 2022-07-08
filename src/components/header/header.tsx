@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import Nav from "components/nav/nav";
 import miniProfilePic from "assets/mini-profile-pic.webp";
 import styles from "./header.module.scss";
