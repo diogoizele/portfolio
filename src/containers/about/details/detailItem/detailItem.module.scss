@@ -2,12 +2,13 @@
   border-left: 3px solid var(--gray-50);
 
   display: flex;
-  padding: 0 1rem 1.5rem 1rem;
+  padding: 1.5rem 1rem 0 1rem;
 
   position: relative;
 
   p {
     color: var(--gray-50);
+    font-weight: 300;
   }
 
   strong {
@@ -19,7 +20,7 @@
 
     position: absolute;
     left: -8px;
-    top: 0;
+    top: 1.7rem;
 
     width: 4px;
     height: 4px;

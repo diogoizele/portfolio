@@ -1,8 +1,8 @@
 .home {
-  height: calc(100vh - 17rem);
+  height: calc(100vh - 18rem);
   user-select: none;
 
-  margin: 0 10rem;
+  margin: 2rem 10rem;
   padding: 4rem 1.5rem;
 
   display: flex;
@@ -55,8 +55,8 @@
 
 @media screen and (max-width: 1080px) {
   .home {
-    height: calc(100vh - 13rem);
-    margin: 0 5rem;
+    height: calc(100vh - 20rem);
+    margin: 3rem 5rem;
     padding: 5rem 1.5rem;
 
     .name {
@@ -71,7 +71,7 @@
 
 @media screen and (max-width: 890px) {
   .home {
-    height: calc(100vh - 13rem);
+    height: calc(100vh - 21rem);
 
     .memoji {
       visibility: hidden;
@@ -82,8 +82,8 @@
 
 @media screen and (max-width: 720px) {
   .home {
-    height: calc(100vh - 12rem);
-    margin: 0 3rem;
+    height: calc(100vh - 20rem);
+    margin: 1rem 3rem;
     padding: 8rem 1.5rem;
 
     .name {

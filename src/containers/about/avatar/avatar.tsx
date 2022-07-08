@@ -9,8 +9,8 @@ const Avatar = () => {
     <div
       className={styles["profile-pic-container"]}
       data-aos="fade-left"
-      data-aos-duration="700"
-      data-aos-mirror="true"
+      // data-aos-duration="700"
+      // data-aos-mirror="true"
     >
       <Image
         layout="fill"

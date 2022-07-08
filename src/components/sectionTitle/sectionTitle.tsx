@@ -14,9 +14,7 @@ const SectionTitle = ({
     "data-aos-offset": dataAosProps["data-aos-offset"],
     "data-aos-duration": dataAosProps["data-aos-duration"],
     "data-aos-mirror": dataAosProps["data-aos-mirror"],
-  };
-
-  console.log(titleClass);
+  }
 
   const COMPONENT_TYPE = {
     h1: (
