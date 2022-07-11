@@ -2,11 +2,8 @@ import { useEffect, useRef } from "react";
 import Head from "next/head";
 
 import Interdicted from "components/interdicted/interdicted";
-
-import About from "containers/about/about";
-import Header from "components/header/header";
-import Home from "containers/home/home";
-import Tools from "containers/tools/tools";
+import { Header } from "components";
+import { Home, About, ToolsAndTechs } from "containers";
 
 export default function HomePage() {
   const cursorRef = useRef(null);
@@ -66,6 +63,11 @@ export default function HomePage() {
           name="description"
           content="Hello, my name is Diogo Izele, I'm a web developer and this is my portfolio."
         />
+        <meta name="keywords" content="Web Developer" />
+        <meta name="author" content="Diogo Izele" />
+        <meta name="copyright" content="© 2021 Diogo Izele" />
+        <meta name="robots" content="all" />
+
         <meta property="og:title" content="Diogo Izele" />
         <meta
           property="og:description"
@@ -74,10 +76,6 @@ export default function HomePage() {
         <meta property="og:url" content="https://diogoizele.com/" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://i.imgur.com/igc7k1N.png" />
-        <meta name="keywords" content="Web Developer" />
-        <meta name="author" content="Diogo Izele" />
-        <meta name="copyright" content="© 2021 Diogo Izele" />
-        <meta name="robots" content="all" />
 
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:url" content="http://www.diogoizele.com" />
@@ -97,7 +95,7 @@ export default function HomePage() {
       <main>
         <Home />
         <About />
-        <Tools />
+        <ToolsAndTechs />
       </main>
       <div className="cursor" ref={cursorRef} />
     </>
