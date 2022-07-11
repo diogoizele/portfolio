@@ -22,7 +22,7 @@ import vuejsIcon from "assets/devicons/vuejs.svg";
 import webpackIcon from "assets/devicons/webpack.svg";
 import yarnIcon from "assets/devicons/yarn.svg";
 
-export const TOOLS = [
+export const TOOLS_AND_TECHS = [
   { title: "HTML5", src: htmlIcon },
   { title: "Babel", src: babelIcon },
   { title: "CSS3", src: cssIcon },
