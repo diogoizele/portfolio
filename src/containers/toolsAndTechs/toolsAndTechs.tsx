@@ -9,8 +9,10 @@ import styles from "./toolsAndTechs.module.scss";
 import type { ToolAndTechItemProps } from "./toolsAndTechs.types";
 
 const ToolAndTechItem = ({ src, title }: ToolAndTechItemProps) => (
-  <div className={styles["tools__item"]}>
-    <Image width={64} height={64} src={src} alt={title} />
+  <div className={styles["tool-item"]}>
+    <div className={styles["tool-item__image"]}>
+      <Image width={64} height={64} src={src} alt={title} layout="fixed" />
+    </div>
     <strong>{title}</strong>
   </div>
 );

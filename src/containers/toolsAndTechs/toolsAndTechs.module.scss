@@ -61,10 +61,10 @@
   }
 }
 
-.tools__item {
+.tool-item {
   flex: 1;
 
-  min-width: 8rem;
+  min-width: 10rem;
   height: 100%;
 
   display: flex;
@@ -91,6 +91,11 @@
     strong {
       opacity: 1;
     }
+  }
+
+  .tool-item__image {
+    height: 4rem;
+    width: 4rem;
   }
 }
 
