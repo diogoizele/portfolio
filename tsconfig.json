@@ -16,7 +16,11 @@
     "baseUrl": "./src",
     "paths": {
       "components/*": ["components/*"],
-      "assets/*": ["assets/*"]
+      "assets/*": ["assets/*"],
+      "constants/*": ["constants/*"],
+      "containers/*": ["containers/*"],
+      "pages/*": ["pages/*"],
+      "styles/*": ["styles/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "next-sitemap.config.js"],
