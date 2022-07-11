@@ -55,7 +55,6 @@
 
 @media screen and (max-width: 1080px) {
   .home {
-    height: calc(100vh - 20rem);
     margin: 3rem 5rem;
     padding: 5rem 1.5rem;
 
@@ -71,8 +70,6 @@
 
 @media screen and (max-width: 890px) {
   .home {
-    height: calc(100vh - 21rem);
-
     .memoji {
       visibility: hidden;
       display: none;
@@ -82,7 +79,7 @@
 
 @media screen and (max-width: 720px) {
   .home {
-    height: calc(100vh - 20rem);
+    height: calc(100vh - 13rem);
     margin: 1rem 3rem;
     padding: 8rem 1.5rem;
 
@@ -98,6 +95,7 @@
 
 @media screen and (max-width: 490px) {
   .home {
+    height: calc(100vh - 12rem);
     margin: 0;
     padding: 0 2rem;
 

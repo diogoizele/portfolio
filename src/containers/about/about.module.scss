@@ -30,20 +30,14 @@
 
 @media screen and (max-width: 1080px) {
   .about {
-    margin: 5rem 6rem;
+    margin: 0 6rem;
     padding: 1rem 1rem;
-  }
-}
-
-@media screen and (max-width: 890px) {
-  .about {
-    margin: 6rem 6rem;
   }
 }
 
 @media screen and (max-width: 720px) {
   .about {
-    margin: 8rem 3rem;
+    margin: 0 3rem;
     padding: 1rem 1rem;
   }
 }
@@ -54,7 +48,6 @@
       border-left: none;
       flex-direction: column;
       gap: 3rem;
-      
     }
   }
 }
@@ -62,7 +55,7 @@
 @media screen and (max-width: 490px) {
   .about {
     border: none;
-    margin: 8rem 3rem;
+    margin: 0 3rem;
     padding: 2rem 0;
 
     padding-left: 0;

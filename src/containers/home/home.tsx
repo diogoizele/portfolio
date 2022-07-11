@@ -1,6 +1,6 @@
 import styles from "./home.module.scss";
 import Image from "next/image";
-import memojiImg from "../../assets/memoji-diogo-izele.webp";
+import memojiImg from "assets/images/memoji-diogo-izele.webp";
 
 import type { HoverEmphasisProps } from "./home.types";
 
@@ -36,7 +36,9 @@ const Home = () => {
             Frontend
           </HoverEmphasis>
           ,{" "}
-          <HoverEmphasis className={styles["cian-detail"]}>Backend</HoverEmphasis>{" "}
+          <HoverEmphasis className={styles["cian-detail"]}>
+            Backend
+          </HoverEmphasis>{" "}
           and{" "}
           <HoverEmphasis className={styles["cian-detail"]}>
             Mobile apps.
@@ -49,8 +51,9 @@ const Home = () => {
         data-aos-duration="500"
         data-aos-mirror="true"
       >
-        <span className={styles.grow}>
+        <span className={styles.emphasis}>
           <Image
+            priority
             src={memojiImg}
             quality={99}
             width={256}

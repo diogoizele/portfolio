@@ -1,7 +1,6 @@
 import Link from "next/link";
 
-import SectionTitle from "components/sectionTitle/sectionTitle";
-import GoHomeButton from "components/goHomeButton/goHomeButton";
+import { SectionTitle, GoHomeButton } from "components";
 
 import styles from "./about.module.scss";
 
@@ -33,7 +32,6 @@ const About = () => (
       </div>
     </div>
     <GoHomeButton />
-
   </section>
 );
 
