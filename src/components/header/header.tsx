@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Nav from "components/nav/nav";
-import miniProfilePic from "assets/mini-profile-pic.webp";
+import miniProfilePic from "assets/images/mini-profile-pic.webp";
 import styles from "./header.module.scss";
 
 const Header = () => (
