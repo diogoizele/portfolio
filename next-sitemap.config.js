@@ -1,7 +1,14 @@
-/** @type {import('next-sitemap').IConfig} */
-const config = {
-  siteUrl: "https://diogoizele.com",
-  generateRobotsTxt: true,
-};
+const siteUrl = "https://diogoizele.com";
 
-export default config;
+module.exports = {
+  siteUrl,
+  generateRobotsTxt: true,
+  robotsTxtOptions: {
+    policies: [
+      {
+        userAgent: "*",
+        allow: "/",
+      },
+    ],
+  },
+};
