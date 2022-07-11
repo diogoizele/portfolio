@@ -1,5 +1,5 @@
 .tools {
-  min-height: 40vh;
+  min-height: 30vh;
   user-select: none;
 
   padding: 1rem 12rem;
@@ -10,15 +10,16 @@
   gap: 1rem;
 
   .tools__list {
-    display: flex;
-
-    gap: 1rem;
+    width: 100%;
     flex: 1;
 
-    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
     overflow: hidden;
     position: relative;
-    width: 100%;
 
     &::before,
     &::after {
@@ -45,9 +46,13 @@
     }
 
     .slider {
-      animation: scroll 55s linear infinite;
+      animation: scroll 20.5s linear infinite;
       display: flex;
-      width: calc(250px * 14);
+      justify-content: center;
+      align-items: center;
+
+      margin: auto;
+      width: 100%;
     }
 
     &:hover .slider {
@@ -59,7 +64,7 @@
 .tools__item {
   flex: 1;
 
-  min-width: 12rem;
+  min-width: 8rem;
   height: 100%;
 
   display: flex;
@@ -128,9 +133,9 @@
 
 @keyframes scroll {
   0% {
-    transform: translateX(0);
+    transform: translateX(8rem * 9);
   }
   100% {
-    transform: translateX(calc(-250px * 7));
+    transform: translateX(calc(-8rem * 8));
   }
 }

@@ -1,21 +1,21 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import SectionTitle from "components/sectionTitle/sectionTitle";
+import { SectionTitle } from "components";
+import { TOOLS_AND_TECHS } from "../../constants/";
 
-import styles from "./tools.module.scss";
+import styles from "./toolsAndTechs.module.scss";
 
-import type { ToolItemProps } from "./tools.types";
-import { TOOLS } from "constants/tools/tools";
+import type { ToolAndTechItemProps } from "./toolsAndTechs.types";
 
-const ToolItem = ({ src, title }: ToolItemProps) => (
+const ToolAndTechItem = ({ src, title }: ToolAndTechItemProps) => (
   <div className={styles["tools__item"]}>
-    <Image width={116} height={116} src={src} alt={title} />
+    <Image width={64} height={64} src={src} alt={title} />
     <strong>{title}</strong>
   </div>
 );
 
-const Tools = () => (
+const ToolsAndTechs = () => (
   <section className={styles.tools} id="tools">
     <SectionTitle
       data-aos="fade-right"
@@ -29,12 +29,12 @@ const Tools = () => (
     </SectionTitle>
     <div className={styles["tools__list"]}>
       <div className={styles.slider}>
-        {TOOLS.map(({ src, title }) => (
-          <ToolItem key={title} src={src} title={title} />
+        {TOOLS_AND_TECHS.map(({ src, title }) => (
+          <ToolAndTechItem key={title} src={src} title={title} />
         ))}
       </div>
     </div>
   </section>
 );
 
-export default Tools;
+export default ToolsAndTechs;
