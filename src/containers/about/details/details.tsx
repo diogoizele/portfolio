@@ -13,13 +13,13 @@ const Details = () => {
       data-aos-duration="700"
       data-aos-mirror="true"
     >
-      <DetailItem label="name">Diogo Gabriel Izele</DetailItem>
-      <DetailItem label="age">
+      <DetailItem label="">Diogo Gabriel Izele</DetailItem>
+      <DetailItem label="">
         <time dateTime="2002-03-23 00:00" title="March 23, 2002">
           {myCurrentAge} years
         </time>
       </DetailItem>
-      <DetailItem label="location">Brazil - RS</DetailItem>
+      <DetailItem label="">Brazil - RS</DetailItem>
     </ul>
   );
 };

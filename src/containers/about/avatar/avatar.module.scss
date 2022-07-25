@@ -3,55 +3,9 @@
   align-items: center;
   justify-content: center;
 
-  position: relative;
-
-  min-width: 256px;
-  min-height: 256px;
-
-  width: 256px;
-  height: 256px;
-
   background: var(--cian-500);
+  margin: 0 2rem;
 
   border-radius: 50%;
   box-shadow: 3px -3px 1px var(--cian-500), -3px 3px 1px var(--cian-500);
-}
-
-@media screen and (max-width: 1080px) {
-  .profile-pic-container {
-    min-width: 196px;
-    min-height: 196px;
-
-    width: 196px;
-    height: 196px;
-
-    max-height: 196px;
-    max-width: 196px;
-  }
-}
-
-@media screen and (max-width: 790px) {
-  .profile-pic-container {
-    min-width: 128px;
-    min-height: 128px;
-
-    width: 128px;
-    height: 128px;
-
-    max-height: 128px;
-    max-width: 128px;
-  }
-}
-
-@media screen and (max-width: 590px) {
-  .profile-pic-container {
-    min-width: 256px;
-    min-height: 256px;
-
-    width: 256px;
-    height: 256px;
-
-    max-height: 256px;
-    max-width: 256px;
-  }
 }

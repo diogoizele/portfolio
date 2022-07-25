@@ -7,7 +7,8 @@ import profileImg from "assets/images/profile-pic.webp";
 const Avatar = () => (
   <div className={styles["profile-pic-container"]} data-aos="fade-left">
     <Image
-      layout="fill"
+      width={256}
+      height={256}
       src={profileImg}
       quality={100}
       alt="Photo of Diogo Izele's face. Diogo has fair skin, dark blonde hair, blue eyes and wears rounded glasses."

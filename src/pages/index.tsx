@@ -3,7 +3,7 @@ import Head from "next/head";
 
 import Interdicted from "components/interdicted/interdicted";
 import { Header } from "components";
-import { Home, About, ToolsAndTechs } from "containers";
+import { Home, About, Projects } from "containers";
 
 export default function HomePage() {
   const cursorRef = useRef(null);
@@ -95,7 +95,7 @@ export default function HomePage() {
       <main>
         <Home />
         <About />
-        <ToolsAndTechs />
+        <Projects />
       </main>
       <div className="cursor" ref={cursorRef} />
     </>

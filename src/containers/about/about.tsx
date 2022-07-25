@@ -1,6 +1,4 @@
-import Link from "next/link";
-
-import { SectionTitle, GoHomeButton } from "components";
+import { GoHomeButton, Section } from "components";
 
 import styles from "./about.module.scss";
 
@@ -10,29 +8,28 @@ import Avatar from "./avatar/avatar";
 import AboutMe from "./aboutMe/aboutMe";
 
 const About = () => (
-  <section id="about" className={styles.about}>
-    <SectionTitle
-      data-aos="fade-right"
-      data-aos-offset="-200"
-      data-aos-duration="700"
-      data-aos-mirror="true"
-      component="h2"
-      hasBefore
-    >
-      <Link href="#about">About Me</Link>
-    </SectionTitle>
-    <div className={styles["about__content"]}>
-      <div className={styles.content}>
+  <Section title="About me" to="#about" id="about">
+    <div className={styles.about}>
+      <div className={styles["about__content--left"]}>
         <Avatar />
         <Details />
-      </div>
-      <div className={styles.content}>
-        <AboutMe />
         <ResumeButton />
+      </div>
+      <div className={styles["about__content--right"]}>
+        <AboutMe />
+        {/* <div className={styles.techs}>
+          <p>React</p>
+          <p>React Native</p>
+          <p>Next.js</p>
+          <p>Typescrips</p>
+          <p>Node</p>
+          <p>Java</p>
+          <p>Spring Boot</p>
+        </div> */}
       </div>
     </div>
     <GoHomeButton />
-  </section>
+  </Section>
 );
 
 export default About;
