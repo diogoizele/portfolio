@@ -11,46 +11,68 @@
   --gray-100: #a8a8b3;
   --gray-200: #9c9c9c;
 
+  --gray-600: #3b3b41;
   --gray-700: #2a2a2f;
   --gray-800: #222;
   --gray-900: #121214;
 
   --cian-500: #4ce3c2;
   --cian-800: #1a9c80;
+
+  --error: #fe635a;
+  --warning: #faba2c;
+  --success: #2dc544;
+
+  --max-width: 1120px;
+  --width: calc(100% - 8rem);
 }
 
 html,
 main {
   scroll-behavior: smooth;
-  cursor: none;
-
-  overflow-x: hidden;
 
   ::-webkit-scrollbar {
-    width: 0.5rem;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: var(--gray-700);
+    width: 4px;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: var(--cian-800);
+    background: var(--gray-700);
 
-    border-radius: 1rem;
+    border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--cian-500);
+    background: var(--gray-600);
   }
 }
 
 body {
-  background: var(--gray-900);
-  color: var(--white);
+  background-image: url("../../public/background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  width: 100%;
+  height: 100vh;
+
   font-size: 16px;
   line-height: 1.5;
   overflow-x: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  position: relative;
+}
+
+#__next {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 body,
@@ -64,20 +86,6 @@ button {
 a {
   color: inherit;
   text-decoration: none;
-  cursor: none;
-}
-
-.cursor {
-  width: 1.2rem;
-  height: 1.2rem;
-
-  box-shadow: inset 0 0 4px 1px var(--cian-800);
-
-  border-radius: 50%;
-  position: absolute;
-  pointer-events: none;
-
-  z-index: 5;
 }
 
 @media (max-width: 1080px) {
@@ -90,26 +98,4 @@ a {
   html {
     font-size: 87.5%;
   }
-}
-
-@media (max-width: 490px) {
-  .cursor {
-    visibility: hidden;
-  }
-}
-
-@keyframes cursorAnim {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(4);
-  }
-  100% {
-    transform: scale(1);
-    opacity: 0;
-  }
-}
-.expand {
-  animation: cursorAnim 0.5s forwards;
 }
