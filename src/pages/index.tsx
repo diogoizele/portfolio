@@ -1,34 +1,9 @@
-import { useEffect, useRef } from "react";
 import Head from "next/head";
 
-import Interdicted from "components/interdicted/interdicted";
 import { Header } from "components";
-import { Home, About, Projects } from "containers";
+import { SocialMedia, Terminal } from "containers";
 
 export default function HomePage() {
-  const cursorRef = useRef(null);
-
-  useEffect(() => {
-    document.addEventListener("mousemove", (e) => {
-      if (cursorRef.current) {
-        cursorRef.current.setAttribute(
-          "style",
-          "top: " + (e.pageY - 4) + "px; left: " + (e.pageX - 4) + "px;"
-        );
-      }
-    });
-
-    document.addEventListener("mousedown", () => {
-      if (cursorRef.current) {
-        cursorRef.current.classList.add("expand");
-
-        setTimeout(() => {
-          cursorRef.current.classList.remove("expand");
-        }, 500);
-      }
-    });
-  }, []);
-
   return (
     <>
       <Head>
@@ -90,14 +65,9 @@ export default function HomePage() {
         />
         <link rel="canonical" href="https://diogoizele.com" />
       </Head>
-      <Interdicted />
       <Header />
-      <main>
-        <Home />
-        <About />
-        <Projects />
-      </main>
-      <div className="cursor" ref={cursorRef} />
+      <Terminal />
+      <SocialMedia />
     </>
   );
 }
