@@ -1,6 +1,13 @@
 .about {
+  max-width: var(--max-width);
+  width: var(--width);
+  min-height: 100vh;
+
+  padding: 0 4rem;
+
   display: flex;
-  min-height: 70vh;
+  align-items: center;
+  justify-content: center;
 }
 
 .about__content--left {
