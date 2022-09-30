@@ -1,0 +1,91 @@
+.terminal {
+  max-height: 380px;
+  max-width: 666px;
+
+  height: 80%;
+  width: 80%;
+
+  background: var(--gray-800);
+  border-radius: 16px;
+  border: 1px solid var(--gray-700);
+
+  overflow: hidden;
+}
+
+.terminal-header {
+  width: 100%;
+  height: 36px;
+
+  background: #fdfffc;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+}
+
+.terminal-title {
+  display: inline-block;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+  font-weight: 500;
+  font-size: 1.1rem;
+  line-height: 0;
+
+  color: var(--gray-700);
+}
+
+.terminal-buttons {
+  position: absolute;
+
+  left: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.5rem;
+}
+
+.terminal-button {
+  width: 16px;
+  height: 16px;
+
+  border-radius: 8px;
+  background: var(--gray-700);
+
+  cursor: pointer;
+
+  transition: filter 180ms ease-in-out;
+
+  &:hover {
+    filter: brightness(1.1);
+  }
+}
+
+.terminal-button-close {
+  background: var(--error);
+}
+
+.terminal-button-minimize {
+  background: var(--warning);
+}
+
+.terminal-button-maximize {
+  background: var(--success);
+}
+
+.terminal-content {
+  height: 100%;
+  width: 100%;
+
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  color: var(--gray-50);
+}
