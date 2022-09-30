@@ -18,6 +18,11 @@
     width: max-content;
   }
 
+  .terminal-command-path {
+    color: var(--cian-800);
+    font-weight: bold;
+  }
+
   .terminal-command-animated::before,
   .terminal-command-animated::after {
     content: "";

@@ -27,13 +27,20 @@ export const Terminal = () => {
     <section className={styles.terminal}>
       <TerminalHeader />
       <div className={styles["terminal-content"]}>
-        <TerminalCommand command="pwd" />
+        <TerminalCommand path="~/porfolio" command="pwd" />
         <TerminalResponse response="c:/diogoizele/portfolio" />
-        <TerminalCommand command="echo Hello, my name is Diogo Izele" />
+        <TerminalCommand
+          path="~/porfolio"
+          command="echo Hello, my name is Diogo Izele"
+        />
         <TerminalResponse response="Hello, my name is Diogo Izele" />
-        <TerminalCommand command="echo I'm a Web developer" />
+        <TerminalCommand path="~/porfolio" command="echo I'm a Web developer" />
         <TerminalResponse response="I'm a Web developer" />
-        <TerminalCommand command="echo this is my portfolio" animated />
+        <TerminalCommand
+          path="~/porfolio"
+          command="echo this is my portfolio"
+          animated
+        />
       </div>
     </section>
   );
