@@ -12,7 +12,7 @@ const NavLink = ({ href, children }: NavLinkProps) => {
   );
 };
 
-const Nav = () => (
+export const Nav = () => (
   <nav className={styles.nav}>
     <ul>
       <NavLink href="#about">About</NavLink>
@@ -21,5 +21,3 @@ const Nav = () => (
     </ul>
   </nav>
 );
-
-export default Nav;

@@ -12,7 +12,7 @@
       font-size: 1rem;
       color: var(--gray-50);
 
-      transition: 200ms ease-in-out;
+      transition: color 200ms ease-in-out;
 
       &:hover {
         color: var(--cian-500);
@@ -20,18 +20,6 @@
 
       a {
         padding: 0.8rem 0.5rem;
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 545px) {
-  .nav {
-    width: 100%;
-
-    ul {
-      li {
-        font-size: 1.2rem;
       }
     }
   }
