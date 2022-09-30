@@ -1,0 +1,55 @@
+.terminal-line {
+  display: flex;
+  align-items: center;
+
+  gap: 0.5rem;
+
+  font-size: 1.2rem;
+
+  color: var(--gray-50);
+
+  .terminal-line-starts-arrow {
+    color: var(--cian-500);
+  }
+
+  .terminal-command {
+    position: relative;
+    display: block;
+    width: max-content;
+  }
+
+  .terminal-command-animated::before,
+  .terminal-command-animated::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .terminal-command-animated::before {
+    background: var(--gray-800);
+
+    animation: typewriter 3s steps(25) 1s forwards;
+  }
+
+  .terminal-command-animated::after {
+    width: 0.125rem;
+    background: var(--gray-100);
+    animation: typewriter 3s steps(25) 1s forwards,
+      blink 700ms steps(25) infinite;
+  }
+}
+
+@keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes blink {
+  to {
+    background: transparent;
+  }
+}
