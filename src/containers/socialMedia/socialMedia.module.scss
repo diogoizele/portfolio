@@ -28,3 +28,22 @@
     transform: translateX(4px);
   }
 }
+
+
+@media screen and (max-width: 590px) {
+  .social-medias {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem 0;
+
+    gap: 2rem;
+
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    box-shadow: none;
+    background: transparent;
+  }
+}
