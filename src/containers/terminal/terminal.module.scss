@@ -37,6 +37,15 @@
   color: var(--gray-700);
 }
 
+.terminal-ls-command {
+  font-size: 1.2rem;
+
+  color: var(--gray-200);
+
+  font-weight: 500;
+  color: var(--gray-50);
+}
+
 .terminal-buttons {
   position: absolute;
 
@@ -88,4 +97,11 @@
   gap: 0.5rem;
 
   color: var(--gray-50);
+}
+
+@media screen and (max-width: 590px) {
+  .terminal {
+    height: 100%;
+    width: 90%;
+  }
 }
