@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -15,14 +19,34 @@
     "jsx": "preserve",
     "baseUrl": "./src",
     "paths": {
-      "components/*": ["components/*"],
-      "assets/*": ["assets/*"],
-      "constants/*": ["constants/*"],
-      "containers/*": ["containers/*"],
-      "pages/*": ["pages/*"],
-      "styles/*": ["styles/*"]
-    }
+      "components/*": [
+        "components/*"
+      ],
+      "assets/*": [
+        "assets/*"
+      ],
+      "constants/*": [
+        "constants/*"
+      ],
+      "containers/*": [
+        "containers/*"
+      ],
+      "pages/*": [
+        "pages/*"
+      ],
+      "styles/*": [
+        "styles/*"
+      ]
+    },
+    "moduleResolution": "node"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "next-sitemap.config.js"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "next-sitemap.config.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
