@@ -85,7 +85,7 @@ interface TerminalButtonProps {
   color: string;
 }
 
-export const TerminalButton = styled.button<TerminalButtonProps>`
+export const TerminalButton = styled.div<TerminalButtonProps>`
   width: 16px;
   height: 16px;
 
