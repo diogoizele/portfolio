@@ -42,6 +42,13 @@ export const PersonalName = styled.strong`
   color: ${({ theme }) => theme.colors.primary};
 `;
 
+export const Nav = styled.nav`
+  display: flex;
+  align-items: center;
+
+  gap: 1rem;
+`;
+
 interface NavListProps {
   isMenuOpen: boolean;
   mobileView: boolean;

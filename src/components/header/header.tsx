@@ -13,6 +13,7 @@ import {
   NavItem,
   NavAnchor,
   HamburguerMenuButton,
+  Nav,
 } from "./header.styles";
 import { useState } from "react";
 import { useThemeMode, useWindowSize } from "hooks";
@@ -57,21 +58,22 @@ export const Header = () => {
       </PersonalInformation>
       {isMobileView && (
         <HamburguerMenuButton
+          title={mobileExpandedMenu ? "Close Menu" : "Open Menu"}
           isMenuOpen={mobileExpandedMenu}
           onClick={handleOpenMobileMenu}
         >
           <HiMenu size={36} />
         </HamburguerMenuButton>
       )}
-      <nav>
+      <Nav>
         <NavList isMenuOpen={mobileExpandedMenu} mobileView={isMobileView}>
           <NavLink href="/">Home</NavLink>
           <NavLink href="#about">About</NavLink>
           <NavLink href="#projects">Projects</NavLink>
           <NavLink href="#contact">Contact</NavLink>
-          <ThemeSwitch onToggle={onToggleThemeMode} mode={themeMode} />
         </NavList>
-      </nav>
+        <ThemeSwitch onToggle={onToggleThemeMode} mode={themeMode} />
+      </Nav>
     </Container>
   );
 };
