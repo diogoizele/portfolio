@@ -1,13 +1,51 @@
 import Image from "next/image";
+import Link from "next/link";
+
+import { HiMenu } from "react-icons/hi";
 
 import miniProfilePic from "assets/images/mini-profile-pic.webp";
-import styles from "./header.module.scss";
-import { Nav } from "..";
 
-export const Header = () => {
+import {
+  Container,
+  PersonalInformation,
+  PersonalName,
+  NavList,
+  NavItem,
+  NavAnchor,
+  HamburguerMenuButton,
+} from "./header.styles";
+import { useState } from "react";
+import { useThemeMode, useWindowSize } from "hooks";
+import { ThemeSwitch } from "..";
+
+export type NavLinkProps = {
+  href: string;
+  children: string;
+};
+
+const NavLink = ({ href, children }: NavLinkProps) => {
   return (
-    <header id="home" className={styles.header}>
-      <div className={styles["header__info"]}>
+    <NavItem>
+      <Link href={href}>
+        <NavAnchor>{children}</NavAnchor>
+      </Link>
+    </NavItem>
+  );
+};
+export const Header = () => {
+  const [mobileExpandedMenu, setMobileExpandedMenu] = useState(false);
+
+  const { themeMode, onToggleThemeMode } = useThemeMode();
+  const { width } = useWindowSize();
+  const isMobileView = width && width <= 590;
+
+  const handleOpenMobileMenu = () => {
+    setMobileExpandedMenu((expanded) => !expanded);
+  };
+
+  return (
+    <Container>
+      <PersonalInformation>
         <Image
           src={miniProfilePic}
           alt="Diogo Izele's avatar"
@@ -15,9 +53,25 @@ export const Header = () => {
           height={48}
           quality={90}
         />
-        <strong className={styles["info__name"]}>Diogo Izele</strong>
-      </div>
-      <Nav />
-    </header>
+        <PersonalName>Diogo Izele</PersonalName>
+      </PersonalInformation>
+      {isMobileView && (
+        <HamburguerMenuButton
+          isMenuOpen={mobileExpandedMenu}
+          onClick={handleOpenMobileMenu}
+        >
+          <HiMenu size={36} />
+        </HamburguerMenuButton>
+      )}
+      <nav>
+        <NavList isMenuOpen={mobileExpandedMenu} mobileView={isMobileView}>
+          <NavLink href="/">Home</NavLink>
+          <NavLink href="#about">About</NavLink>
+          <NavLink href="#projects">Projects</NavLink>
+          <NavLink href="#contact">Contact</NavLink>
+          <ThemeSwitch onToggle={onToggleThemeMode} mode={themeMode} />
+        </NavList>
+      </nav>
+    </Container>
   );
 };
