@@ -1,8 +1,6 @@
 import { CustomThemeType } from "styles/theme.types";
 import backgroundImage from "../../../public/background-dark.png";
 
-console.log(backgroundImage);
-
 export const darkTheme: CustomThemeType = {
   colors: {
     white: "#ffffff",
