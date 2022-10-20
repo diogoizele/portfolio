@@ -1,6 +1,5 @@
 import Head from "next/head";
 
-import { Header } from "components";
 import { SocialMedia, Terminal } from "containers";
 
 export default function HomePage() {
@@ -65,7 +64,6 @@ export default function HomePage() {
         />
         <link rel="canonical" href="https://diogoizele.com" />
       </Head>
-      <Header />
       <Terminal />
       <SocialMedia />
     </>
