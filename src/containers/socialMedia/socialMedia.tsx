@@ -2,10 +2,11 @@ import Link from "next/link";
 import { FiGithub, FiLinkedin, FiTwitter, FiYoutube } from "react-icons/fi";
 
 import styles from "./socialMedia.module.scss";
+import { Container } from "./socialMedia.styles";
 
 export const SocialMedia = () => {
   return (
-    <div className={styles["social-medias"]}>
+    <Container>
       <Link href="https://github.com/diogoizele">
         <a target="_blank">
           <FiGithub className={styles["social-media"]} size={28} />
@@ -26,6 +27,6 @@ export const SocialMedia = () => {
           <FiYoutube className={styles["social-media"]} size={28} />
         </a>
       </Link>
-    </div>
+    </Container>
   );
 };
