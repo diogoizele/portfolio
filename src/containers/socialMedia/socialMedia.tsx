@@ -11,7 +11,9 @@ interface SocialMediaLinkProps {
 const SocialMediaLink = ({ href, icon }: SocialMediaLinkProps) => {
   return (
     <Link href={href}>
-      <SocialMediaAnchor target="_blank">{icon}</SocialMediaAnchor>
+      <SocialMediaAnchor href={href} target="_blank">
+        {icon}
+      </SocialMediaAnchor>
     </Link>
   );
 };
