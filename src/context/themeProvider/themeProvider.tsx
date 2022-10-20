@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useLayoutEffect, useMemo, useState } from "react";
 import { ThemeProvider as SCThemeProvider } from "styled-components";
 
 import { ThemeContext, ThemeContextSchema } from "./themeContext";
@@ -11,22 +11,43 @@ interface ThemeProviderProps {
   initialThemeMode?: ThemeMode;
 }
 
+const LOCAL_STORAGE_KEY = "th-mode";
+
 export function ThemeProvider({
   initialThemeMode = ThemeMode.DARK,
   children,
 }: ThemeProviderProps) {
-  const [themeMode, setThemeMode] = useState<ThemeMode>(initialThemeMode);
+  const [themeMode, _setThemeMode] = useState<ThemeMode>(initialThemeMode);
+
+  const setThemeMode = useCallback((themeMode: ThemeMode) => {
+    _setThemeMode(themeMode);
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(themeMode));
+  }, []);
 
   const handleToggleTheme = useCallback(() => {
-    setThemeMode((mode) =>
-      mode === ThemeMode.DARK ? ThemeMode.LIGHT : ThemeMode.DARK
-    );
+    _setThemeMode((mode) => {
+      const newMode =
+        mode === ThemeMode.DARK ? ThemeMode.LIGHT : ThemeMode.DARK;
+
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newMode));
+      return newMode;
+    });
   }, []);
 
   const context: ThemeContextSchema = useMemo(
     () => ({ themeMode, setThemeMode, onToggleThemeMode: handleToggleTheme }),
     [themeMode, setThemeMode, handleToggleTheme]
   );
+
+  useLayoutEffect(() => {
+    const themeMode = JSON.parse(
+      localStorage.getItem(LOCAL_STORAGE_KEY)
+    ) as ThemeMode;
+
+    if (themeMode) {
+      _setThemeMode(themeMode);
+    }
+  }, []);
 
   return (
     <ThemeContext.Provider value={context}>
