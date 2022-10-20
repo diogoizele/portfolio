@@ -12,7 +12,7 @@ export const Container = styled.div`
         const { themeMode } = useThemeMode();
 
         return themeMode === ThemeMode.DARK
-          ? theme.colors.backgroundDisabled
+          ? theme.colors.textDisabled
           : theme.colors.backgroundSecondary;
       }},
     inset 0 0 2px
@@ -20,11 +20,17 @@ export const Container = styled.div`
         const { themeMode } = useThemeMode();
 
         return themeMode === ThemeMode.DARK
-          ? theme.colors.backgroundDisabled
+          ? theme.colors.textDisabled
           : theme.colors.backgroundSecondary;
       }};
 
-  background: rgba(255, 255, 255, 0.051);
+  background: ${({ theme }) => {
+    const { themeMode } = useThemeMode();
+
+    return themeMode === ThemeMode.DARK
+      ? "rgba(255, 255, 255, 0.050)"
+      : "rgba(0, 0, 0, 0.050)";
+  }};
 
   border-radius: 16px;
 
@@ -47,5 +53,19 @@ export const Container = styled.div`
 
     box-shadow: none;
     background: transparent;
+  }
+`;
+
+export const SocialMediaAnchor = styled.a`
+  color: ${({ theme }) => theme.colors.primary};
+
+  cursor: pointer;
+
+  box-sizing: content-box;
+
+  transition: transform 180ms ease-in-out;
+
+  &:hover {
+    transform: translateX(4px);
   }
 `;
