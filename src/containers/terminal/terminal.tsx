@@ -1,40 +1,42 @@
-import { TerminalCommand, TerminalResponse } from "components/index";
-import { useEffect, useState } from "react";
+import { useTheme } from "styled-components";
 
-import styles from "./terminal.module.scss";
+import { TerminalCommand, TerminalResponse } from "components";
+
+import {
+  Container,
+  TerminalButton,
+  TerminalButtonsContainer,
+  TerminalContentContainer,
+  TerminalHeaderContainer,
+  TerminalLsCommands,
+  TerminalTitle,
+} from "./terminal.styles";
 
 const TerminalHeader = () => {
+  const theme = useTheme();
+
   return (
-    <header className={styles["terminal-header"]}>
-      <div className={styles["terminal-buttons"]}>
-        <div
-          className={`${styles["terminal-button"]} ${styles["terminal-button-close"]}`}
-        />
-        <div
-          className={`${styles["terminal-button"]} ${styles["terminal-button-minimize"]}`}
-        />
-        <div
-          className={`${styles["terminal-button"]} ${styles["terminal-button-maximize"]}`}
-        />
-      </div>
-      <span className={styles["terminal-title"]}>Terminal</span>
-    </header>
+    <TerminalHeaderContainer>
+      <TerminalButtonsContainer>
+        <TerminalButton color={theme.colors.error} />
+        <TerminalButton color={theme.colors.warning} />
+        <TerminalButton color={theme.colors.success} />
+      </TerminalButtonsContainer>
+      <TerminalTitle>Terminal</TerminalTitle>
+    </TerminalHeaderContainer>
   );
 };
 
 export const Terminal = () => {
   return (
-    <section className={styles.terminal}>
+    <Container>
       <TerminalHeader />
-      <div className={styles["terminal-content"]}>
+      <TerminalContentContainer>
         <TerminalCommand path="~/portfolio" command="pwd" />
         <TerminalResponse response="c:/diogoizele/portfolio" />
         <TerminalCommand path="~/portfolio" command="ls" />
-        <span className={styles["terminal-ls-command"]}>
-          About Contact Projects
-        </span>
+        <TerminalLsCommands>Home About Contact Projects</TerminalLsCommands>
         <TerminalCommand path="~/portfolio" command="cd ../" />
-
         <TerminalCommand
           path="~"
           command="echo Hello, my name is Diogo Izele"
@@ -47,7 +49,7 @@ export const Terminal = () => {
           command="echo this is my portfolio"
           animated
         />
-      </div>
-    </section>
+      </TerminalContentContainer>
+    </Container>
   );
 };
