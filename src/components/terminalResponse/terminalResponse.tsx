@@ -1,9 +1,9 @@
-import styles from "./terminalResponse.module.scss";
+import { Line } from "./terminalResponse.styles";
 
 interface TerminalResponseProps {
   response: string;
 }
 
 export const TerminalResponse = ({ response }: TerminalResponseProps) => {
-  return <p className={styles["terminal-response"]}>{response}</p>;
+  return <Line>{response}</Line>;
 };
