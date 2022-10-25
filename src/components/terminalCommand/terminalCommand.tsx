@@ -1,6 +1,4 @@
-import { HiOutlineArrowNarrowRight } from "react-icons/hi";
-
-import styles from "./terminal.module.scss";
+import { ArrowIcon, Command, Line, Path } from "./terminalCommand.styles";
 
 interface TerminalCommandProps {
   command: string;
@@ -14,19 +12,9 @@ export const TerminalCommand = ({
   path = "~",
 }: TerminalCommandProps) => {
   return (
-    <p className={styles["terminal-line"]}>
-      <HiOutlineArrowNarrowRight
-        size={20}
-        className={styles["terminal-line-starts-arrow"]}
-      />{" "}
-      <span className={styles["terminal-command-path"]}>{path}</span>{" "}
-      <span
-        className={`${styles["terminal-command"]} ${
-          animated ? styles["terminal-command-animated"] : ""
-        }`}
-      >
-        {command}
-      </span>
-    </p>
+    <Line>
+      <ArrowIcon /> <Path>{path}</Path>{" "}
+      <Command animated={animated}>{command}</Command>
+    </Line>
   );
 };
