@@ -72,7 +72,12 @@ export const Header = () => {
           <NavLink href="#projects">Projects</NavLink>
           <NavLink href="#contact">Contact</NavLink>
         </NavList>
-        <ThemeSwitch onToggle={onToggleThemeMode} mode={themeMode} />
+
+        <ThemeSwitch
+          isMenuOpen={mobileExpandedMenu}
+          onToggle={onToggleThemeMode}
+          mode={themeMode}
+        />
       </Nav>
     </Container>
   );

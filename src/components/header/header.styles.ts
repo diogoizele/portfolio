@@ -24,6 +24,8 @@ export const Container = styled.header`
     padding: 2rem;
 
     flex-direction: column;
+
+    align-items: flex-start;
   }
 `;
 

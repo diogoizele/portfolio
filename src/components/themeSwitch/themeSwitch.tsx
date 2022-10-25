@@ -6,11 +6,13 @@ import {
 
 interface ThemeSwitchProps {
   mode: ThemeMode;
+  isMenuOpen: boolean;
   onToggle: (mode: ThemeMode) => void;
 }
 
 export const ThemeSwitch = ({
   mode = ThemeMode.DARK,
+  isMenuOpen,
   onToggle,
 }: ThemeSwitchProps) => {
   const handleToggle = () => {
@@ -18,7 +20,11 @@ export const ThemeSwitch = ({
   };
 
   return (
-    <ThemeSwitchContainer themeMode={mode} onClick={handleToggle}>
+    <ThemeSwitchContainer
+      isMenuOpen={isMenuOpen}
+      themeMode={mode}
+      onClick={handleToggle}
+    >
       <ThemeSwitchEmojiContainer>
         {mode === ThemeMode.DARK ? "🌜" : "🌞"}
       </ThemeSwitchEmojiContainer>

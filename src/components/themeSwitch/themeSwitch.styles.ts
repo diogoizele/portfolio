@@ -3,6 +3,7 @@ import { ThemeMode } from "styles/theme.types";
 
 interface ThemeSwitchContainerProps {
   themeMode: ThemeMode;
+  isMenuOpen: boolean;
 }
 
 export const ThemeSwitchContainer = styled.button<ThemeSwitchContainerProps>`
@@ -28,12 +29,17 @@ export const ThemeSwitchContainer = styled.button<ThemeSwitchContainerProps>`
   @media (max-width: 590px) {
     position: fixed;
 
+    opacity: ${({ isMenuOpen }) => (isMenuOpen ? 1 : 0)};
+    z-index: 2;
+
     width: 5rem;
     height: 3rem;
     font-size: 1.8rem;
 
     bottom: 3rem;
     left: 1rem;
+
+    transition: opacity 200ms ease-in-out;
   }
 `;
 
