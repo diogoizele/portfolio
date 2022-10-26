@@ -9,6 +9,9 @@ export const Container = styled.div`
   height: 80%;
   width: 80%;
 
+  position: relative;
+  overflow: hidden;
+
   background: ${({ theme }) => {
     const { themeMode } = useThemeMode();
 
@@ -19,8 +22,6 @@ export const Container = styled.div`
   border-radius: 16px;
   border: 1px solid ${({ theme }) => theme.colors.backgroundAlternative};
 
-  overflow: hidden;
-
   @media screen and (max-width: 590px) {
     height: 100%;
     width: 90%;
@@ -28,21 +29,31 @@ export const Container = styled.div`
 `;
 
 export const TerminalContentContainer = styled.div`
-  height: 100%;
   width: 100%;
 
   padding: 1rem;
+  padding-top: 3rem;
 
   display: flex;
   flex-direction: column;
+  align-self: flex-start;
   gap: 0.5rem;
 
   color: ${({ theme }) => theme.colors.textPrimary};
+
+  bottom: 0rem;
+  /* position: absolute; */
 `;
 
 export const TerminalHeaderContainer = styled.header`
+  max-width: 666px;
   width: 100%;
   height: 36px;
+
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+
+  z-index: 2;
 
   background: ${({ theme }) => {
     const { themeMode } = useThemeMode();
@@ -56,7 +67,7 @@ export const TerminalHeaderContainer = styled.header`
   align-items: center;
   justify-content: center;
 
-  position: relative;
+  position: fixed;
 
   border-bottom: 1px solid;
 
