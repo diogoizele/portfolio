@@ -6,8 +6,8 @@ export const lightTheme: CustomThemeType = {
     white: "#ffffff",
     black: "#000000",
 
-    primary: "#1a9c80",
-    secondary: "#4ce3c2",
+    primary: "#168665",
+    secondary: "#1a9c80",
 
     error: "#fe635a",
     warning: "#faba2c",
