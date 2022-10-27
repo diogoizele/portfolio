@@ -2,13 +2,26 @@ import styled from "styled-components";
 
 import { useThemeMode } from "hooks";
 import { ThemeMode } from "styles/theme.types";
+import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 
 export const Container = styled.div`
   display: flex;
   width: 100%;
 
   gap: 0.5rem;
-  /* padding-bottom: rem; */
+`;
+
+export const Path = styled.span`
+  color: ${({ theme }) => theme.colors.primary};
+  font-weight: bold;
+
+  font-size: 1.1rem;
+`;
+
+export const ArrowIcon = styled(HiOutlineArrowNarrowRight).attrs({
+  size: 20,
+})`
+  color: ${({ theme }) => theme.colors.primary};
 `;
 
 interface InputProps {

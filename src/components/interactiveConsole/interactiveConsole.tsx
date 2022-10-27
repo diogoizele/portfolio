@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Input, Container } from "./interactiveConsole.styles";
+import { Input, Container, ArrowIcon, Path } from "./interactiveConsole.styles";
 
 interface InteractiveConsoleProps {
+  path: string;
   onAddCommand: (command: string) => void;
 }
 
@@ -9,6 +10,7 @@ let INITIAL_TEXT = "echo this is my portfolio";
 const MAX_CHARACTER_SIZE = 240;
 
 export const InteractiveConsole = ({
+  path,
   onAddCommand,
 }: InteractiveConsoleProps) => {
   const [text, setText] = useState(INITIAL_TEXT);
@@ -65,8 +67,8 @@ export const InteractiveConsole = ({
   useEffect(() => {
     if (window) {
       window.addEventListener("keydown", (e) => {
-        if (e.code !== "Enter") {
-          contentEditableDivRef.current.focus();
+        if (e.code !== "Enter" && contentEditableDivRef?.current) {
+          contentEditableDivRef?.current?.focus();
         }
       });
     }
@@ -74,6 +76,7 @@ export const InteractiveConsole = ({
 
   return (
     <Container>
+      <ArrowIcon /> <Path>{path}</Path>{" "}
       <Input
         suppressContentEditableWarning
         ref={contentEditableDivRef}
