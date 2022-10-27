@@ -37,23 +37,21 @@ export const TerminalContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-self: flex-start;
+
   gap: 0.5rem;
 
   color: ${({ theme }) => theme.colors.textPrimary};
-
-  bottom: 0rem;
-  /* position: absolute; */
 `;
 
 export const TerminalHeaderContainer = styled.header`
+  width: inherit;
+
   max-width: 666px;
-  width: 100%;
+
   height: 36px;
 
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
-
-  z-index: 2;
 
   background: ${({ theme }) => {
     const { themeMode } = useThemeMode();

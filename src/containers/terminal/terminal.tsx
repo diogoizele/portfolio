@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useTheme } from "styled-components";
+import { useRouter } from "next/router";
 
 import { TerminalCommand, TerminalResponse } from "components";
 
@@ -9,13 +10,12 @@ import {
   TerminalButtonsContainer,
   TerminalContentContainer,
   TerminalHeaderContainer,
-  TerminalLsCommands,
   TerminalTitle,
 } from "./terminal.styles";
 import { InteractiveConsole } from "components/interactiveConsole/interactiveConsole";
-import { terminalCommandReader } from "./terminal.commands";
 import { terminalPaths } from "./tarminal.paths";
 import { INITIAL_COMMANDS } from "./static";
+import { Command as CommandClass } from "models";
 
 const TerminalHeader = () => {
   const theme = useTheme();
@@ -40,36 +40,31 @@ interface TerminalCommandProps {
 }
 
 export const Terminal = () => {
-  const [commands, setCommands] =
-    useState<TerminalCommandProps[]>(INITIAL_COMMANDS);
-  const [path, setPath] = useState("/");
+  const [commands, setCommands] = useState<TerminalCommandProps[]>(
+    INITIAL_COMMANDS as TerminalCommandProps[]
+  );
+  const [path, setPath] = useState("~");
+  const { push } = useRouter();
+
+  function clearTerminal() {
+    setCommands([]);
+  }
 
   const handleAddCommand = (command: string) => {
-    setCommands((prevCommands) => {
-      const newCommand = {
-        id: Math.random().toString(),
-      } as TerminalCommandProps;
+    const newCommand = new CommandClass(
+      command,
+      path,
+      setPath,
+      clearTerminal,
+      push
+    );
 
-      if (command.startsWith("ls")) {
-        if (path === "/") {
-          return [
-            ...prevCommands,
-            { ...newCommand, command, response: "portfolio", path },
-          ];
-        } else if (path === "/portfolio") {
-          return [
-            ...prevCommands,
-            {
-              ...newCommand,
-              command,
-              response: "Home About Projects Contact",
-              path,
-            },
-          ];
-        }
-      }
-      return prevCommands;
-    });
+    if (newCommand.commandType() !== "clear") {
+      setCommands((prevCommands) => [
+        ...prevCommands,
+        newCommand as TerminalCommandProps,
+      ]);
+    }
   };
 
   return (
@@ -82,7 +77,11 @@ export const Terminal = () => {
             {response && <TerminalResponse response={response} />}
           </span>
         ))}
-        <InteractiveConsole onAddCommand={handleAddCommand} />
+
+        <InteractiveConsole
+          path={terminalPaths[path]}
+          onAddCommand={handleAddCommand}
+        />
       </TerminalContentContainer>
     </Container>
   );
