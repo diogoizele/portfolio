@@ -13,7 +13,11 @@ export const Line = styled.p`
 
   font-size: 1.1rem;
 
-  color: ${({ theme }) => theme.colors.textPrimary};
+  color: ${({ theme }) => {
+    const { themeMode } = useThemeMode();
+
+    return themeMode === ThemeMode.DARK ? theme.colors.textPrimary : "#515152";
+  }};
 `;
 
 export const Path = styled.span`
