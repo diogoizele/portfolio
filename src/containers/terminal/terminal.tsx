@@ -8,6 +8,7 @@ import {
   Container,
   TerminalButton,
   TerminalButtonsContainer,
+  TerminalCommandContainer,
   TerminalContentContainer,
   TerminalHeaderContainer,
   TerminalTitle,
@@ -72,10 +73,10 @@ export const Terminal = () => {
       <TerminalHeader />
       <TerminalContentContainer>
         {commands.map(({ id, command, response, path }) => (
-          <span key={id}>
+          <TerminalCommandContainer key={id}>
             <TerminalCommand path={terminalPaths[path]} command={command} />
             {response && <TerminalResponse response={response} />}
-          </span>
+          </TerminalCommandContainer>
         ))}
 
         <InteractiveConsole

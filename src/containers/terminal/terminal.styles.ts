@@ -11,6 +11,7 @@ export const Container = styled.div`
 
   position: relative;
   overflow: hidden;
+  box-sizing: content-box;
 
   background: ${({ theme }) => {
     const { themeMode } = useThemeMode();
@@ -41,6 +42,13 @@ export const TerminalContentContainer = styled.div`
   gap: 0.5rem;
 
   color: ${({ theme }) => theme.colors.textPrimary};
+`;
+
+export const TerminalCommandContainer = styled.span`
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.5rem;
 `;
 
 export const TerminalHeaderContainer = styled.header`
