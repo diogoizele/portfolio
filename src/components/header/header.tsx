@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -15,6 +14,7 @@ import {
   NavAnchor,
   HamburguerMenuButton,
   Nav,
+  Avatar,
 } from "./header.styles";
 import { useState } from "react";
 import { useThemeMode, useWindowSize } from "hooks";
@@ -24,13 +24,15 @@ export type NavLinkProps = {
   href: string;
   children: string;
   isActive: boolean;
+
+  onClick?: () => void;
 };
 
-const NavLink = ({ href, children, isActive }: NavLinkProps) => {
+const NavLink = ({ href, children, isActive, onClick }: NavLinkProps) => {
   return (
-    <NavItem isActive={isActive}>
+    <NavItem isActive={isActive} onClick={onClick}>
       <Link href={href}>
-        <NavAnchor>{children}</NavAnchor>
+        <NavAnchor href={href}>{children}</NavAnchor>
       </Link>
     </NavItem>
   );
@@ -48,10 +50,15 @@ export const Header = () => {
     setMobileExpandedMenu((expanded) => !expanded);
   };
 
+  const handleCloseMobileMenu = () => {
+    console.log("clicou");
+    setMobileExpandedMenu(false);
+  };
+
   return (
     <Container>
       <PersonalInformation>
-        <Image
+        <Avatar
           src={miniProfilePic}
           alt="Diogo Izele's avatar"
           width={48}
@@ -71,16 +78,32 @@ export const Header = () => {
       )}
       <Nav>
         <NavList isMenuOpen={mobileExpandedMenu} mobileView={isMobileView}>
-          <NavLink isActive={asPath === "/"} href="/">
+          <NavLink
+            isActive={asPath === "/"}
+            href="/"
+            onClick={handleCloseMobileMenu}
+          >
             Home
           </NavLink>
-          <NavLink isActive={asPath === "/about"} href="/about">
+          <NavLink
+            isActive={asPath === "/about"}
+            href="/about"
+            onClick={handleCloseMobileMenu}
+          >
             About
           </NavLink>
-          <NavLink isActive={asPath === "/projects"} href="/projects">
+          <NavLink
+            isActive={asPath === "/projects"}
+            href="/projects"
+            onClick={handleCloseMobileMenu}
+          >
             Projects
           </NavLink>
-          <NavLink isActive={asPath === "/contact"} href="/contact">
+          <NavLink
+            isActive={asPath === "/contact"}
+            href="/contact"
+            onClick={handleCloseMobileMenu}
+          >
             Contact
           </NavLink>
         </NavList>

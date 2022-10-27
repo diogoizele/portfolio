@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Image from "next/image";
 
 import { ThemeMode } from "styles/theme.types";
 import { useThemeMode } from "hooks";
@@ -30,6 +31,12 @@ export const Container = styled.header`
 
     align-items: flex-start;
   }
+`;
+
+export const Avatar = styled(Image)`
+  border-radius: 50%;
+
+  box-shadow: 0 0 1px ${({ theme }) => theme.colors.textDisabled};
 `;
 
 export const PersonalInformation = styled.div`
@@ -71,6 +78,21 @@ export const NavList = styled.ul<NavListProps>`
   @media screen and (max-width: 590px) {
     background: ${({ theme }) => theme.colors.primary};
 
+    &::after {
+      content: "";
+      position: absolute;
+
+      top: 0rem;
+      left: -25%;
+      right: 100%;
+      bottom: 0rem;
+
+      z-index: 1;
+
+
+      filter: blur(100px);
+    }
+
     position: fixed;
     inset: 0;
     z-index: 2;
@@ -88,10 +110,10 @@ export const NavList = styled.ul<NavListProps>`
     transform: translateX(
       ${({ isMenuOpen, mobileView }) => {
         if (mobileView) {
-          return isMenuOpen ? "0%" : "-100%";
+          return isMenuOpen ? "25%" : "100%";
         }
 
-        return "-100%";
+        return "100%";
       }}
     );
   }
@@ -102,14 +124,16 @@ interface NavItemProps {
 }
 
 export const NavItem = styled.li<NavItemProps>`
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: ${({ theme, isActive }) =>
     isActive ? theme.colors.primary : theme.colors.textPrimary};
 
-  transition: color 200ms ease-in-out;
+  transition: transform 200ms ease-in-out;
 
   &:hover {
     color: ${({ theme }) => theme.colors.primary};
+
+    transform: translateY(-2px);
   }
 
   @media screen and (max-width: 590px) {
