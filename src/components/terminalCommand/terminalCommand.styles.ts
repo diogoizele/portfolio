@@ -32,7 +32,6 @@ interface CommandProps {
 }
 
 export const Command = styled.span<CommandProps>`
-  position: relative;
   display: block;
   width: max-content;
 

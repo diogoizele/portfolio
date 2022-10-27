@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import { HiMenu } from "react-icons/hi";
 
@@ -22,11 +23,12 @@ import { ThemeSwitch } from "..";
 export type NavLinkProps = {
   href: string;
   children: string;
+  isActive: boolean;
 };
 
-const NavLink = ({ href, children }: NavLinkProps) => {
+const NavLink = ({ href, children, isActive }: NavLinkProps) => {
   return (
-    <NavItem>
+    <NavItem isActive={isActive}>
       <Link href={href}>
         <NavAnchor>{children}</NavAnchor>
       </Link>
@@ -38,6 +40,8 @@ export const Header = () => {
 
   const { themeMode, onToggleThemeMode } = useThemeMode();
   const { width } = useWindowSize();
+  const { asPath } = useRouter();
+
   const isMobileView = width && width <= 590;
 
   const handleOpenMobileMenu = () => {
@@ -67,10 +71,18 @@ export const Header = () => {
       )}
       <Nav>
         <NavList isMenuOpen={mobileExpandedMenu} mobileView={isMobileView}>
-          <NavLink href="/">Home</NavLink>
-          <NavLink href="#about">About</NavLink>
-          <NavLink href="#projects">Projects</NavLink>
-          <NavLink href="#contact">Contact</NavLink>
+          <NavLink isActive={asPath === "/"} href="/">
+            Home
+          </NavLink>
+          <NavLink isActive={asPath === "/about"} href="/about">
+            About
+          </NavLink>
+          <NavLink isActive={asPath === "/projects"} href="/projects">
+            Projects
+          </NavLink>
+          <NavLink isActive={asPath === "/contact"} href="/contact">
+            Contact
+          </NavLink>
         </NavList>
 
         <ThemeSwitch

@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { useTheme } from "styled-components";
+import { useRouter } from "next/router";
 
 import { TerminalCommand, TerminalResponse } from "components";
 
@@ -8,9 +10,12 @@ import {
   TerminalButtonsContainer,
   TerminalContentContainer,
   TerminalHeaderContainer,
-  TerminalLsCommands,
   TerminalTitle,
 } from "./terminal.styles";
+import { InteractiveConsole } from "components/interactiveConsole/interactiveConsole";
+import { terminalPaths } from "./tarminal.paths";
+import { INITIAL_COMMANDS } from "./static";
+import { Command as CommandClass } from "models";
 
 const TerminalHeader = () => {
   const theme = useTheme();
@@ -27,27 +32,55 @@ const TerminalHeader = () => {
   );
 };
 
+interface TerminalCommandProps {
+  id: string;
+  command: string;
+  response: string | null;
+  path: string;
+}
+
 export const Terminal = () => {
+  const [commands, setCommands] = useState<TerminalCommandProps[]>(
+    INITIAL_COMMANDS as TerminalCommandProps[]
+  );
+  const [path, setPath] = useState("~");
+  const { push } = useRouter();
+
+  function clearTerminal() {
+    setCommands([]);
+  }
+
+  const handleAddCommand = (command: string) => {
+    const newCommand = new CommandClass(
+      command,
+      path,
+      setPath,
+      clearTerminal,
+      push
+    );
+
+    if (newCommand.commandType() !== "clear") {
+      setCommands((prevCommands) => [
+        ...prevCommands,
+        newCommand as TerminalCommandProps,
+      ]);
+    }
+  };
+
   return (
     <Container>
       <TerminalHeader />
       <TerminalContentContainer>
-        <TerminalCommand path="~/portfolio" command="pwd" />
-        <TerminalResponse response="c:/diogoizele/portfolio" />
-        <TerminalCommand path="~/portfolio" command="ls" />
-        <TerminalLsCommands>Home About Contact Projects</TerminalLsCommands>
-        <TerminalCommand path="~/portfolio" command="cd ../" />
-        <TerminalCommand
-          path="~"
-          command="echo Hello, my name is Diogo Izele"
-        />
-        <TerminalResponse response="Hello, my name is Diogo Izele" />
-        <TerminalCommand path="~" command="echo I'm a Web developer" />
-        <TerminalResponse response="I'm a Web developer" />
-        <TerminalCommand
-          path="~"
-          command="echo this is my portfolio"
-          animated
+        {commands.map(({ id, command, response, path }) => (
+          <span key={id}>
+            <TerminalCommand path={terminalPaths[path]} command={command} />
+            {response && <TerminalResponse response={response} />}
+          </span>
+        ))}
+
+        <InteractiveConsole
+          path={terminalPaths[path]}
+          onAddCommand={handleAddCommand}
         />
       </TerminalContentContainer>
     </Container>

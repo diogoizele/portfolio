@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+import { ThemeMode } from "styles/theme.types";
+import { useThemeMode } from "hooks";
+
 const EXPANDED_MENU_TIME = 300;
 
 export const Container = styled.header`
@@ -94,9 +97,14 @@ export const NavList = styled.ul<NavListProps>`
   }
 `;
 
-export const NavItem = styled.li`
+interface NavItemProps {
+  isActive: boolean;
+}
+
+export const NavItem = styled.li<NavItemProps>`
   font-size: 1rem;
-  color: ${({ theme }) => theme.colors.textPrimary};
+  color: ${({ theme, isActive }) =>
+    isActive ? theme.colors.primary : theme.colors.textPrimary};
 
   transition: color 200ms ease-in-out;
 
@@ -106,10 +114,22 @@ export const NavItem = styled.li`
 
   @media screen and (max-width: 590px) {
     font-size: 3rem;
-    color: ${({ theme }) => theme.colors.backgroundDisabled};
+    color: ${({ theme }) => {
+      const { themeMode } = useThemeMode();
+
+      return themeMode === ThemeMode.DARK
+        ? theme.colors.backgroundDisabled
+        : theme.colors.backgroundPrimary;
+    }};
 
     &:hover {
-      color: ${({ theme }) => theme.colors.backgroundPrimary};
+      color: ${({ theme }) => {
+        const { themeMode } = useThemeMode();
+
+        return themeMode === ThemeMode.DARK
+          ? theme.colors.backgroundPrimary
+          : theme.colors.white;
+      }};
     }
   } ;
 `;
