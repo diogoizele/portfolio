@@ -1,28 +1,21 @@
-interface TerminalCommand {
-  id: string;
-  command: string;
-  response: string;
-  path: string;
-}
-
-export const INITIAL_COMMANDS: TerminalCommand[] = [
+export const INITIAL_COMMANDS = [
   {
     id: "1",
     command: "pwd",
-    response: "c:/diogoizele/portfolio",
-    path: "/portfolio",
+    response: "/Users/diogoizele/portfolio",
+    path: "~/portfolio",
   },
   {
     id: "2",
     command: "ls",
     response: "Home About Projects Contact",
-    path: "/portfolio",
+    path: "~/portfolio",
   },
   {
     id: "3",
     command: "cd ../",
     response: null,
-    path: "/portfolio",
+    path: "~/portfolio",
   },
   {
     id: "4",
