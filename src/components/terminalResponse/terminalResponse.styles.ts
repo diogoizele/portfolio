@@ -10,6 +10,6 @@ export const Line = styled.p`
 
     return ThemeMode.DARK === themeMode
       ? theme.colors.textSecondary
-      : theme.colors.backgroundDisabled;
+      : theme.colors.textPrimary;
   }};
 `;

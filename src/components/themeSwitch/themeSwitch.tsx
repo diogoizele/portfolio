@@ -1,5 +1,6 @@
 import { ThemeMode } from "styles/theme.types";
 import {
+  ThemeSwitchBullet,
   ThemeSwitchContainer,
   ThemeSwitchEmojiContainer,
 } from "./themeSwitch.styles";
@@ -25,9 +26,10 @@ export const ThemeSwitch = ({
       themeMode={mode}
       onClick={handleToggle}
     >
-      <ThemeSwitchEmojiContainer>
+      <ThemeSwitchEmojiContainer themeMode={mode}>
         {mode === ThemeMode.DARK ? "🌜" : "🌞"}
       </ThemeSwitchEmojiContainer>
+      <ThemeSwitchBullet themeMode={mode} />
     </ThemeSwitchContainer>
   );
 };
