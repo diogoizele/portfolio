@@ -42,7 +42,11 @@ export const Input = styled.div.attrs({
 
   font-size: 1.1rem;
 
-  color: ${({ theme }) => theme.colors.textPrimary};
+  color: ${({ theme }) => {
+    const { themeMode } = useThemeMode();
+
+    return themeMode === ThemeMode.DARK ? theme.colors.textPrimary : "#515152";
+  }};
 
   position: relative;
   display: block;
