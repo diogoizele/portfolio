@@ -1,5 +1,6 @@
-import { useThemeMode } from "hooks";
 import styled from "styled-components";
+
+import { useThemeMode } from "hooks";
 import { ThemeMode } from "styles/theme.types";
 
 export const Container = styled.div`
@@ -7,29 +8,15 @@ export const Container = styled.div`
   left: 1rem;
 
   padding: 1rem;
-  box-shadow: 0 0 1px
-      ${({ theme }) => {
-        const { themeMode } = useThemeMode();
+  box-shadow: 0 0 1px ${({ theme }) => theme.colors.textDisabled},
+    inset 0 0 2px ${({ theme }) => theme.colors.textDisabled};
 
-        return themeMode === ThemeMode.DARK
-          ? theme.colors.textDisabled
-          : theme.colors.backgroundSecondary;
-      }},
-    inset 0 0 2px
-      ${({ theme }) => {
-        const { themeMode } = useThemeMode();
-
-        return themeMode === ThemeMode.DARK
-          ? theme.colors.textDisabled
-          : theme.colors.backgroundSecondary;
-      }};
-
-  background: ${({ theme }) => {
+  background: ${() => {
     const { themeMode } = useThemeMode();
 
     return themeMode === ThemeMode.DARK
-      ? "rgba(255, 255, 255, 0.050)"
-      : "rgba(0, 0, 0, 0.050)";
+      ? "rgba(255, 255, 255, 0.10)"
+      : "rgba(50, 50, 50, 0.10)";
   }};
 
   border-radius: 16px;
