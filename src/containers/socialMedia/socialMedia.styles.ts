@@ -26,13 +26,15 @@ export const Container = styled.div`
 
   gap: 1rem;
 
-  @media screen and (max-width: 590px) {
+  @media screen and (max-width: 740px) {
+    /* transform: translateX(-50%);
+    left: 50%; */
     left: 0;
     bottom: 0;
     width: 100%;
-    padding: 1rem 0;
+    padding: 1rem;
 
-    gap: 2rem;
+    gap: 2.3rem;
 
     flex-direction: row;
     justify-content: center;
@@ -54,5 +56,11 @@ export const SocialMediaAnchor = styled.a`
 
   &:hover {
     transform: translateX(4px);
+  }
+
+  @media screen and (max-width: 740px) {
+    &:hover {
+      transform: translateY(-4px);
+    }
   }
 `;

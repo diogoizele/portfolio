@@ -27,7 +27,11 @@ export const ThemeSwitchContainer = styled.button<ThemeSwitchContainerProps>`
   @media (max-width: 590px) {
     position: fixed;
 
-    opacity: ${({ isMenuOpen }) => (isMenuOpen ? 1 : 0)};
+    transform: translateX(
+      ${({ isMenuOpen }) => {
+        return isMenuOpen ? "25%" : "200%";
+      }}
+    );
     z-index: 2;
 
     width: 5rem;
@@ -37,7 +41,7 @@ export const ThemeSwitchContainer = styled.button<ThemeSwitchContainerProps>`
     bottom: 3rem;
     right: 2rem;
 
-    transition: opacity 200ms ease-in-out;
+    transition: transform 300ms ease-in-out;
   }
 `;
 
@@ -50,7 +54,6 @@ export const ThemeSwitchEmojiContainer = styled.div<ThemeSwitchEmojiContainerPro
   left: ${({ themeMode }) => (themeMode === ThemeMode.DARK ? "auto" : "0px")};
   right: ${({ themeMode }) => (themeMode === ThemeMode.DARK ? "0px" : "auto")};
 
-  height: 100%;
   width: 50%;
 `;
 

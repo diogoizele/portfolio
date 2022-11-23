@@ -1,8 +1,9 @@
 import styled, { css } from "styled-components";
-import { HiOutlineArrowNarrowRight } from "react-icons/hi";
+import { BsArrowRightShort } from "react-icons/bs";
 
 import { useThemeMode } from "hooks";
 import { ThemeMode } from "styles/theme.types";
+import * as colors from "styles/colors";
 
 export const Line = styled.p`
   display: flex;
@@ -22,65 +23,34 @@ export const Line = styled.p`
 
 export const Path = styled.span`
   color: ${({ theme }) => theme.colors.primary};
-  font-weight: bold;
+  font-weight: 600;
 `;
 
-export const ArrowIcon = styled(HiOutlineArrowNarrowRight).attrs({
-  size: 20,
+export const ArrowIcon = styled(BsArrowRightShort).attrs({
+  size: 16,
 })`
   color: ${({ theme }) => theme.colors.primary};
 `;
 
-interface CommandProps {
-  animated: boolean;
-}
+export const Argument = styled.span``;
 
-export const Command = styled.span<CommandProps>`
+export const Command = styled.span`
   display: block;
   width: max-content;
 
-  ${({ animated }) => {
-    if (animated)
-      return css`
-        &::before,
-        &::after {
-          content: "";
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-        }
+  font-weight: ${({ theme }) => {
+    const { themeMode } = useThemeMode();
 
-        &::before {
-          background: ${({ theme }) => {
-            const { themeMode } = useThemeMode();
-            return themeMode === ThemeMode.DARK
-              ? theme.colors.backgroundSecondary
-              : theme.colors.white;
-          }};
+    return ThemeMode.DARK === themeMode
+      ? 500
+      : 600;
+  }};
 
-          animation: typewriter 3s steps(25) 1s forwards;
-        }
+  color: ${({ theme }) => {
+    const { themeMode } = useThemeMode();
 
-        &::after {
-          width: 0.125rem;
-          background: ${({ theme }) => theme.colors.textSecondary};
-          animation: typewriter 3s steps(25) 1s forwards,
-            blink 700ms steps(25) infinite;
-        }
-      `;
-  }}
-
-  @keyframes typewriter {
-    to {
-      left: 100%;
-    }
-  }
-
-  @keyframes blink {
-    to {
-      background: transparent;
-    }
-  }
+    return ThemeMode.DARK === themeMode
+      ? theme.colors.success
+      : colors.green.nine;
+  }};
 `;

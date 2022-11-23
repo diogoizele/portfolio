@@ -9,6 +9,8 @@ interface SocialMediaLinkProps {
   title: string;
 }
 
+const ICONS_SIZE = 30;
+
 const SocialMediaLink = ({ href, icon, title }: SocialMediaLinkProps) => {
   return (
     <Link href={href}>
@@ -24,22 +26,22 @@ export const SocialMedia = () => {
     <Container>
       <SocialMediaLink
         href="https://github.com/diogoizele"
-        icon={<FiGithub size={28} />}
+        icon={<FiGithub size={ICONS_SIZE} />}
         title="GitHub"
       />
       <SocialMediaLink
         href="https://www.linkedin.com/in/diogoizele/"
-        icon={<FiLinkedin size={28} />}
+        icon={<FiLinkedin size={ICONS_SIZE} />}
         title="LinkedIn"
       />
       <SocialMediaLink
         href="https://twitter.com/diogoizele"
-        icon={<FiTwitter size={28} />}
+        icon={<FiTwitter size={ICONS_SIZE} />}
         title="Twitter"
       />
       <SocialMediaLink
-        href="https://www.youtube.com/channel/UCQ-oyN6ClB9W6-Z773iii9Q"
-        icon={<FiYoutube size={28} />}
+        href="https://www.youtube.com/@diogoizele"
+        icon={<FiYoutube size={ICONS_SIZE} />}
         title="YouTube"
       />
     </Container>
