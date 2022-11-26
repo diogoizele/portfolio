@@ -5,19 +5,31 @@ export const Container = styled.section`
   display: flex;
   flex-direction: column;
 
-  max-width: 900px;
+  max-width: 1120px;
   width: calc(100% - 8rem);
 
-  height: calc(100vh - 10rem);
+  padding: 3rem;
+  padding-top: 8rem;
+  min-height: calc(100vh - 10rem);
+
+  @media (max-width: 590px) {
+    padding: 0;
+    padding-top: 3rem;
+  }
 `;
+
 export const Content = styled.div`
   display: flex;
-  align-items: center;
-
-  flex: 1;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
 
   @media (max-width: 590px) {
     flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    padding-top: 1rem;
+    padding-bottom: 5rem;
   }
 `;
 
@@ -28,56 +40,30 @@ export const Title = styled.strong`
   color: ${({ theme }) => theme.colors.primary};
 
   padding-top: 3rem;
+  padding-bottom: 1rem;
 `;
 
 export const Memoji = styled(Image)``;
 
 export const ImageContainer = styled.div`
-  height: 100%;
-
-  flex: 1;
-
   display: flex;
+  justify-content: center;
   align-items: center;
+
+  width: 50%;
 `;
 
 export const PersonalContainer = styled.div`
-  flex: 1;
-
-  height: 100%;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
 
+  width: 50%;
+
   gap: 0.5rem;
-`;
-
-export const Role = styled.h1`
-  font-size: 1.6rem;
-
-  color: ${({ theme }) => theme.colors.textDisabled};
-`;
-
-export const Name = styled.strong`
-  font-size: 4.5rem;
-  font-weight: 900;
-
-  color: ${({ theme }) => theme.colors.primary};
 
   @media (max-width: 590px) {
-    font-size: 3.5rem;
-  }
-`;
-
-export const Description = styled.p`
-  font-size: 1.2rem;
-
-  color: ${({ theme }) => theme.colors.textPrimary};
-
-  @media (max-width: 590px) {
-    /* font-size: 1rem; */
-
-    text-align: justify;
+    width: 100%;
+    gap: 1rem;
   }
 `;
