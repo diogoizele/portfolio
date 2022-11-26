@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { BsArrowRightShort } from "react-icons/bs";
 
 import { useThemeMode } from "hooks";
@@ -14,11 +14,7 @@ export const Line = styled.p`
 
   font-size: 1.1rem;
 
-  color: ${({ theme }) => {
-    const { themeMode } = useThemeMode();
-
-    return themeMode === ThemeMode.DARK ? theme.colors.textPrimary : "#515152";
-  }};
+  color: ${({ theme }) => theme.colors.textSecondary};
 `;
 
 export const Path = styled.span`
@@ -38,19 +34,15 @@ export const Command = styled.span`
   display: block;
   width: max-content;
 
-  font-weight: ${({ theme }) => {
+  font-weight: ${() => {
     const { themeMode } = useThemeMode();
 
-    return ThemeMode.DARK === themeMode
-      ? 500
-      : 600;
+    return ThemeMode.DARK === themeMode ? 500 : 600;
   }};
 
   color: ${({ theme }) => {
     const { themeMode } = useThemeMode();
 
-    return ThemeMode.DARK === themeMode
-      ? theme.colors.success
-      : colors.green.nine;
+    return ThemeMode.DARK === themeMode ? colors.green.B700 : colors.green.A500;
   }};
 `;

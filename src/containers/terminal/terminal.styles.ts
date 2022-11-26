@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { ThemeMode } from "styles/theme.types";
 import * as colors from "styles/colors";
+import Link from "next/link";
 
 export const Container = styled.div`
   max-height: 380px;
@@ -23,7 +24,14 @@ export const Container = styled.div`
       : theme.colors.white;
   }};
   border-radius: 12px;
-  border: 1px solid ${({ theme }) => theme.colors.backgroundAlternative};
+  border: 1px solid
+    ${({ theme }) => {
+      const { themeMode } = useThemeMode();
+
+      return themeMode === ThemeMode.DARK
+        ? theme.colors.backgroundAlternative
+        : theme.colors.backgroundQuaternary;
+    }};
 
   @media screen and (max-width: 590px) {
     height: 100%;
@@ -58,9 +66,6 @@ export const TerminalHeaderContainer = styled.header`
 
   max-width: 666px;
 
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-
   background: ${({ theme }) => {
     const { themeMode } = useThemeMode();
 
@@ -80,7 +85,7 @@ export const TerminalHeaderContainer = styled.header`
 
     return themeMode === ThemeMode.DARK
       ? theme.colors.backgroundAlternative
-      : theme.colors.backgroundSecondary;
+      : theme.colors.backgroundQuaternary;
   }};
 `;
 
@@ -131,8 +136,8 @@ export const TerminalTitle = styled.strong`
     const { themeMode } = useThemeMode();
 
     return themeMode === ThemeMode.DARK
-      ? theme.colors.backgroundDisabled
-      : theme.colors.backgroundDisabled;
+      ? theme.colors.backgroundSecondary
+      : theme.colors.textTertiary;
   }};
 `;
 
@@ -158,25 +163,13 @@ export const TerminalLsLinksContainer = styled.div`
   gap: 0.5rem;
 `;
 
-export const TerminalLsLink = styled.a`
+export const TerminalLsLink = styled(Link)`
   font-size: 1.2rem;
 
-  color: ${({ theme }) => {
-    const { themeMode } = useThemeMode();
-
-    return ThemeMode.DARK === themeMode
-      ? colors.gray.five
-      : theme.colors.textPrimary;
-  }};
+  color: ${({ theme }) => theme.colors.textTertiary};
 
   &:hover {
-    color: ${({ theme }) => {
-      const { themeMode } = useThemeMode();
-
-      return ThemeMode.DARK === themeMode
-        ? colors.gray.four
-        : colors.gray.nine;
-    }};
+    color: ${({ theme }) => theme.colors.textSecondary};
     transition: color 180ms ease-in-out;
   }
 `;

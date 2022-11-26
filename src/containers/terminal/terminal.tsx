@@ -1,6 +1,4 @@
 import { useTheme } from "styled-components";
-import { useRouter } from "next/router";
-import Link from "next/link";
 
 import { TerminalCommand, TerminalResponse } from "components";
 
@@ -31,16 +29,7 @@ const TerminalHeader = () => {
   );
 };
 
-interface TerminalCommandProps {
-  id: string;
-  command: string;
-  response: string | null;
-  path: string;
-}
-
 export const Terminal = () => {
-  const { push } = useRouter();
-
   return (
     <Container>
       <TerminalHeader />
@@ -52,18 +41,10 @@ export const Terminal = () => {
         <TerminalCommandContainer>
           <TerminalCommand command="ls" path="~/portfolio" />
           <TerminalLsLinksContainer>
-            <Link href="/">
-              <TerminalLsLink href="/">Home</TerminalLsLink>
-            </Link>
-            <Link href="/about">
-              <TerminalLsLink href="/about">About</TerminalLsLink>
-            </Link>
-            <Link href="/projects">
-              <TerminalLsLink href="/projects">Projects</TerminalLsLink>
-            </Link>
-            <Link href="/contact">
-              <TerminalLsLink href="/contact">Contact</TerminalLsLink>
-            </Link>
+            <TerminalLsLink href="/">Home</TerminalLsLink>
+            <TerminalLsLink href="/about">About</TerminalLsLink>
+            <TerminalLsLink href="/projects">Projects</TerminalLsLink>
+            <TerminalLsLink href="/contact">Contact</TerminalLsLink>
           </TerminalLsLinksContainer>
         </TerminalCommandContainer>
         <TerminalCommandContainer>

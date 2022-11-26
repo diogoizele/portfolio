@@ -18,10 +18,7 @@ export const ThemeSwitchContainer = styled.button<ThemeSwitchContainerProps>`
   cursor: pointer;
   position: relative;
 
-  background: ${({ theme, themeMode }) =>
-    themeMode === ThemeMode.DARK
-      ? theme.colors.backgroundDisabled
-      : theme.colors.backgroundSecondary};
+  background: ${({ theme }) => theme.colors.backgroundTertiary};
   border: none;
 
   @media (max-width: 590px) {
@@ -34,12 +31,12 @@ export const ThemeSwitchContainer = styled.button<ThemeSwitchContainerProps>`
     );
     z-index: 2;
 
-    width: 5rem;
-    height: 3rem;
+    width: 4.8rem;
+    height: 2.7rem;
     font-size: 1.8rem;
 
-    bottom: 3rem;
-    right: 2rem;
+    bottom: 2rem;
+    right: 3rem;
 
     transition: transform 300ms ease-in-out;
   }
@@ -76,7 +73,11 @@ export const ThemeSwitchBullet = styled.div<ThemeSwitchBulletProps>`
   transition: left 200ms ease-in-out, right 200ms ease-in-out;
 
   @media (max-width: 590px) {
-    width: 2rem;
-    height: 2rem;
+    left: ${({ themeMode }) => (themeMode === ThemeMode.DARK ? "6px" : "auto")};
+    right: ${({ themeMode }) =>
+      themeMode === ThemeMode.DARK ? "auto" : "6px"};
+
+    width: 1.8rem;
+    height: 1.8rem;
   }
 `;

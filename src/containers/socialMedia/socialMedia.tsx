@@ -13,11 +13,9 @@ const ICONS_SIZE = 30;
 
 const SocialMediaLink = ({ href, icon, title }: SocialMediaLinkProps) => {
   return (
-    <Link href={href}>
-      <SocialMediaAnchor title={title} href={href} target="_blank">
-        {icon}
-      </SocialMediaAnchor>
-    </Link>
+    <SocialMediaAnchor title={title} href={href} target="_blank">
+      {icon}
+    </SocialMediaAnchor>
   );
 };
 
