@@ -1,15 +1,61 @@
 import styled from "styled-components";
 import Image from "next/image";
+import Link from "next/link";
 
-import { ThemeMode } from "styles/theme.types";
 import { useThemeMode } from "hooks";
+import { ThemeMode } from "styles/theme.types";
+import * as colors from "styles/colors";
 
 const EXPANDED_MENU_TIME = 300;
+const MOVE_NAV_BAR = 400;
 
-export const Container = styled.header`
-  height: 3rem;
+export const ContainerWrapper = styled.header`
+  width: 100%;
+  height: 5rem;
+
+  position: fixed;
+  top: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.on-bottom-scroll {
+    transform: translateY(-100%);
+
+    transition: transform ${MOVE_NAV_BAR}ms;
+  }
+
+  &.on-top-scroll {
+    transform: translateY(auto);
+    height: 4rem;
+
+    transition: transform ${MOVE_NAV_BAR}ms;
+  }
+
+  &.highlight-header {
+    background-color: ${({ theme }) => theme.colors.backgroundPrimary};
+    box-shadow: 0 1px 4px
+      ${({ theme }) => {
+        const { themeMode } = useThemeMode();
+
+        return themeMode === ThemeMode.DARK
+          ? theme.colors.black
+          : colors.gray.A400;
+      }};
+    transition: background-color box-shadow ${MOVE_NAV_BAR}ms;
+  }
+
+  &.unhighlight-header {
+    background-color: transparent;
+    transition: 300ms;
+  }
+`;
+
+export const Container = styled.div`
   max-width: 1120px;
-  width: calc(100% - 8rem);
+  width: 100%;
+  height: 100%;
 
   padding: 3rem;
 
@@ -17,19 +63,12 @@ export const Container = styled.header`
   align-items: center;
   justify-content: space-between;
 
-  position: fixed;
-  top: 0;
-
   @media screen and (max-width: 590px) {
-    height: auto;
     width: 100%;
 
-    gap: 1rem;
-    padding: 2rem;
+    padding: 0;
 
-    flex-direction: column;
-
-    align-items: flex-start;
+    flex-direction: row;
   }
 `;
 
@@ -44,6 +83,53 @@ export const PersonalInformation = styled.div`
   align-items: center;
 
   gap: 1rem;
+`;
+
+export const HeaderSubContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 1rem;
+
+  @media screen and (max-width: 590px) {
+    width: 100%;
+
+    height: 100%;
+    padding: 0.5rem 2rem;
+
+    justify-content: space-between;
+
+    &.on-bottom-scroll {
+      transform: translateY(-100%);
+
+      transition: transform ${MOVE_NAV_BAR}ms;
+    }
+
+    &.on-top-scroll {
+      transform: translateY(auto);
+
+      transition: transform ${MOVE_NAV_BAR}ms;
+    }
+
+    &.highlight-header {
+      background-color: ${({ theme }) => theme.colors.backgroundPrimary};
+      box-shadow: 0 0 3px
+        ${({ theme }) => {
+          const { themeMode } = useThemeMode();
+
+          return themeMode === ThemeMode.DARK
+            ? colors.gray.A900
+            : theme.colors.textDisabled;
+        }};
+      transition: background-color box-shadow ${MOVE_NAV_BAR}ms;
+    }
+
+    &.unhighlight-header {
+      background-color: transparent;
+      transition: 300ms;
+    }
+  }
 `;
 
 export const PersonalName = styled.strong`
@@ -88,7 +174,6 @@ export const NavList = styled.ul<NavListProps>`
       bottom: 0rem;
 
       z-index: 1;
-
 
       filter: blur(100px);
     }
@@ -142,7 +227,7 @@ export const NavItem = styled.li<NavItemProps>`
       const { themeMode } = useThemeMode();
 
       return themeMode === ThemeMode.DARK
-        ? theme.colors.backgroundDisabled
+        ? theme.colors.backgroundPrimary
         : theme.colors.backgroundPrimary;
     }};
 
@@ -158,7 +243,7 @@ export const NavItem = styled.li<NavItemProps>`
   } ;
 `;
 
-export const NavAnchor = styled.a`
+export const NavLink = styled(Link)`
   padding: 0.8rem 0.5rem;
 
   cursor: pointer;
@@ -169,11 +254,6 @@ interface HamburguerMenuButtonProps {
 }
 
 export const HamburguerMenuButton = styled.button<HamburguerMenuButtonProps>`
-  position: absolute;
-
-  right: 1rem;
-  top: 2rem;
-
   z-index: 3;
 
   height: 3.5rem;

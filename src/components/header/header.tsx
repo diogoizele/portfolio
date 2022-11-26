@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useScrollDirection } from "react-use-scroll-direction";
 
 import { HiMenu } from "react-icons/hi";
 
@@ -11,13 +12,15 @@ import {
   PersonalName,
   NavList,
   NavItem,
-  NavAnchor,
+  NavLink as StyledNavLink,
   HamburguerMenuButton,
   Nav,
   Avatar,
+  HeaderSubContainer,
+  ContainerWrapper,
 } from "./header.styles";
-import { useState } from "react";
-import { useThemeMode, useWindowSize } from "hooks";
+import { useEffect, useState } from "react";
+import { useThemeMode, useWindow } from "hooks";
 import { ThemeSwitch } from "..";
 
 export type NavLinkProps = {
@@ -31,18 +34,18 @@ export type NavLinkProps = {
 const NavLink = ({ href, children, isActive, onClick }: NavLinkProps) => {
   return (
     <NavItem isActive={isActive} onClick={onClick}>
-      <Link href={href}>
-        <NavAnchor href={href}>{children}</NavAnchor>
-      </Link>
+      <StyledNavLink href={href}>{children}</StyledNavLink>
     </NavItem>
   );
 };
 export const Header = () => {
   const [mobileExpandedMenu, setMobileExpandedMenu] = useState(false);
+  const [containerClassName, setContainerClassName] = useState("");
 
   const { themeMode, onToggleThemeMode } = useThemeMode();
-  const { width } = useWindowSize();
+  const { width, positionY } = useWindow();
   const { asPath } = useRouter();
+  const { isScrolling, isScrollingDown, isScrollingUp } = useScrollDirection();
 
   const isMobileView = width && width <= 590;
 
@@ -51,69 +54,89 @@ export const Header = () => {
   };
 
   const handleCloseMobileMenu = () => {
-    console.log("clicou");
     setMobileExpandedMenu(false);
   };
 
-  return (
-    <Container>
-      <PersonalInformation>
-        <Avatar
-          src={miniProfilePic}
-          alt="Diogo Izele's avatar"
-          width={48}
-          height={48}
-          quality={90}
-        />
-        <PersonalName>Diogo Izele</PersonalName>
-      </PersonalInformation>
-      {isMobileView && (
-        <HamburguerMenuButton
-          title={mobileExpandedMenu ? "Close Menu" : "Open Menu"}
-          isMenuOpen={mobileExpandedMenu}
-          onClick={handleOpenMobileMenu}
-        >
-          <HiMenu size={36} />
-        </HamburguerMenuButton>
-      )}
-      <Nav>
-        <NavList isMenuOpen={mobileExpandedMenu} mobileView={isMobileView}>
-          <NavLink
-            isActive={asPath === "/"}
-            href="/"
-            onClick={handleCloseMobileMenu}
-          >
-            Home
-          </NavLink>
-          <NavLink
-            isActive={asPath === "/about"}
-            href="/about"
-            onClick={handleCloseMobileMenu}
-          >
-            About
-          </NavLink>
-          <NavLink
-            isActive={asPath === "/projects"}
-            href="/projects"
-            onClick={handleCloseMobileMenu}
-          >
-            Projects
-          </NavLink>
-          <NavLink
-            isActive={asPath === "/contact"}
-            href="/contact"
-            onClick={handleCloseMobileMenu}
-          >
-            Contact
-          </NavLink>
-        </NavList>
+  const handleScroll = () => {
+    if (positionY < 10) {
+      setContainerClassName("unhighlight-header");
+    } else if (isScrolling && isScrollingDown) {
+      setContainerClassName("on-bottom-scroll");
+    } else if (isScrolling && isScrollingUp) {
+      setContainerClassName("on-top-scroll highlight-header");
+    }
+  };
 
-        <ThemeSwitch
-          isMenuOpen={mobileExpandedMenu}
-          onToggle={onToggleThemeMode}
-          mode={themeMode}
-        />
-      </Nav>
-    </Container>
+  useEffect(() => {
+    if (isScrolling) {
+      handleScroll();
+    }
+  }, [isScrolling, positionY]);
+
+  return (
+    <ContainerWrapper className={!isMobileView && containerClassName}>
+      <Container>
+        <HeaderSubContainer className={containerClassName}>
+          <PersonalInformation>
+            <Avatar
+              src={miniProfilePic}
+              alt="Diogo Izele's avatar"
+              width={48}
+              height={48}
+              quality={90}
+            />
+            <PersonalName>Diogo Izele</PersonalName>
+          </PersonalInformation>
+          {isMobileView && (
+            <HamburguerMenuButton
+              title={mobileExpandedMenu ? "Close Menu" : "Open Menu"}
+              isMenuOpen={mobileExpandedMenu}
+              onClick={handleOpenMobileMenu}
+            >
+              <HiMenu size={36} />
+            </HamburguerMenuButton>
+          )}
+        </HeaderSubContainer>
+
+        <Nav>
+          <NavList isMenuOpen={mobileExpandedMenu} mobileView={isMobileView}>
+            <NavLink
+              isActive={asPath === "/"}
+              href="/"
+              onClick={handleCloseMobileMenu}
+            >
+              Home
+            </NavLink>
+            <NavLink
+              isActive={asPath === "/about"}
+              href="/about"
+              onClick={handleCloseMobileMenu}
+            >
+              About
+            </NavLink>
+            <NavLink
+              isActive={asPath === "/projects"}
+              href="/projects"
+              onClick={handleCloseMobileMenu}
+            >
+              Projects
+            </NavLink>
+            <NavLink
+              isActive={asPath === "/contact"}
+              href="/contact"
+              onClick={handleCloseMobileMenu}
+            >
+              Contact
+            </NavLink>
+          </NavList>
+
+          <ThemeSwitch
+            isMenuOpen={mobileExpandedMenu}
+            onToggle={onToggleThemeMode}
+            mode={themeMode}
+          />
+        </Nav>
+      </Container>
+    </ContainerWrapper>
   );
 };
