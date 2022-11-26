@@ -1,26 +1,33 @@
 import { CustomThemeType } from "styles/theme.types";
 import backgroundImage from "../../../public/background-dark.png";
+import * as colors from "styles/colors";
 
 export const darkTheme: CustomThemeType = {
   colors: {
-    white: "#ffffff",
-    black: "#000000",
+    white: colors.common.white,
+    black: colors.common.black,
 
-    primary: "#4ce3c2",
-    secondary: "#1a9c80",
+    primary: colors.teal.B400,
+    secondary: colors.teal.B700,
+    tertiary: colors.teal.A500,
+    quaternary: colors.teal.A700,
 
-    error: "#fe635a",
-    warning: "#faba2c",
-    success: "#2dc544",
+    error: colors.actions.error,
+    warning: colors.actions.warning,
+    success: colors.actions.success,
 
-    textPrimary: "#E1E1F4",
-    textSecondary: "#a8a8b3",
-    textDisabled: "#9c9c9c",
+    textPrimary: colors.gray.A50,
+    textSecondary: colors.gray.A300,
+    textTertiary: colors.gray.A500,
+    textQuaternary: colors.gray.A600,
+    textDisabled: colors.gray.A700,
 
-    backgroundPrimary: "#121214",
-    backgroundSecondary: "#222",
-    backgroundAlternative: "#2a2a2f",
-    backgroundDisabled: "#3b3b41",
+    backgroundPrimary: colors.gray.A1000,
+    backgroundSecondary: colors.gray.A900,
+    backgroundAlternative: colors.gray.A800,
+    backgroundTertiary: colors.gray.A700,
+    backgroundQuaternary: colors.gray.A600,
+    backgroundDisabled: colors.gray.A500,
   },
   backgroundImage,
 };

@@ -1,26 +1,33 @@
 import { CustomThemeType } from "styles/theme.types";
 import backgroundImage from "../../../public/background-light.png";
+import * as colors from "styles/colors";
 
 export const lightTheme: CustomThemeType = {
   colors: {
-    white: "#ffffff",
-    black: "#000000",
+    white: colors.common.white,
+    black: colors.common.black,
 
-    primary: "#168665",
-    secondary: "#1a9c80",
+    primary: colors.teal.A600,
+    secondary: colors.teal.B700,
+    tertiary: colors.teal.B400,
+    quaternary: colors.teal.A300,
 
-    error: "#fe635a",
-    warning: "#faba2c",
-    success: "#2dc544",
+    error: colors.actions.error,
+    warning: colors.actions.warning,
+    success: colors.actions.success,
 
-    textPrimary: "#121214",
-    textSecondary: "#222",
-    textDisabled: "#2a2a2f",
+    textPrimary: colors.gray.A1000,
+    textSecondary: colors.gray.A900,
+    textTertiary: colors.gray.A700,
+    textQuaternary: colors.gray.A500,
+    textDisabled: colors.gray.A700,
 
-    backgroundPrimary: "#E1E1F4",
-    backgroundSecondary: "#a8a8b3",
-    backgroundAlternative: "#9c9c9c",
-    backgroundDisabled: "#3b3b41",
+    backgroundPrimary: colors.gray.A250,
+    backgroundSecondary: colors.gray.A300,
+    backgroundTertiary: colors.gray.A400,
+    backgroundQuaternary: colors.gray.A500,
+    backgroundAlternative: colors.gray.A800,
+    backgroundDisabled: colors.gray.A600,
   },
   backgroundImage,
 };

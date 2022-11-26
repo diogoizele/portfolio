@@ -12,6 +12,8 @@ export interface CustomThemeType {
 
     primary: string;
     secondary: string;
+    tertiary: string;
+    quaternary: string;
 
     error: string;
     warning: string;
@@ -19,10 +21,14 @@ export interface CustomThemeType {
 
     textPrimary: string;
     textSecondary: string;
+    textTertiary: string;
+    textQuaternary: string;
     textDisabled: string;
 
     backgroundPrimary: string;
     backgroundSecondary: string;
+    backgroundTertiary: string;
+    backgroundQuaternary: string;
     backgroundAlternative: string;
     backgroundDisabled: string;
   };
