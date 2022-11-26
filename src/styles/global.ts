@@ -31,9 +31,11 @@ export const GlobalStyle = createGlobalStyle`
 			background-size: cover;
 			background-repeat: no-repeat;
 			background-color: ${({ theme }) => theme.colors.backgroundPrimary};
+			background-attachment: fixed;  
+
 
 			width: 100%;
-			height: 100vh;
+			min-height: 100vh;
 
 			font-size: 16px;
 			line-height: 1.5;
@@ -50,6 +52,7 @@ export const GlobalStyle = createGlobalStyle`
 		#__next {
 			width: 100%;
 			height: 100%;
+
 
 			display: flex;
 			align-items: center;
