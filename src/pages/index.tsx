@@ -65,7 +65,6 @@ export default function HomePage() {
         <link rel="canonical" href="https://diogoizele.com" />
       </Head>
       <Terminal />
-      <SocialMedia />
     </>
   );
 }
