@@ -11,7 +11,7 @@ const MOVE_NAV_BAR = 400;
 
 export const ContainerWrapper = styled.header`
   width: 100%;
-  height: 5rem;
+  height: 6rem;
 
   position: fixed;
   top: 0;
@@ -28,8 +28,8 @@ export const ContainerWrapper = styled.header`
 
   &.on-top-scroll {
     transform: translateY(auto);
-    height: 4rem;
 
+    height: 4rem;
     transition: transform ${MOVE_NAV_BAR}ms;
   }
 
@@ -50,6 +50,10 @@ export const ContainerWrapper = styled.header`
     background-color: transparent;
     transition: 300ms;
   }
+
+  @media screen and (max-width: 590px) {
+    align-items: flex-start;
+  }
 `;
 
 export const Container = styled.div`
@@ -65,6 +69,7 @@ export const Container = styled.div`
 
   @media screen and (max-width: 590px) {
     width: 100%;
+    align-items: flex-start;
 
     padding: 0;
 
@@ -101,13 +106,15 @@ export const HeaderSubContainer = styled.div`
     justify-content: space-between;
 
     &.on-bottom-scroll {
-      transform: translateY(-100%);
+      transform: translateY(-200%);
 
       transition: transform ${MOVE_NAV_BAR}ms;
     }
 
     &.on-top-scroll {
       transform: translateY(auto);
+
+      height: 5rem;
 
       transition: transform ${MOVE_NAV_BAR}ms;
     }
@@ -127,6 +134,7 @@ export const HeaderSubContainer = styled.div`
 
     &.unhighlight-header {
       background-color: transparent;
+      height: 6rem;
       transition: 300ms;
     }
   }
@@ -159,7 +167,7 @@ export const NavList = styled.ul<NavListProps>`
   align-items: center;
   justify-content: center;
 
-  gap: 1rem;
+  gap: 0.5rem;
 
   @media screen and (max-width: 590px) {
     background: ${({ theme }) => theme.colors.primary};
@@ -187,8 +195,8 @@ export const NavList = styled.ul<NavListProps>`
     align-items: flex-start;
     justify-content: flex-start;
 
-    padding-top: 3rem;
-    padding-left: 2rem;
+    padding-top: 6rem;
+    padding-left: 1rem;
 
     transition: transform ${EXPANDED_MENU_TIME}ms ease-in-out;
 
@@ -222,14 +230,15 @@ export const NavItem = styled.li<NavItemProps>`
   }
 
   @media screen and (max-width: 590px) {
-    font-size: 3rem;
-    color: ${({ theme }) => {
-      const { themeMode } = useThemeMode();
+    font-size: 1.5rem;
+    color: ${({ theme, isActive }) =>
+      isActive ? theme.colors.primary : theme.colors.backgroundPrimary};
 
-      return themeMode === ThemeMode.DARK
-        ? theme.colors.backgroundPrimary
-        : theme.colors.backgroundPrimary;
-    }};
+    background: ${({ theme, isActive }) =>
+      isActive ? theme.colors.backgroundPrimary : theme.colors.primary};
+
+    width: 100%;
+    border-radius: 8px;
 
     &:hover {
       color: ${({ theme }) => {
@@ -240,11 +249,16 @@ export const NavItem = styled.li<NavItemProps>`
           : theme.colors.white;
       }};
     }
-  } ;
+  }
 `;
 
 export const NavLink = styled(Link)`
-  padding: 0.8rem 0.5rem;
+  padding: 1rem 0.8rem;
+
+  width: 100%;
+  display: flex;
+
+  height: 100%;
 
   cursor: pointer;
 `;

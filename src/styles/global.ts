@@ -30,6 +30,7 @@ export const GlobalStyle = createGlobalStyle`
 			background-image: ${({ theme }) => `url(${theme.backgroundImage.src})`};
 			background-size: cover;
 			background-repeat: no-repeat;
+			background-position: center;
 			background-color: ${({ theme }) => theme.colors.backgroundPrimary};
 			background-attachment: fixed;  
 
@@ -52,7 +53,6 @@ export const GlobalStyle = createGlobalStyle`
 		#__next {
 			width: 100%;
 			height: 100%;
-
 
 			display: flex;
 			align-items: center;

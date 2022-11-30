@@ -44,9 +44,9 @@ export const Container = styled.div`
     border-radius: unset;
 
     width: 100%;
-    padding: 1rem;
+    padding: 1rem 6rem;
     gap: 2.3rem;
-
+  
     flex-direction: row;
     justify-content: center;
     align-items: center;

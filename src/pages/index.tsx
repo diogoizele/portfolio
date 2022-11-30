@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import { SocialMedia, Terminal } from "containers";
+import { Terminal } from "containers";
 
 export default function HomePage() {
   return (
@@ -37,9 +37,9 @@ export default function HomePage() {
           name="description"
           content="Hello, my name is Diogo Izele, I'm a web developer and this is my portfolio."
         />
-        <meta name="keywords" content="Web Developer" />
+        <meta name="keywords" content="Software Developer" />
         <meta name="author" content="Diogo Izele" />
-        <meta name="copyright" content="© 2021 Diogo Izele" />
+        <meta name="copyright" content="© 2022 Diogo Izele" />
         <meta name="robots" content="all" />
 
         <meta property="og:title" content="Diogo Izele" />

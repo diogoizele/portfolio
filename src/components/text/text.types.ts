@@ -16,6 +16,8 @@ export interface TextProps {
   fontSize?: string | number;
 
   style?: React.CSSProperties;
+
+  mediaSize?: string;
 }
 
 export interface TitleProps extends TextProps {
