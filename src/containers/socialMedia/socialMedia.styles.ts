@@ -35,7 +35,7 @@ export const Container = styled.div`
 
   gap: 1rem;
 
-  @media screen and (max-width: 740px) {
+  @media screen and (max-width: 760px) {
     left: 0;
     bottom: 0;
     top: unset;

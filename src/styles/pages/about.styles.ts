@@ -10,6 +10,7 @@ export const Container = styled.section`
 
   padding: 3rem;
   padding-top: 8rem;
+  padding-bottom: 5rem;
   min-height: calc(100vh - 10rem);
 
   @media (max-width: 760px) {
@@ -22,6 +23,8 @@ export const Container = styled.section`
     padding-bottom: 3rem;
 
     width: 85%;
+
+    text-align: center;
   }
 `;
 
@@ -34,10 +37,6 @@ export const Content = styled.div`
   margin-bottom: 1rem;
   gap: 1rem;
 
-  & + & {
-    padding-bottom: 5rem;
-  }
-
   @media (max-width: 760px) {
     gap: 3rem;
   }
@@ -46,7 +45,6 @@ export const Content = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
 
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -99,8 +97,6 @@ export const ParagraphiesContainer = styled.div`
 
   @media (max-width: 590px) {
     gap: 2rem;
-
-    text-align: center;
   }
 `;
 
