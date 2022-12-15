@@ -27,6 +27,7 @@ import {
   ROLES,
 } from "utils/static";
 import { currentPlayingTrack } from "lib/spotify";
+import { useEffect } from "react";
 
 export default function About(props: any) {
   const { colors } = useTheme();
@@ -37,6 +38,10 @@ export default function About(props: any) {
     delaySpeed: 2000,
     words: ROLES,
   });
+
+  useEffect(() => {
+    console.log(props.spotify);
+  }, []);
 
   return (
     <>
@@ -180,10 +185,12 @@ export default function About(props: any) {
             <CompanyCard key={companyProps.id} {...companyProps} />
           ))}
         </Content>
-        <SpotifyContainer>
-          <Text.Subtitle>Listening now</Text.Subtitle>
-          <SpotifyCard item={props.spotify.item} />
-        </SpotifyContainer>
+        {props?.spotify?.is_playing && (
+          <SpotifyContainer>
+            <Text.Subtitle>Listening now</Text.Subtitle>
+            <SpotifyCard item={props.spotify.item} />
+          </SpotifyContainer>
+        )}
       </Container>
     </>
   );

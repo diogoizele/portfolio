@@ -25,6 +25,7 @@ interface Props {
     album: {
       name: string;
     };
+    is_playing: boolean;
   };
 }
 
