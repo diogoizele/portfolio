@@ -1,7 +1,7 @@
 import { useTheme } from "styled-components";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 
-import { CompanyCard, Text } from "components";
+import { CompanyCard, Text, ResumeButton } from "components";
 import avatarImg from "assets/images/memoji-diogo-izele.png";
 import myPictureImg from "assets/images/i-reading-pic.jpeg";
 
@@ -21,11 +21,15 @@ import {
   BEHAVIORAL,
   COMPANIES,
   CONTACT,
+  EDUCATION,
   PRESENTATION,
   ROLES,
 } from "utils/static";
+import { useEffect } from "react";
+import axios from "axios";
+import { currentPlayingTrack } from "lib/spotify";
 
-export default function About() {
+export default function About(props) {
   const { colors } = useTheme();
 
   const [roles] = useTypewriter({
@@ -34,6 +38,10 @@ export default function About() {
     delaySpeed: 2000,
     words: ROLES,
   });
+
+  useEffect(() => {
+    console.log(props);
+  }, [props]);
 
   return (
     <>
@@ -152,6 +160,7 @@ export default function About() {
             <Text.Body fontSize="1.1rem" mediaSize="1.2rem">
               {CONTACT}
             </Text.Body>
+            <ResumeButton />
           </ParagraphiesContainer>
 
           <ImageContainer>
@@ -170,7 +179,27 @@ export default function About() {
             <CompanyCard key={companyProps.id} {...companyProps} />
           ))}
         </Content>
+        <Title>Education.</Title>
+        <Content>
+          {EDUCATION.map((companyProps) => (
+            <CompanyCard key={companyProps.id} {...companyProps} />
+          ))}
+        </Content>
+        <Text.Subtitle>Listening now</Text.Subtitle>
       </Container>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const spotify = await currentPlayingTrack();
+
+  // https://nextjs.org/learn/basics/api-routes/api-routes-details
+
+  return {
+    props: {
+      spotify,
+    },
+    revalidate: 60 * 5,
+  };
 }

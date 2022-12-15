@@ -92,11 +92,13 @@ export const ParagraphiesContainer = styled.div`
   flex-direction: column;
   text-align: justify;
   justify-content: center;
+  align-items: flex-end;
 
   gap: 1rem;
 
   @media (max-width: 590px) {
     gap: 2rem;
+    align-items: center;
   }
 `;
 
