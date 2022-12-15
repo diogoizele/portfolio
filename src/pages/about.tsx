@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useTheme } from "styled-components";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import Head from "next/head";
@@ -5,6 +6,17 @@ import Head from "next/head";
 import { CompanyCard, Text, ResumeButton, SpotifyCard } from "components";
 import avatarImg from "assets/images/memoji-diogo-izele.png";
 import myPictureImg from "assets/images/i-reading-pic.jpeg";
+
+import { FONT_STYLES } from "styles";
+import {
+  BEHAVIORAL,
+  COMPANIES,
+  CONTACT,
+  EDUCATION,
+  PRESENTATION,
+  ROLES,
+} from "utils/static";
+import { currentPlayingTrack } from "lib/spotify";
 
 import {
   Container,
@@ -17,19 +29,14 @@ import {
   SpotifyContainer,
   Title,
 } from "styles/pages/about.styles";
-import { FONT_STYLES } from "styles";
-import {
-  BEHAVIORAL,
-  COMPANIES,
-  CONTACT,
-  EDUCATION,
-  PRESENTATION,
-  ROLES,
-} from "utils/static";
-import { currentPlayingTrack } from "lib/spotify";
-import { useEffect } from "react";
 
-export default function About(props: any) {
+import type { SpotifyCurrentTrackResponse } from "types";
+
+interface Props {
+  spotify: SpotifyCurrentTrackResponse;
+}
+
+export default function About({ spotify }: Props) {
   const { colors } = useTheme();
 
   const [roles] = useTypewriter({
@@ -38,10 +45,6 @@ export default function About(props: any) {
     delaySpeed: 2000,
     words: ROLES,
   });
-
-  useEffect(() => {
-    console.log(props.spotify);
-  }, []);
 
   return (
     <>
@@ -185,10 +188,12 @@ export default function About(props: any) {
             <CompanyCard key={companyProps.id} {...companyProps} />
           ))}
         </Content>
-        {props?.spotify?.is_playing && (
+        {!spotify?.item?.explicit && (
           <SpotifyContainer>
-            <Text.Subtitle>Listening now</Text.Subtitle>
-            <SpotifyCard item={props.spotify.item} />
+            <Text.Subtitle>
+              {spotify.is_playing ? "Listening Now" : "Last Song I've Listened"}
+            </Text.Subtitle>
+            <SpotifyCard {...spotify} />
           </SpotifyContainer>
         )}
       </Container>
@@ -197,7 +202,7 @@ export default function About(props: any) {
 }
 
 export async function getStaticProps() {
-  const spotify = await currentPlayingTrack();
+  const spotify: SpotifyCurrentTrackResponse = await currentPlayingTrack();
 
   // https://nextjs.org/learn/basics/api-routes/api-routes-details
 
@@ -205,6 +210,6 @@ export async function getStaticProps() {
     props: {
       spotify,
     },
-    revalidate: 60 * 5,
+    revalidate: 60 * 2 + 30, // 2 minutes and 30 seconds
   };
 }
