@@ -6,6 +6,7 @@ import {
   Header,
   HeaderInfo,
   Content,
+  LogoContainer,
 } from "./company-card.styles";
 
 interface Props {
@@ -30,7 +31,9 @@ export function CompanyCard({
   return (
     <Container href={link} target="_blank">
       <Header>
-        <CompanyLogo alt={name} src={image} />
+        <LogoContainer>
+          <CompanyLogo alt={name} src={image} />
+        </LogoContainer>
         <HeaderInfo>
           <Text.Title component="h2" fontSize="1.2rem">
             {role}

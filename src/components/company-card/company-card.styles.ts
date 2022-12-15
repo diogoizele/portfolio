@@ -53,12 +53,27 @@ export const Header = styled.header`
   }
 `;
 
-export const CompanyLogo = styled(Image)`
+export const LogoContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  max-width: 120px;
+  min-width: 120px;
+  min-width: 120px;
+  max-height: 120px;
   border-radius: 50%;
+
+  overflow: hidden;
+
+  background: red;
+`;
+
+export const CompanyLogo = styled(Image)`
   box-shadow: 0 0 1px ${({ theme }) => theme.colors.textDisabled};
 
-  width: 120px;
-  height: 120px;
+  width: 100%;
+  height: 100%;
 
   padding: 1.4rem;
 
