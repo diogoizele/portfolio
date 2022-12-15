@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { FiGithub, FiLinkedin, FiTwitter, FiYoutube } from "react-icons/fi";
 
 import { Container, SocialMediaAnchor } from "./socialMedia.styles";
