@@ -1,7 +1,8 @@
 import { useTheme } from "styled-components";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
+import Head from "next/head";
 
-import { CompanyCard, Text, ResumeButton } from "components";
+import { CompanyCard, Text, ResumeButton, SpotifyCard } from "components";
 import avatarImg from "assets/images/memoji-diogo-izele.png";
 import myPictureImg from "assets/images/i-reading-pic.jpeg";
 
@@ -13,10 +14,10 @@ import {
   MyPicture,
   ParagraphiesContainer,
   PersonalContainer,
+  SpotifyContainer,
   Title,
 } from "styles/pages/about.styles";
 import { FONT_STYLES } from "styles";
-import Head from "next/head";
 import {
   BEHAVIORAL,
   COMPANIES,
@@ -25,11 +26,9 @@ import {
   PRESENTATION,
   ROLES,
 } from "utils/static";
-import { useEffect } from "react";
-import axios from "axios";
 import { currentPlayingTrack } from "lib/spotify";
 
-export default function About(props) {
+export default function About(props: any) {
   const { colors } = useTheme();
 
   const [roles] = useTypewriter({
@@ -38,10 +37,6 @@ export default function About(props) {
     delaySpeed: 2000,
     words: ROLES,
   });
-
-  useEffect(() => {
-    console.log(props);
-  }, [props]);
 
   return (
     <>
@@ -185,7 +180,10 @@ export default function About(props) {
             <CompanyCard key={companyProps.id} {...companyProps} />
           ))}
         </Content>
-        <Text.Subtitle>Listening now</Text.Subtitle>
+        <SpotifyContainer>
+          <Text.Subtitle>Listening now</Text.Subtitle>
+          <SpotifyCard item={props.spotify.item} />
+        </SpotifyContainer>
       </Container>
     </>
   );

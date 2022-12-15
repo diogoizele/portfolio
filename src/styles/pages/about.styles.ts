@@ -134,3 +134,26 @@ export const MyPicture = styled(Image)`
     box-shadow: 0 0 2px ${({ theme }) => theme.colors.black};
   }
 `;
+
+export const SpotifyContainer = styled.div`
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  gap: 1rem;
+
+  @media (max-width: 590px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    gap: 2rem;
+  }
+`;
