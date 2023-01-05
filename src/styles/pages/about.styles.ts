@@ -35,7 +35,7 @@ export const Content = styled.div`
 
   margin-top: 3rem;
   margin-bottom: 1rem;
-  gap: 1rem;
+  gap: 1.5rem;
 
   @media (max-width: 760px) {
     gap: 3rem;
@@ -132,28 +132,5 @@ export const MyPicture = styled(Image)`
   @media (max-width: 590px) {
     filter: grayscale(0);
     box-shadow: 0 0 2px ${({ theme }) => theme.colors.black};
-  }
-`;
-
-export const SpotifyContainer = styled.div`
-  display: flex;
-
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  gap: 1rem;
-
-  @media (max-width: 590px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-
-    gap: 2rem;
   }
 `;

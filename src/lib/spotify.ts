@@ -38,6 +38,10 @@ export const currentPlayingTrack = async () => {
       }
     );
 
+    if (response.status === 204) {
+      return null;
+    }
+
     return response.data;
   } catch (error) {
     throw error;

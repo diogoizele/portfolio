@@ -1,7 +1,11 @@
 import { FaSpotify } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
-import styled from "styled-components";
+import styled, { CSSProperties, css } from "styled-components";
+import { SubtitleProps } from "components/text/text.types";
+import { FONT_STYLES } from "styles/font-styles";
+import { FONT_SIZE } from "styles/font-sizes";
+import { theme } from "styles/theme";
 
 export const Container = styled(Link)`
   background: ${({ theme }) => theme.colors.backgroundSecondary};
@@ -94,3 +98,36 @@ export const SongImage = styled(Image)`
 
   border-radius: 64px;
 `;
+
+export const SpotifyContainer = styled.div`
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  gap: 1rem;
+
+  @media (max-width: 590px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    gap: 2rem;
+  }
+`;
+
+export const subtitleH4Style = ({
+  fontSize = FONT_SIZE.LARGE,
+  fontStyle = FONT_STYLES.BOLD,
+  color,
+}: Partial<SubtitleProps>): CSSProperties => ({
+  fontWeight: fontStyle,
+  fontSize,
+  color: color,
+});

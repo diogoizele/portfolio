@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useScrollDirection } from "react-use-scroll-direction";
 
@@ -72,6 +71,12 @@ export const Header = () => {
       handleScroll();
     }
   }, [isScrolling, positionY]);
+
+  useEffect(() => {
+    if (positionY > 10) {
+      setContainerClassName("on-top-scroll highlight-header");
+    }
+  }, [positionY]);
 
   return (
     <ContainerWrapper className={!isMobileView && containerClassName}>

@@ -26,14 +26,13 @@ import {
   MyPicture,
   ParagraphiesContainer,
   PersonalContainer,
-  SpotifyContainer,
   Title,
 } from "styles/pages/about.styles";
 
 import type { SpotifyCurrentTrackResponse } from "types";
 
 interface Props {
-  spotify: SpotifyCurrentTrackResponse;
+  spotify?: SpotifyCurrentTrackResponse;
 }
 
 export default function About({ spotify }: Props) {
@@ -45,6 +44,10 @@ export default function About({ spotify }: Props) {
     delaySpeed: 2000,
     words: ROLES,
   });
+
+  useEffect(() => {
+    console.log("Spotify: ", spotify);
+  }, [spotify]);
 
   return (
     <>
@@ -87,12 +90,12 @@ export default function About({ spotify }: Props) {
           property="og:description"
           content="A little about who Diogo Izele is"
         />
-        <meta property="og:url" content="https://diogoizele.com/" />
+        <meta property="og:url" content="https://diogoizele.com/about" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://i.imgur.com/igc7k1N.png" />
 
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:url" content="http://www.diogoizele.com" />
+        <meta name="twitter:url" content="http://www.diogoizele.com/about" />
         <meta name="twitter:title" content="Diogo Izele" />
         <meta
           name="twitter:description"
@@ -102,7 +105,7 @@ export default function About({ spotify }: Props) {
           property="twitter:image"
           content="https://i.imgur.com/igc7k1N.png"
         />
-        <link rel="canonical" href="https://diogoizele.com" />
+        <link rel="canonical" href="https://diogoizele.com/about" />
       </Head>
       <Container>
         <Title>About Me.</Title>
@@ -188,14 +191,7 @@ export default function About({ spotify }: Props) {
             <CompanyCard key={companyProps.id} {...companyProps} />
           ))}
         </Content>
-        {!spotify?.item?.explicit && (
-          <SpotifyContainer>
-            <Text.Subtitle>
-              {spotify.is_playing ? "Listening Now" : "Last Song I've Listened"}
-            </Text.Subtitle>
-            <SpotifyCard {...spotify} />
-          </SpotifyContainer>
-        )}
+        <SpotifyCard {...spotify} />
       </Container>
     </>
   );

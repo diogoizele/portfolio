@@ -82,8 +82,9 @@ export const CompanyLogo = styled(Image)`
 
 export const Content = styled.div`
   flex: 1;
-
-  text-align: justify;
+  word-spacing: 0.2rem;
+  line-height: 1.2rem;
+  /* text-align: justify; */
 `;
 
 export const HeaderInfo = styled.div`

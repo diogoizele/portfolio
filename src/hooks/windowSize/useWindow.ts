@@ -28,6 +28,13 @@ export function useWindow() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
+      setWindowSize(({ width, height }) => ({
+        width,
+        height,
+        positionX: window.scrollX,
+        positionY: window.scrollY,
+      }));
+
       window.addEventListener("resize", handleResize);
       window.addEventListener("scroll", handleChangePosition);
 
