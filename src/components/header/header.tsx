@@ -67,16 +67,16 @@ export const Header = () => {
   };
 
   useEffect(() => {
-    if (isScrolling) {
-      handleScroll();
-    }
-  }, [isScrolling, positionY]);
-
-  useEffect(() => {
     if (positionY > 10) {
       setContainerClassName("on-top-scroll highlight-header");
     }
   }, [positionY]);
+
+  useEffect(() => {
+    if (isScrolling) {
+      handleScroll();
+    }
+  }, [isScrolling, positionY]);
 
   return (
     <ContainerWrapper className={!isMobileView && containerClassName}>
