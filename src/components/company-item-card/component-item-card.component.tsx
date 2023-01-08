@@ -12,8 +12,6 @@ import {
   HightlightsContainer,
   ContainerHighlightCard,
 } from "./component-item-card.styles";
-import { FONT_SIZE } from "styles/font-sizes";
-import { linearGradient } from "utils";
 
 interface HightlightProps {
   title: string;

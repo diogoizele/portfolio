@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { HiPause, HiPlay } from "react-icons/hi2";
 
 import { ComponentItemCard } from "components";
@@ -14,7 +14,6 @@ import {
 
 import type { CompanyProps } from "components/company-item-card/component-item-card.component";
 import { useWindow } from "hooks";
-import { useTheme } from "styled-components";
 
 export function Companies() {
   const currentIndex = useRef(0);
@@ -43,34 +42,34 @@ export function Companies() {
 
   const handlePlay = () => {
     setIsPaused(false);
+
+    setTimeout(moveCarrousel, 1000);
   };
 
-  useEffect(() => {
-    const miliseconds = isMobileView ? 10 : 5;
+  const moveCarrousel = useCallback(() => {
+    const nextIndex = currentIndex.current + 1;
+    const nextCompany = COMPANIES[nextIndex];
 
-    function moveCarrousel() {
-      const nextIndex = currentIndex.current + 1;
-      const nextCompany = COMPANIES[nextIndex];
-
-      if (nextCompany) {
-        handleShowCompany(nextCompany, nextIndex);
-      } else {
-        handleShowCompany(COMPANIES[0], 0);
-      }
+    if (nextCompany) {
+      handleShowCompany(nextCompany, nextIndex);
+    } else {
+      handleShowCompany(COMPANIES[0], 0);
     }
+  }, [currentIndex]);
 
-    if ((isMobileView && !isPaused) || (!isMobileView && !isPaused)) {
+  useEffect(() => {
+    const miliseconds = isMobileView ? 6 : 3;
+
+    if (!isPaused) {
       const interval = setInterval(moveCarrousel, miliseconds * 1000);
 
       return () => clearInterval(interval);
     }
-  }, [currentIndex, isMobileView, isPaused]);
+  }, [isPaused, isMobileView, moveCarrousel]);
 
   useEffect(() => {
     if (!isMobileView) {
       setIsPaused(false);
-    } else {
-      setIsPaused(true);
     }
   }, [isMobileView]);
 
@@ -82,7 +81,7 @@ export function Companies() {
             title={isPaused ? "Play" : "Pause"}
             onClick={handleToggleMobileCarrousel}
           >
-            {isPaused ? <HiPause size={28} /> : <HiPlay size={28} />}
+            {isPaused ? <HiPlay size={28} /> : <HiPause size={28} />}
           </IconContainer>
         )}
         <ComponentItemCard

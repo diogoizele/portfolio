@@ -27,7 +27,7 @@ export const Container = styled.div`
 
   overflow: hidden;
 
-  border-radius: 6px;
+  border-radius: 26px;
 
   box-shadow: 0 0 1px ${({ theme }) => theme.colors.textDisabled};
 
@@ -37,6 +37,12 @@ export const Container = styled.div`
 
   &:hover {
     box-shadow: 0 0 2px ${({ theme }) => theme.colors.backgroundAlternative};
+  }
+
+  @media (max-width: 968px) {
+    max-width: 90%;
+    width: auto;
+    height: 24rem;
   }
 
   @media (max-width: 590px) {
