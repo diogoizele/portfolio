@@ -1,3 +1,8 @@
+import { MdDesignServices } from "react-icons/md";
+import { CiMobile3 } from "react-icons/ci";
+import { SiTypescript } from "react-icons/si";
+import { DiReact, DiScrum } from "react-icons/di";
+
 import logoSbSistemas from "assets/svg/sbsistemas.svg";
 import logoCWI from "assets/svg/cwi.svg";
 import logoUnisinos from "assets/svg/unisinos.svg";
@@ -26,15 +31,25 @@ const COMPANIES = [
     period: "Jun 2022 - Present",
     link: "https://cwi.com.br/",
     image: logoCWI,
+    highlights: [
+      { title: "Mobile App", Icon: CiMobile3 },
+      { title: "React Native", Icon: DiReact },
+      { title: "Scrum", Icon: DiScrum },
+    ],
   },
   {
     id: 1,
-    name: "SBSistemas",
+    name: "SBsistemas",
     role: "Front-end and Mobile Developer",
     description: `During the time I was at the company, I worked on creating and maintaining the company's internal Design System. In addition to having actively participated in the development of the Solarfy mobile application with React Native.`,
     period: "Dec 2021 - Jun 2022 · 7 months",
     link: "https://www.sbsistemas.com.br/",
     image: logoSbSistemas,
+    highlights: [
+      { title: "Design System", Icon: MdDesignServices },
+      { title: "Mobile App", Icon: CiMobile3 },
+      { title: "Typescript", Icon: SiTypescript },
+    ],
   },
 ];
 

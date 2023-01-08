@@ -6,3 +6,4 @@ export { default as Text } from "./text/text.component";
 export { CompanyCard } from "./company-card/company-card.component";
 export { ResumeButton } from "./resume-button/resume-button.component";
 export { SpotifyCard } from "./spotify-card/spotify-card.component";
+export { ComponentItemCard } from "./company-item-card/component-item-card.component";

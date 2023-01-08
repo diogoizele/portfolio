@@ -3,7 +3,13 @@ import { useTheme } from "styled-components";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import Head from "next/head";
 
-import { CompanyCard, Text, ResumeButton, SpotifyCard } from "components";
+import {
+  CompanyCard,
+  Text,
+  ResumeButton,
+  SpotifyCard,
+  ComponentItemCard,
+} from "components";
 import avatarImg from "assets/images/memoji-diogo-izele.png";
 import myPictureImg from "assets/images/i-reading-pic.jpeg";
 
@@ -17,6 +23,7 @@ import {
   ROLES,
 } from "utils/static";
 import { currentPlayingTrack } from "lib/spotify";
+import { Companies } from "containers";
 
 import {
   Container,
@@ -180,11 +187,7 @@ export default function About({ spotify }: Props) {
           </ImageContainer>
         </Content>
         <Title>Experiences.</Title>
-        <Content>
-          {COMPANIES.map((companyProps) => (
-            <CompanyCard key={companyProps.id} {...companyProps} />
-          ))}
-        </Content>
+        <Companies />
         <Title>Education.</Title>
         <Content>
           {EDUCATION.map((companyProps) => (

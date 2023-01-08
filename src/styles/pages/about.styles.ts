@@ -53,7 +53,7 @@ export const Content = styled.div`
   }
 `;
 
-export const Title = styled.strong`
+export const Title = styled.h2`
   font-size: 3.5rem;
   font-weight: 900;
 
