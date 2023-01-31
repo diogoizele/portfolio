@@ -7,3 +7,4 @@ export { CompanyCard } from "./company-card/company-card.component";
 export { ResumeButton } from "./resume-button/resume-button.component";
 export { SpotifyCard } from "./spotify-card/spotify-card.component";
 export { ComponentItemCard } from "./company-item-card/component-item-card.component";
+export { ProjectHeader } from "./project-header/project-header.component";
