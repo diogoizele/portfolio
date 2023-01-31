@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { HiPause, HiPlay } from "react-icons/hi2";
 
 import { ComponentItemCard } from "components";
+import { useWindow } from "hooks";
 import { COMPANIES } from "utils/static";
 
 import {
@@ -13,7 +14,6 @@ import {
 } from "./companies.styles";
 
 import type { CompanyProps } from "components/company-item-card/component-item-card.component";
-import { useWindow } from "hooks";
 
 export function Companies() {
   const currentIndex = useRef(0);
@@ -26,6 +26,7 @@ export function Companies() {
   const [isPaused, setIsPaused] = useState(false);
 
   const isMobileView = width && width <= 590;
+  const miliseconds = isMobileView ? 6 : 3;
 
   const handleShowCompany = (company: CompanyProps, index: number) => {
     setCurrentCompany(company);
@@ -42,8 +43,6 @@ export function Companies() {
 
   const handlePlay = () => {
     setIsPaused(false);
-
-    setTimeout(moveCarrousel, 1000);
   };
 
   const moveCarrousel = useCallback(() => {
@@ -58,14 +57,12 @@ export function Companies() {
   }, [currentIndex]);
 
   useEffect(() => {
-    const miliseconds = isMobileView ? 6 : 3;
-
     if (!isPaused) {
       const interval = setInterval(moveCarrousel, miliseconds * 1000);
 
       return () => clearInterval(interval);
     }
-  }, [isPaused, isMobileView, moveCarrousel]);
+  }, [isPaused, isMobileView, miliseconds, moveCarrousel]);
 
   useEffect(() => {
     if (!isMobileView) {
