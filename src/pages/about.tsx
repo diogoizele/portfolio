@@ -1,22 +1,18 @@
 import { useEffect } from "react";
 import { useTheme } from "styled-components";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
-import Head from "next/head";
 
 import {
   CompanyCard,
   Text,
   ResumeButton,
   SpotifyCard,
-  ComponentItemCard,
+  ProjectHeader,
 } from "components";
-import avatarImg from "assets/images/memoji-diogo-izele.png";
-import myPictureImg from "assets/images/i-reading-pic.jpeg";
 
 import { FONT_STYLES } from "styles";
 import {
   BEHAVIORAL,
-  COMPANIES,
   CONTACT,
   EDUCATION,
   PRESENTATION,
@@ -24,6 +20,9 @@ import {
 } from "utils/static";
 import { currentPlayingTrack } from "lib/spotify";
 import { Companies } from "containers";
+
+import avatarImg from "assets/images/memoji-diogo-izele.png";
+import myPictureImg from "assets/images/i-reading-pic.jpeg";
 
 import {
   Container,
@@ -58,62 +57,12 @@ export default function About({ spotify }: Props) {
 
   return (
     <>
-      <Head>
-        <meta
-          name="google-site-verification"
-          content="A1TKe7Phyl32i1AUX65XFETd0u8blEM119nHMIx6yY0"
-        />
-        <title>Diogo Izele - About</title>
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="manifest" href="/site.webmanifest" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#4ce3c2" />
-        <meta name="msapplication-TileColor" content="#4ce3c2" />
-        <meta name="theme-color" content="#121214" />
-        <meta name="description" content="A little about who Diogo Izele is" />
-        <meta name="keywords" content="About Diogo Izele" />
-        <meta name="author" content="Diogo Izele" />
-        <meta name="copyright" content="© 2022 Diogo Izele" />
-        <meta name="robots" content="all" />
-
-        <meta property="og:title" content="Diogo Izele - About" />
-        <meta
-          property="og:description"
-          content="A little about who Diogo Izele is"
-        />
-        <meta property="og:url" content="https://diogoizele.com/about" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://i.imgur.com/igc7k1N.png" />
-
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:url" content="http://www.diogoizele.com/about" />
-        <meta name="twitter:title" content="Diogo Izele" />
-        <meta
-          name="twitter:description"
-          content="A little about who Diogo Izele is"
-        />
-        <meta
-          property="twitter:image"
-          content="https://i.imgur.com/igc7k1N.png"
-        />
-        <link rel="canonical" href="https://diogoizele.com/about" />
-      </Head>
+      <ProjectHeader
+        title="Diogo Izele - About"
+        description="A little about who Diogo Izele is"
+        keywords="About Diogo Izele"
+        url="https://diogoizele.com/about"
+      />
       <Container>
         <Title>About Me.</Title>
         <Content>
