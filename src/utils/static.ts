@@ -1,3 +1,5 @@
+import dayjs from "dayjs";
+
 import { MdDesignServices } from "react-icons/md";
 import { CiMobile3 } from "react-icons/ci";
 import { SiTypescript } from "react-icons/si";
@@ -22,13 +24,23 @@ it is necessary to be persistent, determined, adaptable, patient and enjoy solvi
 const CONTACT = `Any questions? I'm available to chat!  
 `;
 
+const cwiStartDate = dayjs("2022-06-22");
+const cwiEndDate = dayjs();
+const duration = cwiEndDate.diff(cwiStartDate, "month");
+const years = Math.floor(duration / 12);
+const months = duration % 12;
+
+const cwiFormattedDuration = `${
+  years > 0 ? `${years} year${years === 1 ? "" : "s"}` : ""
+} ${years > 0 ? " and " : ""} ${months} month${months === 1 ? "" : "s"}`;
+
 const COMPANIES = [
   {
     id: 0,
     name: "CWI Software",
     role: "Mobile Development Intern",
     description: `I do the development and maintenance of the mobile application for the Camicado stores, of the Renner Group, using React Native.`,
-    period: "Jun 2022 - Present",
+    period: `Jun 2022 - Present · ${cwiFormattedDuration}`,
     link: "https://cwi.com.br/",
     image: logoCWI,
     highlights: [
