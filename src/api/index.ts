@@ -1,0 +1,1 @@
+export { ContentfulService } from "./contentful";
