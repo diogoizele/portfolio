@@ -61,10 +61,10 @@ export const Terminal = () => {
         <TerminalCommandContainer>
           <TerminalCommand
             command="echo"
-            argument="I'm a Web developer"
+            argument="I'm a Software developer"
             path="~"
           />
-          <TerminalResponse response="I'm a Web developer" />
+          <TerminalResponse response="I'm a Software developer" />
         </TerminalCommandContainer>
         <TerminalCommandContainer>
           <TerminalCommand
