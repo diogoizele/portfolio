@@ -24,47 +24,6 @@ it is necessary to be persistent, determined, adaptable, patient and enjoy solvi
 const CONTACT = `Any questions? I'm available to chat!  
 `;
 
-const cwiStartDate = dayjs("2022-06-22");
-const cwiEndDate = dayjs();
-const duration = cwiEndDate.diff(cwiStartDate, "month");
-const years = Math.floor(duration / 12);
-const months = duration % 12;
-
-const cwiFormattedDuration = `${
-  years > 0 ? `${years} year${years === 1 ? "" : "s"}` : ""
-} ${years > 0 ? " and " : ""} ${months} month${months === 1 ? "" : "s"}`;
-
-const COMPANIES = [
-  {
-    id: 0,
-    name: "CWI Software",
-    role: "Mobile Development Intern",
-    description: `I do the development and maintenance of the mobile application for the Camicado stores, of the Renner Group, using React Native.`,
-    period: `Jun 2022 - Present · ${cwiFormattedDuration}`,
-    link: "https://cwi.com.br/",
-    image: logoCWI,
-    highlights: [
-      { title: "Mobile App", Icon: CiMobile3 },
-      { title: "React Native", Icon: DiReact },
-      { title: "Scrum", Icon: DiScrum },
-    ],
-  },
-  {
-    id: 1,
-    name: "SBsistemas",
-    role: "Front-end and Mobile Developer",
-    description: `During the time I was at the company, I worked on creating and maintaining the company's internal Design System. In addition to having actively participated in the development of the Solarfy mobile application with React Native.`,
-    period: "Dec 2021 - Jun 2022 · 7 months",
-    link: "https://www.sbsistemas.com.br/",
-    image: logoSbSistemas,
-    highlights: [
-      { title: "Design System", Icon: MdDesignServices },
-      { title: "Mobile App", Icon: CiMobile3 },
-      { title: "Typescript", Icon: SiTypescript },
-    ],
-  },
-];
-
 const EDUCATION = [
   {
     id: 1,
@@ -97,4 +56,4 @@ const EDUCATION = [
   },
 ];
 
-export { ROLES, PRESENTATION, BEHAVIORAL, CONTACT, COMPANIES, EDUCATION };
+export { ROLES, PRESENTATION, BEHAVIORAL, CONTACT, EDUCATION };
