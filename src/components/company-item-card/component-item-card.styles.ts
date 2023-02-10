@@ -1,5 +1,6 @@
 import { useThemeMode } from "hooks";
 import Image from "next/image";
+import Link from "next/link";
 import styled from "styled-components";
 
 import * as colors from "styles/colors";
@@ -8,7 +9,7 @@ import { linearGradient } from "utils";
 
 const IMAGE_SIZE = "20rem";
 
-export const Container = styled.div`
+export const Container = styled(Link)`
   background: ${({ theme }) => theme.colors.backgroundSecondary};
 
   display: flex;

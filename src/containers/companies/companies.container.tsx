@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { HiPause, HiPlay } from "react-icons/hi2";
+import { EntryCollection } from "contentful";
 
 import { ComponentItemCard } from "components";
 import { useWindow } from "hooks";
-import { COMPANIES } from "utils/static";
 
 import {
   Bullet,
@@ -13,15 +13,20 @@ import {
   IconContainer,
 } from "./companies.styles";
 
-import type { CompanyProps } from "components/company-item-card/component-item-card.component";
+import type { CompanyProps } from "types";
 
-export function Companies() {
+interface Props {
+  companies: EntryCollection<CompanyProps>;
+}
+
+export function Companies({ companies }: Props) {
   const currentIndex = useRef(0);
+  const formattedCompanies = companies.items.map(({ fields }) => fields);
 
   const { width } = useWindow();
 
   const [currentCompany, setCurrentCompany] = useState<CompanyProps>(
-    COMPANIES[currentIndex.current]
+    formattedCompanies[currentIndex.current]
   );
   const [isPaused, setIsPaused] = useState(false);
 
@@ -47,12 +52,12 @@ export function Companies() {
 
   const moveCarrousel = useCallback(() => {
     const nextIndex = currentIndex.current + 1;
-    const nextCompany = COMPANIES[nextIndex];
+    const nextCompany = formattedCompanies[nextIndex];
 
     if (nextCompany) {
       handleShowCompany(nextCompany, nextIndex);
     } else {
-      handleShowCompany(COMPANIES[0], 0);
+      handleShowCompany(formattedCompanies[0], 0);
     }
   }, [currentIndex]);
 
@@ -88,7 +93,7 @@ export function Companies() {
         />
       </CompanyContainer>
       <BulletsContainer>
-        {COMPANIES.map((company, index) => (
+        {formattedCompanies.map((company, index) => (
           <Bullet
             isActive={currentIndex.current === index}
             onClick={() => handleShowCompany(company, index)}

@@ -1,6 +1,5 @@
 import React from "react";
 import { useTheme } from "styled-components";
-import { IconType } from "react-icons";
 
 import { Text } from "components";
 
@@ -12,28 +11,14 @@ import {
   HightlightsContainer,
   ContainerHighlightCard,
 } from "./component-item-card.styles";
-
-interface HightlightProps {
-  title: string;
-  Icon: IconType;
-}
-
-export interface CompanyProps {
-  name: string;
-  role: string;
-  period: string;
-  description: string;
-  image: string;
-  link: string;
-  highlights: HightlightProps[];
-}
+import type { CompanyProps, HighlightCompanyProps } from "types";
 
 interface Props extends CompanyProps {
   onPause: () => void;
   onPlay: () => void;
 }
 
-export const HighlightCard = ({ Icon, title }: HightlightProps) => {
+export const HighlightCard = ({ icon: Icon, title }: HighlightCompanyProps) => {
   const { colors } = useTheme();
   const fontColor = colors.textSecondary;
 
@@ -61,7 +46,12 @@ export function ComponentItemCard({
   const { colors } = useTheme();
 
   return (
-    <Container onMouseEnter={onPause} onMouseLeave={onPlay}>
+    <Container
+      href={link}
+      target="_blank"
+      onMouseEnter={onPause}
+      onMouseLeave={onPlay}
+    >
       <Text.Title component="h3" fontSize={"2rem"}>
         {name}
       </Text.Title>
@@ -70,14 +60,14 @@ export function ComponentItemCard({
         {period}
       </Text.Subtitle>
       <HightlightsContainer>
-        {highlights.map(({ title, Icon }) => (
-          <HighlightCard key={title} Icon={Icon} title={title} />
+        {highlights.map(({ title, icon }) => (
+          <HighlightCard key={title} icon={icon} title={title} />
         ))}
       </HightlightsContainer>
       <Text.Body color={colors.textSecondary}>{description}</Text.Body>
       <ShadowRightImage />
       <LogoContainer>
-        <CompanyLogo src={image} alt={name} />
+        <CompanyLogo src={image} alt={name} width={320} height={320} />
       </LogoContainer>
     </Container>
   );
