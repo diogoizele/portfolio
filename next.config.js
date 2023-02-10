@@ -7,7 +7,7 @@ const nextConfig = {
     styledComponents: true,
   },
   images: {
-    domains: ["i.scdn.co"],
+    domains: ["i.scdn.co", "images.ctfassets.net"],
   },
 };
 
