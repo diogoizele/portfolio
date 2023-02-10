@@ -1,0 +1,1 @@
+export { companyModel } from "./contentful";
