@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useTheme } from "styled-components";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
+import { EntryCollection } from "contentful";
 
 import {
   CompanyCard,
@@ -20,6 +21,7 @@ import {
 } from "utils/static";
 import { currentPlayingTrack } from "lib/spotify";
 import { Companies } from "containers";
+import { ContentfulService } from "api";
 
 import avatarImg from "assets/images/memoji-diogo-izele.png";
 import myPictureImg from "assets/images/i-reading-pic.jpeg";
@@ -35,13 +37,16 @@ import {
   Title,
 } from "styles/pages/about.styles";
 
-import type { SpotifyCurrentTrackResponse } from "types";
+import type { CompanyProps, SpotifyCurrentTrackResponse } from "types";
+
+import { companyModel } from "models";
 
 interface Props {
   spotify?: SpotifyCurrentTrackResponse;
+  experiences: EntryCollection<CompanyProps>;
 }
 
-export default function About({ spotify }: Props) {
+export default function About({ spotify, experiences }: Props) {
   const { colors } = useTheme();
 
   const [roles] = useTypewriter({
@@ -51,9 +56,7 @@ export default function About({ spotify }: Props) {
     words: ROLES,
   });
 
-  useEffect(() => {
-    console.log("Spotify: ", spotify);
-  }, [spotify]);
+  useEffect(() => {}, []);
 
   return (
     <>
@@ -136,7 +139,7 @@ export default function About({ spotify }: Props) {
           </ImageContainer>
         </Content>
         <Title>Experiences.</Title>
-        <Companies />
+        <Companies companies={companyModel(experiences)} />
         <Title>Education.</Title>
         <Content>
           {EDUCATION.map((companyProps) => (
@@ -149,14 +152,16 @@ export default function About({ spotify }: Props) {
   );
 }
 
+// https://nextjs.org/learn/basics/api-routes/api-routes-details
 export async function getStaticProps() {
   const spotify: SpotifyCurrentTrackResponse = await currentPlayingTrack();
 
-  // https://nextjs.org/learn/basics/api-routes/api-routes-details
+  const experiences = await ContentfulService.getExperienceContent();
 
   return {
     props: {
       spotify,
+      experiences,
     },
     revalidate: 60 * 2 + 30, // 2 minutes and 30 seconds
   };
