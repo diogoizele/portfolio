@@ -26,8 +26,8 @@ export const CompanyContainer = styled.section`
 
 export const IconContainer = styled.button`
   position: absolute;
-  top: 0.5rem;
-  left: 0rem;
+  top: 8px;
+  left: 8px;
 
   font-size: 2.5rem;
 
@@ -49,7 +49,7 @@ export const BulletsContainer = styled.div`
   display: flex;
 
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.8rem;
 `;
 
 interface BulletProps {
@@ -59,8 +59,6 @@ interface BulletProps {
 export const Bullet = styled.button<BulletProps>`
   width: 12px;
   height: 12px;
-
-  transition: background-color 0.2s ease-in-out;
 
   border: ${({ theme, isActive }) =>
     `1px solid ${
@@ -72,4 +70,11 @@ export const Bullet = styled.button<BulletProps>`
   border-radius: 1rem;
 
   cursor: pointer;
+
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+  }
 `;
