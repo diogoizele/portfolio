@@ -2,26 +2,15 @@ import { useEffect } from "react";
 import { useTheme } from "styled-components";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import { EntryCollection } from "contentful";
+import Link from "next/link";
 
-import {
-  CompanyCard,
-  Text,
-  ResumeButton,
-  SpotifyCard,
-  ProjectHeader,
-} from "components";
-
+import { Text, ResumeButton, SpotifyCard, ProjectHeader } from "components";
 import { FONT_STYLES } from "styles";
-import {
-  BEHAVIORAL,
-  CONTACT,
-  EDUCATION,
-  PRESENTATION,
-  ROLES,
-} from "utils/static";
+import { BEHAVIORAL, CONTACT, PRESENTATION, ROLES } from "utils/static";
 import { currentPlayingTrack } from "lib/spotify";
-import { Companies } from "containers";
+import { Companies, Education } from "containers";
 import { ContentfulService } from "api";
+import { companyModel, educationModel } from "models";
 
 import avatarImg from "assets/images/memoji-diogo-izele.png";
 import myPictureImg from "assets/images/i-reading-pic.jpeg";
@@ -37,16 +26,19 @@ import {
   Title,
 } from "styles/pages/about.styles";
 
-import type { CompanyProps, SpotifyCurrentTrackResponse } from "types";
-
-import { companyModel } from "models";
+import type {
+  CompanyProps,
+  EducationProps,
+  SpotifyCurrentTrackResponse,
+} from "types";
 
 interface Props {
   spotify?: SpotifyCurrentTrackResponse;
   experiences: EntryCollection<CompanyProps>;
+  education: EntryCollection<EducationProps>;
 }
 
-export default function About({ spotify, experiences }: Props) {
+export default function About({ spotify, experiences, education }: Props) {
   const { colors } = useTheme();
 
   const [roles] = useTypewriter({
@@ -67,7 +59,9 @@ export default function About({ spotify, experiences }: Props) {
         url="https://diogoizele.com/about"
       />
       <Container>
-        <Title>About Me.</Title>
+        <Title id="about-me">
+          <Link href="#about-me">About Me.</Link>
+        </Title>
         <Content>
           <ImageContainer>
             <Memoji
@@ -138,14 +132,14 @@ export default function About({ spotify, experiences }: Props) {
             />
           </ImageContainer>
         </Content>
-        <Title>Experiences.</Title>
+        <Title id="experiences">
+          <Link href="#experiences">Experiences.</Link>
+        </Title>
         <Companies companies={companyModel(experiences)} />
-        <Title>Education.</Title>
-        <Content>
-          {EDUCATION.map((companyProps) => (
-            <CompanyCard key={companyProps.id} {...companyProps} />
-          ))}
-        </Content>
+        <Title id="education">
+          <Link href="#education">Education.</Link>
+        </Title>
+        <Education education={educationModel(education)} />
         <SpotifyCard {...spotify} />
       </Container>
     </>
@@ -157,11 +151,13 @@ export async function getStaticProps() {
   const spotify: SpotifyCurrentTrackResponse = await currentPlayingTrack();
 
   const experiences = await ContentfulService.getExperienceContent();
+  const education = await ContentfulService.getEducationContent();
 
   return {
     props: {
       spotify,
       experiences,
+      education,
     },
     revalidate: 60 * 2 + 30, // 2 minutes and 30 seconds
   };
