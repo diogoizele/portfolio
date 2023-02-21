@@ -48,7 +48,7 @@ export const ThemeSwitchContainer = styled.button<ThemeSwitchContainerProps>`
 
 export const ThemeSwitchEmojiContainer = styled.div<ThemeSwitchProps>`
   left: ${({ themeMode }) =>
-    themeMode === ThemeMode.DARK ? "2px" : "calc(100% - 18px)"};
+    themeMode === ThemeMode.DARK ? "3px" : "calc(100% - 18px)"};
 
   position: absolute;
 
@@ -58,13 +58,11 @@ export const ThemeSwitchEmojiContainer = styled.div<ThemeSwitchProps>`
 
   height: 100%;
 
-  font-size: 0.9rem;
-
   transition: all ${MILISECONDS_ANIMATION_DURATION}ms ease-in-out;
 
   @media (max-width: 590px) {
     left: ${({ themeMode }) =>
-      themeMode === ThemeMode.DARK ? "2px" : "calc(100% - 18px)"};
+      themeMode === ThemeMode.DARK ? "2px" : "calc(100% - 15px)"};
   }
 `;
 
@@ -79,7 +77,7 @@ export const ThemeSwitchBullet = styled.div<ThemeSwitchProps>`
   background: ${({ theme }) => theme.colors.white};
 
   left: ${({ themeMode }) =>
-    themeMode === ThemeMode.DARK ? "calc(100% - 1.5rem)" : "0"};
+    themeMode === ThemeMode.DARK ? "calc(100% - 1.2rem)" : "0"};
 
   transition: all ${MILISECONDS_ANIMATION_DURATION}ms ease-in-out;
 

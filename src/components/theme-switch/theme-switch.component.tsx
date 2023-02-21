@@ -27,7 +27,7 @@ export const ThemeSwitch = ({
       onClick={handleToggle}
     >
       <ThemeSwitchEmojiContainer themeMode={mode}>
-        {mode === ThemeMode.DARK ? "🌜" : "🌞"}
+        {mode === ThemeMode.DARK ? "🌝" : "🌞"}
       </ThemeSwitchEmojiContainer>
       <ThemeSwitchBullet themeMode={mode} />
     </ThemeSwitchContainer>
