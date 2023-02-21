@@ -95,6 +95,8 @@ export function Companies({ companies }: Props) {
       <BulletsContainer>
         {formattedCompanies.map((company, index) => (
           <Bullet
+            onMouseEnter={handlePause}
+            onMouseLeave={handlePlay}
             isActive={currentIndex.current === index}
             onClick={() => handleShowCompany(company, index)}
             key={company.id}
