@@ -2,7 +2,7 @@ import { createClient } from "contentful";
 
 import { ContentTypes } from "config/constants";
 
-import type { CompanyProps } from "types";
+import type { CompanyProps, EducationProps } from "types";
 
 const { CONTENTFUL_ACCESS_TOKEN } = process.env;
 const { CONTENTFUL_SPACE } = process.env;
@@ -22,7 +22,7 @@ class ContentfulService {
       accessToken: this.accessToken,
     });
 
-    const entries = await client.getEntries({
+    const entries = await client.getEntries<EducationProps>({
       content_type: ContentTypes.education,
     });
 
