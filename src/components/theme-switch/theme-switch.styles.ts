@@ -15,8 +15,8 @@ export const ThemeSwitchContainer = styled.button<ThemeSwitchContainerProps>`
   display: flex;
   align-items: center;
 
-  width: 42px;
-  height: 20px;
+  width: 45px;
+  height: 22px;
   padding: 2px;
 
   border-radius: 1.5rem;
@@ -40,15 +40,19 @@ export const ThemeSwitchContainer = styled.button<ThemeSwitchContainerProps>`
     bottom: 2rem;
     right: 3rem;
 
-    width: 44px;
+    width: 56px;
+    height: 24px;
 
     transition: transform ${MILISECONDS_ANIMATION_DURATION}ms ease-in-out;
   }
 `;
 
 export const ThemeSwitchEmojiContainer = styled.div<ThemeSwitchProps>`
-  left: ${({ themeMode }) =>
-    themeMode === ThemeMode.DARK ? "3px" : "calc(100% - 18px)"};
+  left: ${({ themeMode }) => (themeMode === ThemeMode.DARK ? "2px" : "auto")};
+  right: ${({ themeMode }) => (themeMode === ThemeMode.DARK ? "auto" : "2px")};
+
+  font-size: 16px;
+
 
   position: absolute;
 
@@ -59,33 +63,25 @@ export const ThemeSwitchEmojiContainer = styled.div<ThemeSwitchProps>`
   height: 100%;
 
   transition: all ${MILISECONDS_ANIMATION_DURATION}ms ease-in-out;
-
-  @media (max-width: 590px) {
-    left: ${({ themeMode }) =>
-      themeMode === ThemeMode.DARK ? "2px" : "calc(100% - 15px)"};
-  }
 `;
 
 export const ThemeSwitchBullet = styled.div<ThemeSwitchProps>`
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 25px;
+  height: 25px;
 
-  border-radius: 1rem;
+  border-radius: 100%;
 
   position: absolute;
 
   background: ${({ theme }) => theme.colors.white};
 
-  left: ${({ themeMode }) =>
-    themeMode === ThemeMode.DARK ? "calc(100% - 1.2rem)" : "0"};
+  left: ${({ themeMode }) => (themeMode === ThemeMode.DARK ? "auto" : "0")};
+  right: ${({ themeMode }) => (themeMode === ThemeMode.DARK ? "0" : "auto")};
 
   transition: all ${MILISECONDS_ANIMATION_DURATION}ms ease-in-out;
 
   @media (max-width: 590px) {
-    left: ${({ themeMode }) =>
-      themeMode === ThemeMode.DARK ? "calc(100% - 1.8rem)" : "0"};
-
-    width: 1.8rem;
-    height: 1.8rem;
+    width: 32px;
+    height: 32px;
   }
 `;
