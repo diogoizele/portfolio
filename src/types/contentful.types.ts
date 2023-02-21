@@ -1,13 +1,14 @@
 import type { IconType } from "react-icons";
 
-export interface Education {
-  id: string;
-  title: string;
-  description: string;
-  startDate: string;
-  endDate: string;
+export interface EducationProps {
+  id: number;
   institution: string;
-  institutionUrl: string;
+  course: string;
+  description: string;
+  link: string;
+  image: string;
+  startedAt: string;
+  finishedAt: string;
 }
 
 export interface HighlightCompanyProps {
