@@ -1,1 +1,1 @@
-export { companyModel } from "./contentful";
+export { companyModel, educationModel } from "./contentful";
