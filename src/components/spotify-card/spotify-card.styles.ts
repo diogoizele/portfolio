@@ -5,7 +5,6 @@ import styled, { CSSProperties, css } from "styled-components";
 import { SubtitleProps } from "components/text/text.types";
 import { FONT_STYLES } from "styles/font-styles";
 import { FONT_SIZE } from "styles/font-sizes";
-import { theme } from "styles/theme";
 
 export const Container = styled(Link)`
   background: ${({ theme }) => theme.colors.backgroundSecondary};
@@ -122,11 +121,15 @@ export const SpotifyContainer = styled.div`
   }
 `;
 
+interface StyledSubtitleProps extends SubtitleProps {
+  color?: string;
+}
+
 export const subtitleH4Style = ({
   fontSize = FONT_SIZE.LARGE,
   fontStyle = FONT_STYLES.BOLD,
   color,
-}: Partial<SubtitleProps>): CSSProperties => ({
+}: Partial<StyledSubtitleProps>): CSSProperties => ({
   fontWeight: fontStyle,
   fontSize,
   color: color,
