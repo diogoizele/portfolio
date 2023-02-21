@@ -1,23 +1,79 @@
+import { useEffect, useMemo } from "react";
+import { useTheme } from "styled-components";
+import { CustomThemeType } from "../../styles/theme.types";
+
 import styles from "./text.styles";
 
 import type { BodyProps, SubtitleProps, TitleProps } from "./text.types";
 
-function Title({ component = "h1", ...props }: TitleProps) {
-  const Component = styles[component];
-
-  return <Component component={component} {...props} />;
+interface ComponentBodyProps extends BodyProps {
+  color?: ((theme: CustomThemeType) => string) | string;
 }
 
-function Body({ component = "p", ...props }: BodyProps) {
-  const Component = styles[component];
-
-  return <Component component={component} {...props} />;
+interface ComponentTitleProps extends TitleProps {
+  color?: ((theme: CustomThemeType) => string) | string;
 }
 
-function Subtitle({ component = "h4", ...props }: SubtitleProps) {
+interface ComponentSubtitleProps extends SubtitleProps {
+  color?: ((theme: CustomThemeType) => string) | string;
+}
+
+function Title({ component = "h1", color, ...props }: ComponentTitleProps) {
+  const theme = useTheme();
+
   const Component = styles[component];
 
-  return <Component component={component} {...props} />;
+  const textColor = useMemo(() => {
+    if (typeof color === "string") {
+      return color;
+    }
+
+    if (typeof color === "function") {
+      return color(theme);
+    }
+  }, [color]);
+
+  return <Component component={component} color={textColor} {...props} />;
+}
+
+function Body({ component = "p", color, ...props }: ComponentBodyProps) {
+  const theme = useTheme();
+
+  const Component = styles[component];
+
+  const textColor = useMemo(() => {
+    if (typeof color === "string") {
+      return color;
+    }
+
+    if (typeof color === "function") {
+      return color(theme);
+    }
+  }, [color]);
+
+  return <Component component={component} color={textColor} {...props} />;
+}
+
+function Subtitle({
+  component = "h4",
+  color,
+  ...props
+}: ComponentSubtitleProps) {
+  const theme = useTheme();
+
+  const Component = styles[component];
+
+  const textColor = useMemo(() => {
+    if (typeof color === "string") {
+      return color;
+    }
+
+    if (typeof color === "function") {
+      return color(theme);
+    }
+  }, [color]);
+
+  return <Component component={component} color={textColor} {...props} />;
 }
 
 const Text = {

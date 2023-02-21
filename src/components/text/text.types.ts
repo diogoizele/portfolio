@@ -1,4 +1,5 @@
 import { FONT_STYLES } from "styles/font-styles";
+import { CustomThemeType } from "styles/theme.types";
 
 export type TitleComponents = "h1" | "h2" | "h3";
 export type SubtitleComponents = "h4" | "strong";
@@ -8,16 +9,21 @@ export type AvailableComponents =
   | SubtitleComponents
   | BodyComponents;
 
+interface CustomColorProps {
+  color?: (theme: CustomThemeType) => string | string;
+}
+
 export interface TextProps {
   children?: React.ReactNode;
 
-  color?: string;
-  fontStyle?: FONT_STYLES | string | number;
+  fontStyle?: FONT_STYLES | string | number | React.CSSProperties["fontWeight"];
   fontSize?: string | number;
 
   style?: React.CSSProperties;
 
   mediaSize?: string;
+
+  align?: "left" | "center" | "right" | "justify";
 }
 
 export interface TitleProps extends TextProps {
