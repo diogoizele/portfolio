@@ -3,7 +3,7 @@ import {
   ThemeSwitchBullet,
   ThemeSwitchContainer,
   ThemeSwitchEmojiContainer,
-} from "./themeSwitch.styles";
+} from "./theme-switch.styles";
 
 interface ThemeSwitchProps {
   mode: ThemeMode;
