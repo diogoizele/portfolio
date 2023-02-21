@@ -10,7 +10,7 @@ const MILISECONDS_ANIMATION_DURATION = 500;
 export const Container = styled.section`
   display: flex;
 
-  gap: 1rem;
+  gap: 2rem;
 
   @media (max-width: 768px) {
     flex-direction: column;
