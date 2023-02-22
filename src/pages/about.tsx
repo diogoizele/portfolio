@@ -70,6 +70,7 @@ export default function About({ spotify, experiences, education }: Props) {
               alt="Diogo Izele's apple memoji"
               width={256}
               height={256}
+              priority
             />
           </ImageContainer>
           <PersonalContainer>
