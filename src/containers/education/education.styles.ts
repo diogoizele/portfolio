@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styled from "styled-components";
+import { Text } from "../../components";
 
 interface SelecterIndicatorProps {
   positionY: number;
@@ -10,14 +11,18 @@ const MILISECONDS_ANIMATION_DURATION = 500;
 export const Container = styled.section`
   display: flex;
 
+  min-height: 30rem;
+
   gap: 2rem;
 
   @media (max-width: 768px) {
     flex-direction: column;
+
+    min-height: auto;
   }
 `;
 
-export const SelecterContainer = styled.aside`
+export const SelecterContainer = styled.ul`
   flex: 3;
   display: flex;
   flex-direction: column;
@@ -26,7 +31,9 @@ export const SelecterContainer = styled.aside`
   position: relative;
 `;
 
-export const SelecterIndicator = styled.span<SelecterIndicatorProps>`
+export const SelecterIndicator = styled.li<SelecterIndicatorProps>`
+  list-style: none;
+
   background-color: ${({ theme }) => theme.colors.primary};
 
   border: none;
@@ -70,6 +77,14 @@ export const ImageContainer = styled.div`
 
   box-sizing: border-box;
 
+  box-shadow: ${({ theme }) => {
+    if (theme.isDarkMode) {
+      return `0 0 4px ${theme.colors.black}`;
+    }
+
+    return `0 0 4px ${theme.colors.backgroundTertiary}`;
+  }};
+
   background-color: ${({ theme }) => theme.colors.white};
 `;
 
@@ -94,8 +109,15 @@ export const Header = styled.header`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    
+
     align-items: center;
   }
+`;
 
+export const Institution = styled(Text.Subtitle)`
+  transition: all 100ms;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.secondary};
+  }
 `;

@@ -15,6 +15,7 @@ import {
   InfoContainer,
   InstituteImage,
   Header,
+  Institution,
 } from "./education.styles";
 
 import type { EducationProps } from "types";
@@ -73,16 +74,11 @@ export const Education = ({ education }: Props) => {
             <Text.Title component="h3" fontSize="2rem" fontStyle="bold">
               {currentItem.course}
             </Text.Title>
-            <Text.Subtitle
-              component="strong"
-              color={({ colors }) => colors.textSecondary}
-              fontSize="1.5rem"
-              fontStyle={600}
-            >
+            <Institution color={({ colors }) => colors.textTertiary}>
               <Link href={currentItem.link} target="_blank">
                 {currentItem.institution}
               </Link>
-            </Text.Subtitle>
+            </Institution>
             <Text.Body
               component="p"
               fontSize="1.1rem"
@@ -93,7 +89,7 @@ export const Education = ({ education }: Props) => {
           </InfoContainer>
         </Header>
         <Text.Body
-          color={({ colors }) => colors.textTertiary}
+          color={({ colors }) => colors.textSecondary}
           align="justify"
           style={{
             lineHeight: "1.2rem",
