@@ -100,6 +100,7 @@ export function Companies({ companies }: Props) {
             isActive={currentIndex.current === index}
             onClick={() => handleShowCompany(company, index)}
             key={company.id}
+            title={`experience ${index + 1}`}
           />
         ))}
       </BulletsContainer>
