@@ -1,11 +1,6 @@
 import styled from "styled-components";
-import { ThemeMode } from "styles/theme.types";
 
-interface ThemeSwitchProps {
-  themeMode: ThemeMode;
-}
-
-interface ThemeSwitchContainerProps extends ThemeSwitchProps {
+interface ThemeSwitchContainerProps {
   isMenuOpen: boolean;
 }
 
@@ -15,16 +10,15 @@ export const ThemeSwitchContainer = styled.button<ThemeSwitchContainerProps>`
   display: flex;
   align-items: center;
 
-  width: 45px;
-  height: 22px;
-  padding: 2px;
+  width: 44px;
+  height: 20px;
 
   border-radius: 1.5rem;
 
   cursor: pointer;
   position: relative;
 
-  background: ${({ theme }) => theme.colors.backgroundTertiary};
+  background: ${({ theme }) => theme.colors.primary};
   border: none;
 
   @media (max-width: 590px) {
@@ -34,40 +28,46 @@ export const ThemeSwitchContainer = styled.button<ThemeSwitchContainerProps>`
       ${({ isMenuOpen }) => {
         return isMenuOpen ? "25%" : "200%";
       }}
-    );
+    ) scale(1.2);
     z-index: 2;
 
     bottom: 2rem;
     right: 3rem;
 
-    width: 56px;
-    height: 24px;
+    background: ${({ theme }) => theme.colors.backgroundTertiary};
 
     transition: transform ${MILISECONDS_ANIMATION_DURATION}ms ease-in-out;
+
+
   }
 `;
 
-export const ThemeSwitchEmojiContainer = styled.div<ThemeSwitchProps>`
-  left: ${({ themeMode }) => (themeMode === ThemeMode.DARK ? "2px" : "auto")};
-  right: ${({ themeMode }) => (themeMode === ThemeMode.DARK ? "auto" : "2px")};
-
-  font-size: 16px;
-
-
-  position: absolute;
+export const ThemeSwitchEmojiContainer = styled.div`
+  font-size: 15px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
+  margin: 0 4px;
+
+  color: ${({ theme }) => theme.colors.backgroundSecondary};
+
+  transform: ${({ theme }) =>
+    theme.isDarkMode ? "translateX(0)" : "translateX(calc(100% + 8px))"};
+
   height: 100%;
 
   transition: all ${MILISECONDS_ANIMATION_DURATION}ms ease-in-out;
+
+  @media (max-width: 590px) {
+    color: ${({ theme }) => theme.colors.primary};
+  }
 `;
 
-export const ThemeSwitchBullet = styled.div<ThemeSwitchProps>`
-  width: 25px;
-  height: 25px;
+export const ThemeSwitchBullet = styled.div`
+  width: 24px;
+  height: 24px;
 
   border-radius: 100%;
 
@@ -75,13 +75,13 @@ export const ThemeSwitchBullet = styled.div<ThemeSwitchProps>`
 
   background: ${({ theme }) => theme.colors.white};
 
-  left: ${({ themeMode }) => (themeMode === ThemeMode.DARK ? "auto" : "0")};
-  right: ${({ themeMode }) => (themeMode === ThemeMode.DARK ? "0" : "auto")};
+  box-shadow: ${({ theme }) =>
+    `0 0 2px ${
+      theme.isDarkMode ? theme.colors.black : theme.colors.backgroundQuaternary
+    }`};
+
+  transform: ${({ theme }) =>
+    !theme.isDarkMode ? "translateX(0)" : "translateX(calc(100% - 4px))"};
 
   transition: all ${MILISECONDS_ANIMATION_DURATION}ms ease-in-out;
-
-  @media (max-width: 590px) {
-    width: 32px;
-    height: 32px;
-  }
 `;

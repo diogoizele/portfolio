@@ -1,3 +1,5 @@
+import { MdLightMode, MdModeNight } from "react-icons/md";
+
 import { ThemeMode } from "styles/theme.types";
 import {
   ThemeSwitchBullet,
@@ -21,15 +23,11 @@ export const ThemeSwitch = ({
   };
 
   return (
-    <ThemeSwitchContainer
-      isMenuOpen={isMenuOpen}
-      themeMode={mode}
-      onClick={handleToggle}
-    >
-      <ThemeSwitchEmojiContainer themeMode={mode}>
-        {mode === ThemeMode.DARK ? "🌝" : "🌞"}
+    <ThemeSwitchContainer isMenuOpen={isMenuOpen} onClick={handleToggle}>
+      <ThemeSwitchEmojiContainer>
+        {mode === ThemeMode.DARK ? <MdModeNight /> : <MdLightMode />}
       </ThemeSwitchEmojiContainer>
-      <ThemeSwitchBullet themeMode={mode} />
+      <ThemeSwitchBullet />
     </ThemeSwitchContainer>
   );
 };
