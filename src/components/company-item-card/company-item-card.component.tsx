@@ -1,5 +1,6 @@
 import React from "react";
 import { useTheme } from "styled-components";
+import Link from "next/link";
 
 import { Text } from "components";
 
@@ -10,7 +11,8 @@ import {
   ShadowRightImage,
   HightlightsContainer,
   ContainerHighlightCard,
-} from "./component-item-card.styles";
+  Company,
+} from "./company-item-card.styles";
 import type { CompanyProps, HighlightCompanyProps } from "types";
 
 interface Props extends CompanyProps {
@@ -46,15 +48,12 @@ export function ComponentItemCard({
   const { colors } = useTheme();
 
   return (
-    <Container
-      href={link}
-      target="_blank"
-      onMouseEnter={onPause}
-      onMouseLeave={onPlay}
-    >
-      <Text.Title component="h3" fontSize={"2rem"}>
-        {name}
-      </Text.Title>
+    <Container onMouseEnter={onPause} onMouseLeave={onPlay}>
+      <Company component="h3" fontSize="2rem">
+        <Link href={link} target="_blank">
+          {name}
+        </Link>
+      </Company>
       <Text.Subtitle color={colors.textTertiary}>{role}</Text.Subtitle>
       <Text.Subtitle component="strong" color={colors.textTertiary}>
         {period}

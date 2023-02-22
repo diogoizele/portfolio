@@ -1,15 +1,15 @@
 import { useThemeMode } from "hooks";
 import Image from "next/image";
-import Link from "next/link";
 import styled from "styled-components";
 
+import { Text } from "components";
 import * as colors from "styles/colors";
 import { ThemeMode } from "styles/theme.types";
 import { linearGradient } from "utils";
 
 const IMAGE_SIZE = "20rem";
 
-export const Container = styled(Link)`
+export const Container = styled.section`
   background: ${({ theme }) => theme.colors.backgroundSecondary};
 
   display: flex;
@@ -169,5 +169,13 @@ export const ContainerHighlightCard = styled.div`
       linearGradient(180, [theme.colors.tertiary, theme.colors.quaternary])};
     box-shadow: none;
     transform: scale(1.05);
+  }
+`;
+
+export const Company = styled(Text.Title)`
+  transition: all 100ms;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.secondary};
   }
 `;
