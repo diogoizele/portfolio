@@ -33,4 +33,6 @@ export interface CustomThemeType {
     backgroundDisabled: string;
   };
   backgroundImage: StaticImageData;
+  mode: ThemeMode;
+  isDarkMode: boolean;
 }

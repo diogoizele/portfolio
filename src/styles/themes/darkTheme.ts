@@ -1,4 +1,4 @@
-import { CustomThemeType } from "styles/theme.types";
+import { CustomThemeType, ThemeMode } from "styles/theme.types";
 import backgroundImage from "../../../public/background-dark.png";
 import * as colors from "styles/colors";
 
@@ -30,4 +30,6 @@ export const darkTheme: CustomThemeType = {
     backgroundDisabled: colors.gray.A500,
   },
   backgroundImage,
+  mode: ThemeMode.DARK,
+  isDarkMode: true,
 };
