@@ -1,16 +1,20 @@
 import { AppProps } from "next/app";
+import { useRouter } from "next/router";
 
 import { GlobalStyle } from "styles/global";
 import { Header } from "components";
 import { ThemeProvider } from "context";
 import { SocialMedia } from "containers";
+import { Routes } from "config/constants";
 
 export default function App({ Component, pageProps }: AppProps) {
+  const { pathname } = useRouter();
+
   return (
     <ThemeProvider>
       <GlobalStyle />
       <Component {...pageProps} />
-      <SocialMedia />
+      {pathname !== Routes.contact && <SocialMedia />}
       <Header />
     </ThemeProvider>
   );
