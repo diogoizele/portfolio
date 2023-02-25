@@ -11,7 +11,7 @@ interface SelecterProps {
 
 const MILISECONDS_ANIMATION_DURATION = 500;
 
-export const Container = styled.button<SelecterProps>`
+export const Container = styled.li<SelecterProps>`
   background-color: transparent;
   border: none;
   border-radius: 6px;
