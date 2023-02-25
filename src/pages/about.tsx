@@ -82,7 +82,12 @@ export default function About({ spotify, experiences, education }: Props) {
             >
               Hi there! 👋
             </Text.Body>
-            <Text.Subtitle color={colors.textSecondary} fontSize="3rem">
+            <Text.Subtitle
+              component="strong"
+              fontStyle={FONT_STYLES.BOLD}
+              color={colors.textSecondary}
+              fontSize="3rem"
+            >
               My name is
             </Text.Subtitle>
             <Text.Title
