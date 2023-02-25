@@ -101,4 +101,8 @@ export const SocialMediaList = styled.ul`
   flex-wrap: wrap;
   gap: 2rem;
   margin-top: 2rem;
+
+  @media (max-width: 590px) {
+    justify-content: center;
+  }
 `;
