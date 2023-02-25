@@ -23,7 +23,11 @@ export const ThemeSwitch = ({
   };
 
   return (
-    <ThemeSwitchContainer isMenuOpen={isMenuOpen} onClick={handleToggle}>
+    <ThemeSwitchContainer
+      isMenuOpen={isMenuOpen}
+      onClick={handleToggle}
+      title={`Change theme from ${mode === ThemeMode.DARK ? "light" : "dark"}`}
+    >
       <ThemeSwitchEmojiContainer>
         {mode === ThemeMode.DARK ? <MdModeNight /> : <MdLightMode />}
       </ThemeSwitchEmojiContainer>
