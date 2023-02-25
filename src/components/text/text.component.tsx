@@ -31,7 +31,7 @@ function Title({ component = "h1", color, ...props }: ComponentTitleProps) {
     if (typeof color === "function") {
       return color(theme);
     }
-  }, [color]);
+  }, [color, theme.mode]);
 
   return <Component component={component} color={textColor} {...props} />;
 }
@@ -49,7 +49,7 @@ function Body({ component = "p", color, ...props }: ComponentBodyProps) {
     if (typeof color === "function") {
       return color(theme);
     }
-  }, [color]);
+  }, [color, theme.mode]);
 
   return <Component component={component} color={textColor} {...props} />;
 }
@@ -71,7 +71,7 @@ function Subtitle({
     if (typeof color === "function") {
       return color(theme);
     }
-  }, [color]);
+  }, [color, theme.mode]);
 
   return <Component component={component} color={textColor} {...props} />;
 }
