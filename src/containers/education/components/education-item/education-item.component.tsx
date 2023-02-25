@@ -26,7 +26,7 @@ export const EducationItem = ({
   onChange,
   onGetPosition,
 }: Props) => {
-  const itemRef = useRef<HTMLButtonElement>(null);
+  const itemRef = useRef<HTMLLIElement>(null);
   const imageWidth = 36;
 
   function handleChange() {
