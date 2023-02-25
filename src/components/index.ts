@@ -7,4 +7,5 @@ export { ResumeButton } from "./resume-button/resume-button.component";
 export { SpotifyCard } from "./spotify-card/spotify-card.component";
 export { ComponentItemCard } from "./company-item-card/company-item-card.component";
 export { ProjectHeader } from "./project-header/project-header.component";
-// export { ProjectCard } from "./project-card/project-card.component";
+export { ProjectCard } from "./project-card/project-card.component";
+export { ContactSocialMedia } from "./contact-social-media/contact-social-media.component";
