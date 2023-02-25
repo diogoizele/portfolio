@@ -59,7 +59,7 @@ I'm contacting you because...
           <TextContainer>
             <Text.Body color={({ colors }) => colors.textSecondary}>
               My inbox is always open for new opportunities. If you have a
-              question or just want to say hi, I'll do my best to get back to
+              question or just want to say hi, I&apos;ll do my best to get back to
               you!
             </Text.Body>
           </TextContainer>
