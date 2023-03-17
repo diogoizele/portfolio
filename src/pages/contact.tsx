@@ -44,7 +44,7 @@ I'm contacting you because...
             fontStyle={FONT_STYLES.BOLD}
             fontSize="2rem"
           >
-            All My Social Networks
+            Where you find me
           </Text.Title>
           <SocialMediaList>
             {SOCIAL_MEDIAS.map((socialMedia) => (
@@ -59,8 +59,8 @@ I'm contacting you because...
           <TextContainer>
             <Text.Body color={({ colors }) => colors.textSecondary}>
               My inbox is always open for new opportunities. If you have a
-              question or just want to say hi, I&apos;ll do my best to get back to
-              you!
+              question or just want to say hi, I&apos;ll do my best to get back
+              to you!
             </Text.Body>
           </TextContainer>
           <Button onClick={handleSendEmail}>Say Hello</Button>

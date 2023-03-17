@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
+  align-items: center;
 
   max-width: 1120px;
   width: calc(100% - 8rem);
@@ -21,7 +22,7 @@ export const Container = styled.div`
 
   @media (max-width: 590px) {
     padding: 0;
-    padding-top: 3rem;
+    padding-top: 5rem;
     padding-bottom: 3rem;
 
     width: 85%;

@@ -27,6 +27,7 @@ export const Container = styled.li`
   &:hover {
     transform: translateX(2px) scale(1.1);
 
+    background-color: ${({ theme }) => theme.colors.backgroundPrimary};
     border: 2px solid ${({ theme }) => theme.colors.primary};
   }
 
