@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { useTheme } from "styled-components";
 import { CustomThemeType } from "../../styles/theme.types";
 
@@ -31,7 +31,7 @@ function Title({ component = "h1", color, ...props }: ComponentTitleProps) {
     if (typeof color === "function") {
       return color(theme);
     }
-  }, [color, theme.mode]);
+  }, [color, theme]);
 
   return <Component component={component} color={textColor} {...props} />;
 }
@@ -49,7 +49,7 @@ function Body({ component = "p", color, ...props }: ComponentBodyProps) {
     if (typeof color === "function") {
       return color(theme);
     }
-  }, [color, theme.mode]);
+  }, [color, theme]);
 
   return <Component component={component} color={textColor} {...props} />;
 }
@@ -71,7 +71,7 @@ function Subtitle({
     if (typeof color === "function") {
       return color(theme);
     }
-  }, [color, theme.mode]);
+  }, [color, theme]);
 
   return <Component component={component} color={textColor} {...props} />;
 }

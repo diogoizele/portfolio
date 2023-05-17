@@ -13,14 +13,14 @@ import {
   ContainerHighlightCard,
   Company,
 } from "./company-item-card.styles";
-import type { CompanyProps, HighlightCompanyProps } from "types";
+import type { CompanyProps } from "types";
 
 interface Props extends CompanyProps {
   onPause: () => void;
   onPlay: () => void;
 }
 
-export const HighlightCard = ({ icon: Icon, title }: HighlightCompanyProps) => {
+export const HighlightCard = ({ icon: Icon, title }) => {
   const { colors } = useTheme();
   const fontColor = colors.textSecondary;
 
