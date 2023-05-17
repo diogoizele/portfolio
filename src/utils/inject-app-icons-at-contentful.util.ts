@@ -1,31 +1,28 @@
-import { EntryCollection } from "contentful";
+import { IconType } from "react-icons";
 import { appIcons } from "utils";
 
-export function injectAppIconsAtContentful<T>(
-  entry: EntryCollection<T>
-): EntryCollection<T> {
-  const { items } = entry;
+interface OptionsProps {
+  method?: "hightlight";
+}
 
-  if (!items.length) return entry;
-
-  const newItems = items.reduce((newList, item) => {
-    const { fields } = item as any;
-    const { highlights } = fields;
-
-    const newFields = {
-      ...fields,
-      highlights: highlights.map((highlight) => {
-        const { icon } = highlight;
-
-        return {
-          ...highlight,
-          icon: appIcons[icon],
-        };
-      }),
-    };
-
-    return [...newList, { ...item, fields: newFields }];
-  }, []);
-
-  return { ...entry, items: newItems };
+export function injectAppIconsAtContentful(
+  entry: any[],
+  options?: OptionsProps
+) {
+  switch (options?.method) {
+    case "hightlight":
+      return entry.map(({ highlights, ...rest }) => ({
+        ...rest,
+        highlights: highlights.map(({ icon, ...rest }) => ({
+          ...rest,
+          icon: appIcons[icon] as IconType,
+        })),
+      }));
+    default: {
+      return entry.map(({ icon, ...rest }) => ({
+        ...rest,
+        icon: appIcons[icon] as IconType,
+      }));
+    }
+  }
 }

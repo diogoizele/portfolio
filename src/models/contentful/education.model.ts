@@ -1,27 +1,18 @@
 import { EntryCollection } from "contentful";
 
-import type { EducationProps } from "types";
+import type { EducationEntry, EducationProps } from "types";
 
-export function educationModel(
-  educationEntry: EntryCollection<EducationProps>
-) {
-  const { items } = educationEntry;
-
-  if (!items.length) return educationEntry;
-
-  const newItems = items.reduce((newList, item) => {
-    const { fields } = item as any;
-    const { image, institutionLink, courseName } = fields;
-
-    const newFields = {
-      ...fields,
+export function educationModel({
+  items,
+}: EntryCollection<EducationEntry>): EducationProps[] {
+  const mappedItems = items
+    .map(({ fields }) => fields)
+    .map(({ image, courseName, institutionLink, ...rest }) => ({
+      ...rest,
       image: `https:${image?.fields?.file?.url}`,
-      link: institutionLink,
       course: courseName,
-    };
+      link: institutionLink,
+    }));
 
-    return [...newList, { ...item, fields: newFields }];
-  }, []);
-
-  return { ...educationEntry, items: newItems };
+  return mappedItems;
 }

@@ -1,4 +1,4 @@
-import { useCallback, useLayoutEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { ThemeProvider as SCThemeProvider } from "styled-components";
 
 import { ThemeContext, ThemeContextSchema } from "./themeContext";
@@ -39,7 +39,7 @@ export function ThemeProvider({
     [themeMode, setThemeMode, handleToggleTheme]
   );
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const themeMode = JSON.parse(
       localStorage.getItem(LOCAL_STORAGE_KEY)
     ) as ThemeMode;

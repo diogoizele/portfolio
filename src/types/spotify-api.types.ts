@@ -1,3 +1,10 @@
+export interface TokenResponse {
+  access_token: string;
+  token_type: "Bearer";
+  expires_in: number;
+  scope: "user-read-currently-playing user-top-read";
+}
+
 export interface SpotifyCurrentTrackResponse {
   actions: {
     disallows: {

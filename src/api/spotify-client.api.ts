@@ -1,13 +1,14 @@
-import axios from "axios";
+import { apiInstance } from "api";
+import { URIS } from "config/constants";
 
-const API_SPOTIFY_URL = "https://accounts.spotify.com/api/token";
+import type { SpotifyCurrentTrackResponse, TokenResponse } from "types";
 
 const getAccessToken = async () => {
   const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN;
 
   try {
-    const response = await axios.post(
-      API_SPOTIFY_URL,
+    const response = await apiInstance.post<TokenResponse>(
+      URIS.SPOTIFY.AUTH,
       { grant_type: "refresh_token", refresh_token: refreshToken },
       {
         headers: {
@@ -26,11 +27,11 @@ const getAccessToken = async () => {
 };
 
 export const currentPlayingTrack = async () => {
-  const { access_token } = await getAccessToken();
-
   try {
-    const response = await axios.get(
-      "	https://api.spotify.com/v1/me/player/currently-playing",
+    const { access_token } = await getAccessToken();
+
+    const response = await apiInstance.get<SpotifyCurrentTrackResponse>(
+      URIS.SPOTIFY.V1,
       {
         headers: {
           Authorization: `Bearer ${access_token}`,

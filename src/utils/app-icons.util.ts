@@ -1,7 +1,16 @@
 import { MdDesignServices } from "react-icons/md";
 import { CiMobile3 } from "react-icons/ci";
-import { SiTypescript } from "react-icons/si";
+import { SiTypescript, SiSololearn, SiReplit } from "react-icons/si";
 import { DiReact, DiScrum } from "react-icons/di";
+import { BsMedium } from "react-icons/bs";
+import { FaDev } from "react-icons/fa";
+import {
+  FiCodesandbox,
+  FiGithub,
+  FiLinkedin,
+  FiTwitter,
+  FiYoutube,
+} from "react-icons/fi";
 
 export const appIcons = {
   MdDesignServices,
@@ -9,4 +18,13 @@ export const appIcons = {
   SiTypescript,
   DiReact,
   DiScrum,
+  SiSololearn,
+  BsMedium,
+  FaDev,
+  FiCodesandbox,
+  FiGithub,
+  FiLinkedin,
+  FiTwitter,
+  FiYoutube,
+  SiReplit,
 };

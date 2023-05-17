@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { HiPause, HiPlay } from "react-icons/hi2";
-import { EntryCollection } from "contentful";
 
 import { ComponentItemCard } from "components";
 import { useWindow } from "hooks";
@@ -16,17 +15,16 @@ import {
 import type { CompanyProps } from "types";
 
 interface Props {
-  companies: EntryCollection<CompanyProps>;
+  companies: CompanyProps[];
 }
 
 export function Companies({ companies }: Props) {
   const currentIndex = useRef(0);
-  const formattedCompanies = companies.items.map(({ fields }) => fields);
 
   const { width } = useWindow();
 
   const [currentCompany, setCurrentCompany] = useState<CompanyProps>(
-    formattedCompanies[currentIndex.current]
+    companies[currentIndex.current]
   );
   const [isPaused, setIsPaused] = useState(false);
 
@@ -52,14 +50,14 @@ export function Companies({ companies }: Props) {
 
   const moveCarrousel = useCallback(() => {
     const nextIndex = currentIndex.current + 1;
-    const nextCompany = formattedCompanies[nextIndex];
+    const nextCompany = companies[nextIndex];
 
     if (nextCompany) {
       handleShowCompany(nextCompany, nextIndex);
     } else {
-      handleShowCompany(formattedCompanies[0], 0);
+      handleShowCompany(companies[0], 0);
     }
-  }, [currentIndex]);
+  }, [currentIndex, companies]);
 
   useEffect(() => {
     if (!isPaused) {
@@ -93,7 +91,7 @@ export function Companies({ companies }: Props) {
         />
       </CompanyContainer>
       <BulletsContainer>
-        {formattedCompanies.map((company, index) => (
+        {companies.map((company, index) => (
           <Bullet
             onMouseEnter={handlePause}
             onMouseLeave={handlePlay}
