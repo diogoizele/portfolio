@@ -2,9 +2,9 @@ import { createClient } from "contentful";
 
 import { logs } from "utils";
 import { ContentTypes } from "config/constants";
-import { SocialMediaModel } from "models";
+import { SocialMediaModel, companyModel, educationModel } from "models";
 
-import type { CompanyProps, EducationProps, SocialMediaEntry } from "types";
+import type { CompanyEntry, EducationEntry, SocialMediaEntry } from "types";
 
 const { CONTENTFUL_ACCESS_TOKEN } = process.env;
 const { CONTENTFUL_SPACE } = process.env;
@@ -15,13 +15,12 @@ const client = createClient({
 });
 
 export const getEducationContent = async () => {
-  logs("Contentful client: getEducationContent", 1, undefined);
   try {
-    const entries = await client.getEntries<EducationProps>({
+    const entries = await client.getEntries<EducationEntry>({
       content_type: ContentTypes.education,
     });
 
-    return entries;
+    return educationModel(entries);
   } catch (error) {
     logs("Contentful client: getEducationContent - ", error);
     throw error;
@@ -30,11 +29,11 @@ export const getEducationContent = async () => {
 
 export const getExperienceContent = async () => {
   try {
-    const entries = await client.getEntries<CompanyProps>({
+    const entries = await client.getEntries<CompanyEntry>({
       content_type: ContentTypes.experience,
     });
 
-    return entries;
+    return companyModel(entries);
   } catch (error) {
     logs("Contentful client: getExperienceContent - ", error);
     throw error;

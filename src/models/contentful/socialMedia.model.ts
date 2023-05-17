@@ -1,28 +1,18 @@
-import { IconType } from "react-icons";
 import { EntryCollection } from "contentful";
 
 import { SocialMediaEntry, SocialMediaProps } from "types";
 
-export function SocialMediaModel(entry: EntryCollection<SocialMediaEntry>) {
-  const { items } = entry;
-
-  if (!items.length) return entry;
-
-  const newItems = items.reduce((newList, item) => {
-    const { fields } = item;
-    const { icon, href, id, title } = fields;
-
-    const newFields: SocialMediaProps = {
-      id,
+export function SocialMediaModel({
+  items,
+}: EntryCollection<SocialMediaEntry>): SocialMediaProps[] {
+  const mappedItems = items
+    .map(({ fields }) => fields)
+    .map(({ href, title, ...rest }) => ({
+      ...rest,
       link: href,
       name: title,
-      icon: icon as unknown as IconType,
-    };
+    }))
+    .sort((a, b) => a.id - b.id);
 
-    return [...newList, { ...item, fields: newFields }];
-  }, []);
-
-  const sortedItems = newItems.sort((a, b) => a.fields.id - b.fields.id);
-
-  return { ...entry, items: sortedItems };
+  return mappedItems;
 }

@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import dayjs from "dayjs";
 import Link from "next/link";
-import { EntryCollection } from "contentful";
 
 import { Text } from "components";
 
@@ -21,16 +20,14 @@ import {
 import type { EducationProps } from "types";
 
 interface Props {
-  education: EntryCollection<EducationProps>;
+  education: EducationProps[];
 }
 
 export const Education = ({ education }: Props) => {
   const [selectedItem, setSelectedItem] = useState(0);
   const [positionY, setPositionY] = useState(0);
 
-  const formattedEducation = education?.items?.map(({ fields }) => fields);
-
-  const currentItem = formattedEducation[selectedItem];
+  const currentItem = education[selectedItem];
   const imageWidth = 216;
   const itemDate = `${dayjs(currentItem.startedAt).format("MMM YYYY")} - ${
     dayjs().isBefore(dayjs(currentItem.finishedAt))
@@ -49,7 +46,7 @@ export const Education = ({ education }: Props) => {
   return (
     <Container>
       <SelecterContainer>
-        {formattedEducation.map((item, i) => (
+        {education.map((item, i) => (
           <EducationItem
             key={item.id}
             data={item}

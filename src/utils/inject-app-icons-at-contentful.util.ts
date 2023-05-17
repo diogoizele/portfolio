@@ -1,4 +1,3 @@
-import { EntryCollection } from "contentful";
 import { IconType } from "react-icons";
 import { appIcons } from "utils";
 
@@ -6,50 +5,24 @@ interface OptionsProps {
   method?: "hightlight";
 }
 
-export function injectAppIconsAtContentful<T>(
-  entry: EntryCollection<T>,
+export function injectAppIconsAtContentful(
+  entry: any[],
   options?: OptionsProps
-): EntryCollection<T> {
-  const { items } = entry;
-
-  if (!items.length) return entry;
-
+) {
   switch (options?.method) {
-    case "hightlight": {
-      const newItems = items.reduce((newList, item) => {
-        const { fields } = item as any;
-        const { highlights } = fields;
-
-        const newFields = {
-          ...fields,
-          highlights: highlights.map((highlight) => {
-            const { icon } = highlight;
-
-            return {
-              ...highlight,
-              icon: appIcons[icon] as IconType,
-            };
-          }),
-        };
-
-        return [...newList, { ...item, fields: newFields }];
-      }, []);
-
-      return { ...entry, items: newItems };
-    }
+    case "hightlight":
+      return entry.map(({ highlights, ...rest }) => ({
+        ...rest,
+        highlights: highlights.map(({ icon, ...rest }) => ({
+          ...rest,
+          icon: appIcons[icon] as IconType,
+        })),
+      }));
     default: {
-      const newItems = items.reduce((newList, item) => {
-        const { fields } = item as any;
-
-        const newFields = {
-          ...fields,
-          icon: appIcons[fields.icon] as IconType,
-        };
-
-        return [...newList, { ...item, fields: newFields }];
-      }, []);
-
-      return { ...entry, items: newItems };
+      return entry.map(({ icon, ...rest }) => ({
+        ...rest,
+        icon: appIcons[icon] as IconType,
+      }));
     }
   }
 }

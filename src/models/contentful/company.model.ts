@@ -1,36 +1,25 @@
 import { EntryCollection } from "contentful";
 
-import { currentCompanyEstimative, injectAppIconsAtContentful } from "utils";
+import { currentCompanyEstimative } from "utils";
 
-import type { CompanyProps } from "types";
+import type { CompanyEntry, CompanyProps } from "types";
 
 const CURRENT_JOB_START = "2022-06-22";
 
-export function companyModel(companyEntry: EntryCollection<CompanyProps>) {
-  const iconsInjectedCompany = injectAppIconsAtContentful(companyEntry, {
-    method: "hightlight",
-  });
-  const { items } = iconsInjectedCompany;
-
-  if (!items.length) return companyEntry;
-
-  const newItems = items.reduce((newList, item) => {
-    const { fields } = item as any;
-    const { image, isCurrentJob, period, webSite } = fields;
-
-    const newPeriod = isCurrentJob
-      ? currentCompanyEstimative(period, CURRENT_JOB_START)
-      : period;
-
-    const newFields = {
-      ...fields,
+export function companyModel({
+  items,
+}: EntryCollection<CompanyEntry>): CompanyProps[] {
+  const mappedItems = items
+    .map(({ fields }) => fields)
+    .map(({ image, isCurrentJob, period, webSite, ...rest }) => ({
+      ...rest,
       image: `https:${image?.fields?.file?.url}`,
-      period: newPeriod,
+      period: isCurrentJob
+        ? currentCompanyEstimative(period, CURRENT_JOB_START)
+        : period,
       link: webSite,
-    };
+      isCurrentJob,
+    }));
 
-    return [...newList, { ...item, fields: newFields }];
-  }, []);
-
-  return { ...companyEntry, items: newItems };
+  return mappedItems;
 }

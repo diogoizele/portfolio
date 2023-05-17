@@ -17,11 +17,13 @@ import {
 
 import type { SocialMediaProps } from "types";
 
-export default function Contact({ socialMedias }) {
+interface Props {
+  socialMedias: SocialMediaProps[];
+}
+
+export default function Contact({ socialMedias }: Props) {
   const emailAddress = "diogogabrielizele@gmail.com";
-  const socialMediaList = injectAppIconsAtContentful(socialMedias).items.map(
-    ({ fields }) => fields
-  ) as SocialMediaProps[];
+  const socialMediaList = injectAppIconsAtContentful(socialMedias);
 
   function handleSendEmail() {
     const email = `
@@ -38,9 +40,7 @@ I'm contacting you because...
     );
   }
 
-  useEffect(() => {
-    console.log(socialMediaList);
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <>
