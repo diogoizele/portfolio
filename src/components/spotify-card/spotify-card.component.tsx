@@ -1,5 +1,5 @@
 import { Text } from "components";
-import { memo, useEffect, useMemo } from "react";
+import { memo, useMemo } from "react";
 import { useTheme } from "styled-components";
 import { FONT_STYLES } from "styles/font-styles";
 import { SpotifyCurrentTrackResponse } from "types";
@@ -38,19 +38,6 @@ export function SpotifyCardWithoutMemo({
   }, [item?.album?.images, spotifyValidResponse]);
 
   if (!spotifyValidResponse || item.explicit) {
-    if (!spotifyValidResponse) {
-      return (
-        <SpotifyContainer>
-          <Text.Subtitle
-            component="strong"
-            style={subtitleH4Style({ color: colors.textTertiary })}
-          >
-            {"I'm not listening to anything on Spotify"}
-          </Text.Subtitle>
-        </SpotifyContainer>
-      );
-    }
-
     return null;
   }
 

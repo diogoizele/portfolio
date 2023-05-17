@@ -1,16 +1,17 @@
-import { useEffect } from "react";
 import { useTheme } from "styled-components";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
-import { EntryCollection } from "contentful";
 import Link from "next/link";
 
+import { injectAppIconsAtContentful, logs } from "utils";
 import { Text, ResumeButton, SpotifyCard, ProjectHeader } from "components";
 import { FONT_STYLES } from "styles";
 import { BEHAVIORAL, CONTACT, PRESENTATION, ROLES } from "utils/static";
-import { currentPlayingTrack } from "lib/spotify";
 import { Companies, Education } from "containers";
-import { ContentfulService } from "api";
-import { companyModel, educationModel } from "models";
+import {
+  getEducationContent,
+  getExperienceContent,
+  currentPlayingTrack,
+} from "api";
 
 import avatarImg from "assets/images/memoji-diogo-izele.png";
 import myPictureImg from "assets/images/i-reading-pic.jpeg";
@@ -34,8 +35,8 @@ import type {
 
 interface Props {
   spotify?: SpotifyCurrentTrackResponse;
-  experiences: EntryCollection<CompanyProps>;
-  education: EntryCollection<EducationProps>;
+  experiences?: CompanyProps[];
+  education?: EducationProps[];
 }
 
 export default function About({ spotify, experiences, education }: Props) {
@@ -47,8 +48,6 @@ export default function About({ spotify, experiences, education }: Props) {
     delaySpeed: 2000,
     words: ROLES,
   });
-
-  useEffect(() => {}, []);
 
   return (
     <>
@@ -141,11 +140,15 @@ export default function About({ spotify, experiences, education }: Props) {
         <Title id="experiences">
           <Link href="#experiences">Experiences.</Link>
         </Title>
-        <Companies companies={companyModel(experiences)} />
+        <Companies
+          companies={injectAppIconsAtContentful(experiences, {
+            method: "hightlight",
+          })}
+        />
         <Title id="education">
           <Link href="#education">Education.</Link>
         </Title>
-        <Education education={educationModel(education)} />
+        <Education education={education} />
         <SpotifyCard {...spotify} />
       </Container>
     </>
@@ -154,17 +157,25 @@ export default function About({ spotify, experiences, education }: Props) {
 
 // https://nextjs.org/learn/basics/api-routes/api-routes-details
 export async function getStaticProps() {
-  const spotify: SpotifyCurrentTrackResponse = await currentPlayingTrack();
+  try {
+    const spotify = await currentPlayingTrack();
 
-  const experiences = await ContentfulService.getExperienceContent();
-  const education = await ContentfulService.getEducationContent();
+    const experiences = await getExperienceContent();
+    const education = await getEducationContent();
 
-  return {
-    props: {
-      spotify,
-      experiences,
-      education,
-    },
-    revalidate: 60 * 2 + 30, // 2 minutes and 30 seconds
-  };
+    return {
+      props: {
+        spotify,
+        experiences,
+        education,
+      },
+      revalidate: 60 * 2 + 30, // 2 minutes and 30 seconds
+    };
+  } catch (error) {
+    logs("Static props error: ", error);
+
+    return {
+      props: {},
+    };
+  }
 }
