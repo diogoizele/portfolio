@@ -1,3 +1,4 @@
-export { ContentTypes } from "./contentful";
-export { GitHub } from "./github/github.constants";
-export { Routes } from "./routes/routes.constants";
+export { ContentTypes } from "./contentful.constants";
+export { GitHub } from "./github.constants";
+export { Routes } from "./routes.constants";
+export { URIS } from "./uris.constants";

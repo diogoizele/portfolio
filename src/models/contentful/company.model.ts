@@ -7,7 +7,9 @@ import type { CompanyProps } from "types";
 const CURRENT_JOB_START = "2022-06-22";
 
 export function companyModel(companyEntry: EntryCollection<CompanyProps>) {
-  const iconsInjectedCompany = injectAppIconsAtContentful(companyEntry);
+  const iconsInjectedCompany = injectAppIconsAtContentful(companyEntry, {
+    method: "hightlight",
+  });
   const { items } = iconsInjectedCompany;
 
   if (!items.length) return companyEntry;

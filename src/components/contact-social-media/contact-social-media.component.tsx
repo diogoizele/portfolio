@@ -5,23 +5,23 @@ import { Text } from "components";
 import { Container, LinkContainer } from "./contact-social-media.styles";
 
 interface SocialMediaLinkProps {
-  href: string;
+  link: string;
   icon: IconType;
-  title: string;
+  name: string;
 }
 
 export const ContactSocialMedia = ({
-  href,
+  link,
   icon: Icon,
-  title,
+  name,
 }: SocialMediaLinkProps) => {
   const { colors } = useTheme();
 
   return (
     <Container>
-      <LinkContainer title={title} href={href} target="_blank">
-        <Icon size={30} color={colors.primary} />
-        <Text.Body>{title}</Text.Body>
+      <LinkContainer title={name} href={link} target="_blank">
+        {Icon && <Icon size={30} color={colors.primary} />}
+        <Text.Body>{name}</Text.Body>
       </LinkContainer>
     </Container>
   );

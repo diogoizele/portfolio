@@ -27,3 +27,16 @@ export interface CompanyProps {
   isCurrentJob: boolean;
   highlights: HighlightCompanyProps[];
 }
+export interface SocialMediaProps {
+  id: number;
+  name: string;
+  link: string;
+  icon: IconType;
+}
+
+export interface SocialMediaEntry {
+  id: number;
+  title: string;
+  href: string;
+  icon: string;
+}

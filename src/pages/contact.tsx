@@ -1,5 +1,10 @@
+import { useEffect } from "react";
+
 import { ContactSocialMedia, ProjectHeader, Text } from "components";
+import { getSocialMediaContent } from "api";
 import { FONT_STYLES } from "styles";
+
+import { injectAppIconsAtContentful } from "utils";
 
 import {
   Button,
@@ -9,10 +14,14 @@ import {
   SocialMedias,
   TextContainer,
 } from "../styles/pages/contact.styles";
-import { SOCIAL_MEDIAS } from "../utils/static";
 
-export default function Contact() {
+import type { SocialMediaProps } from "types";
+
+export default function Contact({ socialMedias }) {
   const emailAddress = "diogogabrielizele@gmail.com";
+  const socialMediaList = injectAppIconsAtContentful(socialMedias).items.map(
+    ({ fields }) => fields
+  ) as SocialMediaProps[];
 
   function handleSendEmail() {
     const email = `
@@ -28,6 +37,10 @@ I'm contacting you because...
       "_blank"
     );
   }
+
+  useEffect(() => {
+    console.log(socialMediaList);
+  }, []);
 
   return (
     <>
@@ -47,8 +60,8 @@ I'm contacting you because...
             Where you find me
           </Text.Title>
           <SocialMediaList>
-            {SOCIAL_MEDIAS.map((socialMedia) => (
-              <ContactSocialMedia key={socialMedia.title} {...socialMedia} />
+            {socialMediaList.map((socialMedia) => (
+              <ContactSocialMedia key={socialMedia.id} {...socialMedia} />
             ))}
           </SocialMediaList>
         </SocialMedias>
@@ -69,3 +82,17 @@ I'm contacting you because...
     </>
   );
 }
+
+export const getStaticProps = async () => {
+  try {
+    const socialMedias = await getSocialMediaContent();
+
+    return {
+      props: { socialMedias },
+    };
+  } catch {
+    return {
+      props: {},
+    };
+  }
+};
