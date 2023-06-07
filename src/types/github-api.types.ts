@@ -111,4 +111,7 @@ export interface RepositoryProps {
   watchers: number;
   watchers_count: number;
   web_commit_signoff_required: boolean;
+
+  // Custom
+  languages: string[];
 }

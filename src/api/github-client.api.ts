@@ -13,15 +13,32 @@ const client = new Octokit({
 export const getReposByIdsOrNames = async (
   selectedRepos: (string | number)[]
 ) => {
-  const repos = await client.repos.listForAuthenticatedUser({
+  const reposResponse = await client.repos.listForAuthenticatedUser({
     per_page: 100,
   });
 
-  const filteredRepos = repos.data.filter(
-    ({ name, id }) => selectedRepos.includes(name) || selectedRepos.includes(id)
-  );
+  const repos = [];
 
-  return filteredRepos;
+  // To maintain the order of selected repositories
+  selectedRepos.forEach((repoIdentifier) => {
+    const repo = reposResponse.data.find(({ name, id }) => {
+      return name === repoIdentifier || id === repoIdentifier;
+    });
+
+    repos.push(repo);
+  });
+
+  for (const repo of repos) {
+    const languageResponse = await getRepoLanguages(repo.name);
+
+    const languages = Object.keys(languageResponse.data);
+
+    if (languages.length > 8) languages.length = 8;
+
+    repo.languages = languages;
+  }
+
+  return repos;
 };
 
 export const getRepos = async () => {

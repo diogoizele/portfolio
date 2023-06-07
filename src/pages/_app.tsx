@@ -1,5 +1,6 @@
 import { AppProps } from "next/app";
 import { useRouter } from "next/router";
+import "react-loading-skeleton/dist/skeleton.css";
 
 import { GlobalStyle } from "styles/global";
 import { Header } from "components";
