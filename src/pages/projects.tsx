@@ -20,7 +20,7 @@ export default function Projects({ repositories }: Props) {
       <Container>
         <Title>Projects.</Title>
         <List>
-          {repositories.map((repo) => (
+          {repositories?.map((repo) => (
             <ProjectCard project={repo} key={repo.id} />
           ))}
         </List>
