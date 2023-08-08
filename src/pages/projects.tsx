@@ -1,5 +1,6 @@
 import { getReposByIdsOrNames } from "api";
 import { ProjectCard, ProjectHeader } from "components";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 
 import { Container, Title, List } from "styles/pages/projects.styles";
 import { RepositoryProps } from "types";
@@ -8,7 +9,9 @@ interface Props {
   repositories: RepositoryProps[];
 }
 
-export default function Projects({ repositories }: Props) {
+export default function Projects({
+  repositories,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <ProjectHeader
@@ -29,14 +32,15 @@ export default function Projects({ repositories }: Props) {
   );
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   try {
     const repositories = await getReposByIdsOrNames([
       "portfolio",
+      "minha-grana",
+      "minha-grana-api",
       "gofinance",
       "github-users",
       "character-creator",
-      "minha-grana",
       "user-register-java",
       "landing-page-teufuturo2021",
       "Freeway",
@@ -49,9 +53,10 @@ export async function getStaticProps() {
       props: { repositories },
       revalidate: 60 * 60 * 24, // 24 hours
     };
-  } catch {
+  } catch (e) {
+    console.log(e);
     return {
-      props: {},
+      props: { repositories: [] },
     };
   }
-}
+};

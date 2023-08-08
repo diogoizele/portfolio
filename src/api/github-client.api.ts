@@ -14,28 +14,38 @@ export const getReposByIdsOrNames = async (
   selectedRepos: (string | number)[]
 ) => {
   const reposResponse = await client.repos.listForAuthenticatedUser({
-    per_page: 100,
+    per_page: 150,
   });
 
   const repos = [];
 
   // To maintain the order of selected repositories
   selectedRepos.forEach((repoIdentifier) => {
-    const repo = reposResponse.data.find(({ name, id }) => {
-      return name === repoIdentifier || id === repoIdentifier;
+    const repo = reposResponse.data.find((repository) => {
+      return (
+        repository?.name === repoIdentifier || repository?.id === repoIdentifier
+      );
     });
 
-    repos.push(repo);
+    if (repo) {
+      repos.push(repo);
+    } else {
+      console.error("Repository not found:", repoIdentifier);
+    }
   });
 
   for (const repo of repos) {
-    const languageResponse = await getRepoLanguages(repo.name);
+    try {
+      const languageResponse = await getRepoLanguages(repo?.name);
 
-    const languages = Object.keys(languageResponse.data);
+      const languages = Object.keys(languageResponse.data);
 
-    if (languages.length > 8) languages.length = 8;
+      if (languages.length > 8) languages.length = 8;
 
-    repo.languages = languages;
+      repo.languages = languages;
+    } catch (e) {
+      console.error("Could not get languages for repo:", repo?.name);
+    }
   }
 
   return repos;
