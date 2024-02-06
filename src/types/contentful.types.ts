@@ -54,6 +54,7 @@ export interface CompanyEntry {
   webSite: string;
   image: ContentfulImageProps;
   isCurrentJob: boolean;
+  currentStartDate: string;
   highlights: HighlightCompanyProps[];
 }
 
@@ -66,6 +67,7 @@ export interface CompanyProps {
   link: string;
   image: string;
   isCurrentJob: boolean;
+  currentStartDate: string;
   highlights: HighlightCompanyProps[];
 }
 export interface SocialMediaProps {
