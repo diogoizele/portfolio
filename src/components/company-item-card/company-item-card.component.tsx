@@ -1,73 +1,49 @@
 import React from "react";
 import { useTheme } from "styled-components";
-import Link from "next/link";
 
 import { Text } from "components";
+import { FONT_SIZE } from "styles";
 
 import {
   Container,
   CompanyLogo,
   LogoContainer,
-  ShadowRightImage,
-  HightlightsContainer,
-  ContainerHighlightCard,
-  Company,
+  RoleContainer,
 } from "./company-item-card.styles";
 import type { CompanyProps } from "types";
 
-interface Props extends CompanyProps {
-  onPause: () => void;
-  onPlay: () => void;
+interface Props {
+  company: CompanyProps;
+  currentJob: boolean;
+  highlighted: boolean;
 }
 
-export const HighlightCard = ({ icon: Icon, title }) => {
-  const { colors } = useTheme();
-  const fontColor = colors.textSecondary;
-
-  return (
-    <ContainerHighlightCard>
-      <Icon color={colors.primary} size={28} />
-      <Text.Body key={title} color={fontColor} fontSize="0.9rem">
-        {title}
-      </Text.Body>
-    </ContainerHighlightCard>
-  );
-};
-
 export function ComponentItemCard({
-  description,
-  image,
-  link,
-  name,
-  period,
-  role,
-  highlights,
-  onPause,
-  onPlay,
+  company: { image, name, period, role },
+  currentJob,
+  highlighted,
 }: Props) {
   const { colors } = useTheme();
 
+  const getSimplePeriod = (period: string) => {
+    const [timePeriod] = period.split("·");
+
+    return timePeriod;
+  };
+
   return (
-    <Container onMouseEnter={onPause} onMouseLeave={onPlay}>
-      <Company component="h3" fontSize="2rem">
-        <Link href={link} target="_blank">
-          {name}
-        </Link>
-      </Company>
-      <Text.Subtitle color={colors.textTertiary}>{role}</Text.Subtitle>
-      <Text.Subtitle component="strong" color={colors.textTertiary}>
-        {period}
-      </Text.Subtitle>
-      <HightlightsContainer>
-        {highlights.map(({ title, icon }) => (
-          <HighlightCard key={title} icon={icon} title={title} />
-        ))}
-      </HightlightsContainer>
-      <Text.Body color={colors.textSecondary}>{description}</Text.Body>
-      <ShadowRightImage />
-      <LogoContainer>
-        <CompanyLogo src={image} alt={name} width={320} height={320} />
+    <Container>
+      <LogoContainer isCurrentJob={currentJob} isHighlighted={highlighted}>
+        <CompanyLogo src={image} alt={name} width={64} height={64} />
       </LogoContainer>
+      <RoleContainer>
+        <Text.Subtitle fontSize={FONT_SIZE.REGULAR} color={colors.textTertiary}>
+          {role}
+        </Text.Subtitle>
+      </RoleContainer>
+      <Text.Subtitle component="strong" color={colors.textTertiary}>
+        {getSimplePeriod(period)}
+      </Text.Subtitle>
     </Container>
   );
 }

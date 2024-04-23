@@ -1,16 +1,9 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import { HiPause, HiPlay } from "react-icons/hi2";
+import { MouseEvent, useEffect, useRef, useState } from "react";
 
 import { ComponentItemCard } from "components";
 import { useWindow } from "hooks";
 
-import {
-  Bullet,
-  BulletsContainer,
-  CompanyContainer,
-  Container,
-  IconContainer,
-} from "./companies.styles";
+import { CompanyContainer, Container, Line } from "./companies.styles";
 
 import type { CompanyProps } from "types";
 
@@ -19,89 +12,91 @@ interface Props {
 }
 
 export function Companies({ companies }: Props) {
-  const currentIndex = useRef(0);
+  const lineRef = useRef<HTMLDivElement>(null);
 
   const { width } = useWindow();
 
-  const [currentCompany, setCurrentCompany] = useState<CompanyProps>(
-    companies[currentIndex.current]
-  );
-  const [isPaused, setIsPaused] = useState(false);
+  const [position, setPosition] = useState(0);
+  const [showTrail, setShowTrail] = useState(false);
+  const [trailWidth, setTrailWidth] = useState(0);
+  const [canExecute, setCanExecute] = useState(true);
+  const [highlighted, setHighlighted] = useState(companies.length - 1);
 
-  const isMobileView = width && width <= 590;
-  const miliseconds = isMobileView ? 6 : 3;
+  // const isMobileView = width && width <= 590;
 
-  const handleShowCompany = (company: CompanyProps, index: number) => {
-    setCurrentCompany(company);
-    currentIndex.current = index;
+  const sortByCompanyId = (type?: "desc" | "asc") => {
+    if (type === "desc") return companies.sort((a, b) => b.id - a.id);
+    return companies.sort((a, b) => a.id - b.id);
   };
 
-  const handleToggleMobileCarrousel = () => {
-    setIsPaused((current) => !current);
-  };
+  const showTrailOnMouseMove = (e: MouseEvent) => {
+    const { type } = e;
 
-  const handlePause = () => {
-    setIsPaused(true);
-  };
-
-  const handlePlay = () => {
-    setIsPaused(false);
-  };
-
-  const moveCarrousel = useCallback(() => {
-    const nextIndex = currentIndex.current + 1;
-    const nextCompany = companies[nextIndex];
-
-    if (nextCompany) {
-      handleShowCompany(nextCompany, nextIndex);
+    if (type === "mouseenter") {
+      setShowTrail(true);
     } else {
-      handleShowCompany(companies[0], 0);
+      setHighlighted(companies.length - 1);
+      setShowTrail(false);
     }
-  }, [currentIndex, companies]);
+  };
+
+  const showTrailCurrentPosition = (e: MouseEvent) => {
+    if (!canExecute) return;
+    setCanExecute(false);
+
+    const { clientX } = e;
+    const { offsetWidth } = lineRef.current;
+    const rawMousePosition = clientX - (width - offsetWidth) / 2;
+    let mousePosition = rawMousePosition;
+
+    if (rawMousePosition < 0) {
+      mousePosition = 0;
+    } else if (rawMousePosition > offsetWidth) {
+      mousePosition = offsetWidth;
+    }
+
+    const value = Math.floor(mousePosition / trailWidth);
+    setHighlighted(value);
+
+    setPosition(trailWidth * value);
+
+    setTimeout(() => {
+      setCanExecute(true);
+    }, 200);
+  };
 
   useEffect(() => {
-    if (!isPaused) {
-      const interval = setInterval(moveCarrousel, miliseconds * 1000);
-
-      return () => clearInterval(interval);
+    if (lineRef.current) {
+      const { offsetWidth } = lineRef.current;
+      const sectionWidth = offsetWidth / companies.length;
+      setTrailWidth(sectionWidth);
     }
-  }, [isPaused, isMobileView, miliseconds, moveCarrousel]);
-
-  useEffect(() => {
-    if (!isMobileView) {
-      setIsPaused(false);
-    }
-  }, [isMobileView]);
+  }, [lineRef]);
 
   return (
     <Container>
-      <CompanyContainer>
-        {isMobileView && (
-          <IconContainer
-            title={isPaused ? "Play" : "Pause"}
-            onClick={handleToggleMobileCarrousel}
-          >
-            {isPaused ? <HiPlay size={28} /> : <HiPause size={28} />}
-          </IconContainer>
-        )}
-        <ComponentItemCard
-          {...currentCompany}
-          onPlay={handlePlay}
-          onPause={handlePause}
-        />
-      </CompanyContainer>
-      <BulletsContainer>
-        {companies.map((company, index) => (
-          <Bullet
-            onMouseEnter={handlePause}
-            onMouseLeave={handlePlay}
-            isActive={currentIndex.current === index}
-            onClick={() => handleShowCompany(company, index)}
+      <CompanyContainer
+        onMouseEnter={showTrailOnMouseMove}
+        onMouseLeave={showTrailOnMouseMove}
+        onMouseMoveCapture={showTrailCurrentPosition}
+      >
+        {sortByCompanyId("desc").map((company, index) => (
+          <ComponentItemCard
+            company={company}
+            currentJob={index === companies.length - 1}
+            highlighted={
+              index === highlighted && index === companies.length - 1
+            }
             key={company.id}
-            title={`experience ${index + 1}`}
           />
         ))}
-      </BulletsContainer>
+        <Line
+          ref={lineRef}
+          position={position}
+          isShowing={showTrail}
+          width={trailWidth}
+        />
+      </CompanyContainer>
     </Container>
   );
 }

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { linearGradient } from "utils";
 
 export const Container = styled.div`
   display: flex;
@@ -13,68 +14,57 @@ export const Container = styled.div`
 
 export const CompanyContainer = styled.section`
   display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
 
   width: 100%;
 
   position: relative;
+  left: 0;
 `;
 
-export const IconContainer = styled.button`
-  position: absolute;
-  top: 8px;
-  left: 8px;
-
-  font-size: 2.5rem;
-
-  z-index: 2;
-
-  opacity: 0.8;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border: none;
-  background: none;
-
-  color: ${({ theme }) => theme.colors.textQuaternary};
-`;
-
-export const BulletsContainer = styled.div`
-  display: flex;
-
-  align-items: center;
-  gap: 0.8rem;
-`;
-
-interface BulletProps {
-  isActive: boolean;
+interface LineProps {
+  position: number;
+  isShowing: boolean;
+  width: number;
 }
 
-export const Bullet = styled.button<BulletProps>`
-  width: 12px;
-  height: 12px;
+export const Line = styled.div<LineProps>`
+  width: 100%;
+  height: 4px;
 
-  border: ${({ theme, isActive }) =>
-    `1px solid ${
-      isActive ? theme.colors.primary : theme.colors.textQuaternary
-    }`};
-  background: ${({ theme, isActive }) =>
-    isActive ? theme.colors.primary : theme.colors.backgroundAlternative};
+  background: ${({ theme }) => theme.colors.backgroundTertiary};
 
-  border-radius: 1rem;
+  border-radius: 2px;
 
-  cursor: pointer;
+  position: absolute;
+  z-index: -1;
+  top: 42px;
 
-  transition: all 0.2s ease-in-out;
+  &::before {
+    content: "";
+    height: 4px;
+    width: ${({ width }) => width}px;
 
-  &:hover {
-    transform: scale(1.1);
-    filter: brightness(1.1);
+    background: ${({ theme }) =>
+      linearGradient(90, [
+        theme.colors.backgroundTertiary,
+        theme.colors.secondary,
+        theme.colors.backgroundTertiary,
+      ])};
+
+    border-radius: 2px;
+
+    position: absolute;
+    left: ${({ position }) => position}px;
+
+    opacity: ${({ isShowing }) => (isShowing ? "1" : "0")};
+
+    transition: left 400ms ease-in-out, opacity 0.5s;
+
+    box-shadow: 0 0 150px 10px ${({ theme }) => theme.colors.secondary};
+
+    z-index: -1;
   }
 `;

@@ -158,14 +158,13 @@ export default function About({ spotify, experiences, education }: Props) {
 // https://nextjs.org/learn/basics/api-routes/api-routes-details
 export async function getStaticProps() {
   try {
-    const spotify = await currentPlayingTrack();
+    // const spotify = await currentPlayingTrack();
 
     const experiences = await getExperienceContent();
     const education = await getEducationContent();
 
     return {
       props: {
-        spotify,
         experiences,
         education,
       },
