@@ -31,11 +31,11 @@ export const SocialMedia = () => {
         icon={<FiLinkedin size={ICONS_SIZE} />}
         title="LinkedIn"
       />
-      <SocialMediaLink
+      {/* <SocialMediaLink
         href="https://twitter.com/diogoizele"
         icon={<FiTwitter size={ICONS_SIZE} />}
         title="Twitter"
-      />
+      /> */}
       <SocialMediaLink
         href="https://www.youtube.com/@diogoizele"
         icon={<FiYoutube size={ICONS_SIZE} />}
