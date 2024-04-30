@@ -9,3 +9,4 @@ export { ComponentItemCard } from "./company-item-card/company-item-card.compone
 export { ProjectHeader } from "./project-header/project-header.component";
 export { ProjectCard } from "./project-card/project-card.component";
 export { ContactSocialMedia } from "./contact-social-media/contact-social-media.component";
+export { LangSwitch } from "./lang-switch/lang-switch.component";

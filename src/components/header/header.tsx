@@ -1,7 +1,11 @@
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useScrollDirection } from "react-use-scroll-direction";
 
 import { HiMenu } from "react-icons/hi";
+
+import { useApp, useThemeMode, useWindow } from "hooks";
+import { LangSwitch, ThemeSwitch } from "components";
 
 import miniProfilePic from "assets/images/mini-profile-pic.webp";
 
@@ -18,9 +22,6 @@ import {
   HeaderSubContainer,
   ContainerWrapper,
 } from "./header.styles";
-import { useEffect, useState } from "react";
-import { useThemeMode, useWindow } from "hooks";
-import { ThemeSwitch } from "..";
 
 export type NavLinkProps = {
   href: string;
@@ -45,6 +46,7 @@ export const Header = () => {
   const { width, positionY } = useWindow();
   const { asPath } = useRouter();
   const { isScrolling, isScrollingDown, isScrollingUp } = useScrollDirection();
+  const { strings } = useApp();
 
   const isMobileView = width && width <= 590;
 
@@ -78,6 +80,10 @@ export const Header = () => {
     }
   }, [isScrolling, positionY]);
 
+  useEffect(() => {
+    console.log(strings);
+  }, [strings]);
+
   return (
     <ContainerWrapper className={!isMobileView && containerClassName}>
       <Container>
@@ -94,7 +100,11 @@ export const Header = () => {
           </PersonalInformation>
           {isMobileView && (
             <HamburguerMenuButton
-              title={mobileExpandedMenu ? "Close Menu" : "Open Menu"}
+              title={
+                mobileExpandedMenu
+                  ? strings.header.mobile.view.close
+                  : strings.header.mobile.view.open
+              }
               isMenuOpen={mobileExpandedMenu}
               onClick={handleOpenMobileMenu}
             >
@@ -110,28 +120,28 @@ export const Header = () => {
               href="/"
               onClick={handleCloseMobileMenu}
             >
-              Home
+              {strings.header.home}
             </NavLink>
             <NavLink
               isActive={asPath === "/about"}
               href="/about"
               onClick={handleCloseMobileMenu}
             >
-              About
+              {strings.header.about}
             </NavLink>
             <NavLink
               isActive={asPath === "/projects"}
               href="/projects"
               onClick={handleCloseMobileMenu}
             >
-              Projects
+              {strings.header.projects}
             </NavLink>
             <NavLink
               isActive={asPath === "/contact"}
               href="/contact"
               onClick={handleCloseMobileMenu}
             >
-              Contact
+              {strings.header.contact}
             </NavLink>
           </NavList>
 
@@ -140,6 +150,8 @@ export const Header = () => {
             onToggle={onToggleThemeMode}
             mode={themeMode}
           />
+
+          <LangSwitch isMenuOpen={mobileExpandedMenu} />
         </Nav>
       </Container>
     </ContainerWrapper>

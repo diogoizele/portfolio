@@ -5,13 +5,9 @@ import Link from "next/link";
 import { injectAppIconsAtContentful, logs } from "utils";
 import { Text, ResumeButton, SpotifyCard, ProjectHeader } from "components";
 import { FONT_STYLES } from "styles";
-import { BEHAVIORAL, CONTACT, PRESENTATION, ROLES } from "utils/static";
 import { Companies, Education } from "containers";
-import {
-  getEducationContent,
-  getExperienceContent,
-  currentPlayingTrack,
-} from "api";
+import { getEducationContent, getExperienceContent } from "api";
+import { useApp } from "hooks";
 
 import avatarImg from "assets/images/memoji-diogo-izele.png";
 import myPictureImg from "assets/images/i-reading-pic.jpeg";
@@ -41,12 +37,13 @@ interface Props {
 
 export default function About({ spotify, experiences, education }: Props) {
   const { colors } = useTheme();
+  const { strings } = useApp();
 
   const [roles] = useTypewriter({
     loop: true,
 
     delaySpeed: 2000,
-    words: ROLES,
+    words: strings.about.greetings.fifth.roles,
   });
 
   return (
@@ -59,7 +56,7 @@ export default function About({ spotify, experiences, education }: Props) {
       />
       <Container>
         <Title id="about-me">
-          <Link href="#about-me">About Me.</Link>
+          <Link href="#about-me">{strings.about.title}</Link>
         </Title>
         <Content>
           <ImageContainer>
@@ -79,22 +76,22 @@ export default function About({ spotify, experiences, education }: Props) {
               fontStyle={FONT_STYLES.BOLD}
               color={colors.textTertiary}
             >
-              Hi there! 👋
+              {strings.about.greetings.first}
             </Text.Body>
             <Text.Subtitle
               component="strong"
               fontStyle={FONT_STYLES.BOLD}
               color={colors.textSecondary}
-              fontSize="3rem"
+              fontSize="2.5rem"
             >
-              My name is
+              {strings.about.greetings.second}
             </Text.Subtitle>
             <Text.Title
               component="h2"
               fontSize="4.5rem"
               fontStyle={FONT_STYLES.BLACK}
             >
-              Diogo Izele
+              {strings.about.greetings.third}
             </Text.Title>
             <Text.Body
               component="p"
@@ -102,27 +99,24 @@ export default function About({ spotify, experiences, education }: Props) {
               fontStyle={FONT_STYLES.BOLD}
               color={colors.textTertiary}
             >
-              And I&apos;m a {/* &apos; = '  */}
+              {strings.about.greetings.fourth}
             </Text.Body>
-            <Text.Title fontSize="3.5rem">
+            <Text.Title color={colors.secondary} fontSize="1.9rem">
               <span>{roles}</span>
-              <Cursor cursorColor={colors.primary} />
-            </Text.Title>
-            <Text.Title fontSize="2.5rem" color={colors.quaternary}>
-              Developer
+              <Cursor cursorColor={colors.secondary} />
             </Text.Title>
           </PersonalContainer>
         </Content>
         <Content>
           <ParagraphiesContainer>
             <Text.Body fontSize="1.1rem" mediaSize="1.2rem">
-              {PRESENTATION}
+              {strings.about.presentation.first}
             </Text.Body>
             <Text.Body fontSize="1.1rem" mediaSize="1.2rem">
-              {BEHAVIORAL}
+              {strings.about.presentation.second}
             </Text.Body>
             <Text.Body fontSize="1.1rem" mediaSize="1.2rem">
-              {CONTACT}
+              {strings.about.presentation.third}
             </Text.Body>
             <ResumeButton />
           </ParagraphiesContainer>

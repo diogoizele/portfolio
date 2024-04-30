@@ -22,14 +22,14 @@ export const LogoContainer = styled.div<CurrentCompanyProps>`
   filter: ${({ isHighlighted }) =>
     isHighlighted ? "grayscale(0)" : "grayscale(100%)"};
   border-color: ${({ isHighlighted, theme }) =>
-    isHighlighted && theme.colors.secondary};
+    isHighlighted && theme.colors.primary};
 
   margin-top: ${({ isCurrentJob }) => isCurrentJob && "-6px"};
 
   transition: border-color, filter, opacity 480ms;
 
   &:hover {
-    border-color: ${({ theme }) => theme.colors.secondary};
+    border-color: ${({ theme }) => theme.colors.primary};
   }
 `;
 
@@ -52,7 +52,7 @@ export const Container = styled.section`
   &:hover ${LogoContainer} {
     transition: border-color, filter, opacity 480ms;
 
-    border-color: ${({ theme }) => theme.colors.secondary};
+    border-color: ${({ theme }) => theme.colors.primary};
     filter: grayscale(0);
     opacity: 1;
   }

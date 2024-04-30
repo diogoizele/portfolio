@@ -1,6 +1,7 @@
 import { useTheme } from "styled-components";
 import { HiOutlineDocumentDownload } from "react-icons/hi";
 
+import { useApp } from "hooks";
 import { URIS } from "config/constants";
 
 import {
@@ -12,6 +13,8 @@ import {
 
 export const ResumeButton = () => {
   const { isDarkMode } = useTheme();
+  const { strings } = useApp();
+
   const { CURRICULUM } = URIS;
 
   const curriculumLink = isDarkMode ? CURRICULUM.DARK : CURRICULUM.LIGHT;
@@ -22,11 +25,11 @@ export const ResumeButton = () => {
         <IconContainer>
           <HiOutlineDocumentDownload
             size={20}
-            title="Download Diogo Izele's Resume PDF"
+            title={strings.about.presentation.download.description}
           />
         </IconContainer>
 
-        <Text>Download Resume</Text>
+        <Text>{strings.about.presentation.download.title}</Text>
       </ButtonLink>
     </Container>
   );

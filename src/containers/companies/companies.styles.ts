@@ -50,7 +50,7 @@ export const Line = styled.div<LineProps>`
     background: ${({ theme }) =>
       linearGradient(90, [
         theme.colors.backgroundTertiary,
-        theme.colors.secondary,
+        theme.colors.primary,
         theme.colors.backgroundTertiary,
       ])};
 

@@ -13,6 +13,7 @@ import {
   TerminalLsLinksContainer,
   TerminalTitle,
 } from "./terminal.styles";
+import { useApp } from "../../hooks";
 
 const TerminalHeader = () => {
   const theme = useTheme();
@@ -30,6 +31,8 @@ const TerminalHeader = () => {
 };
 
 export const Terminal = () => {
+  const { strings } = useApp();
+
   return (
     <Container>
       <TerminalHeader />
@@ -41,10 +44,18 @@ export const Terminal = () => {
         <TerminalCommandContainer>
           <TerminalCommand command="ls" path="~/portfolio" />
           <TerminalLsLinksContainer>
-            <TerminalLsLink href="/">Home</TerminalLsLink>
-            <TerminalLsLink href="/about">About</TerminalLsLink>
-            <TerminalLsLink href="/projects">Projects</TerminalLsLink>
-            <TerminalLsLink href="/contact">Contact</TerminalLsLink>
+            <TerminalLsLink href="/">
+              {strings.home.terminal.home}
+            </TerminalLsLink>
+            <TerminalLsLink href="/about">
+              {strings.home.terminal.about}
+            </TerminalLsLink>
+            <TerminalLsLink href="/projects">
+              {strings.home.terminal.projects}
+            </TerminalLsLink>
+            <TerminalLsLink href="/contact">
+              {strings.home.terminal.contact}
+            </TerminalLsLink>
           </TerminalLsLinksContainer>
         </TerminalCommandContainer>
         <TerminalCommandContainer>
@@ -53,24 +64,27 @@ export const Terminal = () => {
         <TerminalCommandContainer>
           <TerminalCommand
             command="echo"
-            argument="Hello, my name is Diogo Izele"
+            argument={strings.home.terminal.greetings}
             path="~"
           />
-          <TerminalResponse response="Hello, my name is Diogo Izele" />
+          <TerminalResponse response={strings.home.terminal.greetings} />
         </TerminalCommandContainer>
         <TerminalCommandContainer>
           <TerminalCommand
             command="echo"
-            argument="I'm a Software developer"
+            argument={strings.home.terminal.subtitle}
             path="~"
           />
-          <TerminalResponse response="I'm a Software developer" />
+          <TerminalResponse response={strings.home.terminal.subtitle} />
         </TerminalCommandContainer>
         <TerminalCommandContainer>
           <TerminalCommand
             animated
             command="echo"
-            argument={["And this is my portfolio", "Welcome everyone!"]}
+            argument={[
+              strings.home.terminal.typing.first,
+              strings.home.terminal.typing.second,
+            ]}
             path="~"
           />
         </TerminalCommandContainer>
