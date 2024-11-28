@@ -22,7 +22,8 @@ interface Props {
 }
 
 export default function Contact({ socialMedias }: Props) {
-  const emailAddress = "diogogabrielizele@gmail.com";
+  const emailAddress =
+    process.env.NEXT_PUBLIC_EMAIL_ADDRESS || "dev@diogoizele.com";
   const socialMediaList = injectAppIconsAtContentful(socialMedias);
 
   function handleSendEmail() {
