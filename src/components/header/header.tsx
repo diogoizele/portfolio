@@ -5,9 +5,9 @@ import { useScrollDirection } from "react-use-scroll-direction";
 import { HiMenu } from "react-icons/hi";
 
 import { useApp, useThemeMode, useWindow } from "hooks";
-import { LangSwitch, ThemeSwitch } from "components";
+import { ThemeSwitch } from "components";
 
-import miniProfilePic from "assets/images/mini-profile-pic.webp";
+import miniProfilePic from "assets/images/mini-profile-pic-2.webp";
 
 import {
   Container,
@@ -21,6 +21,7 @@ import {
   Avatar,
   HeaderSubContainer,
   ContainerWrapper,
+  AvatarContainer,
 } from "./header.styles";
 
 export type NavLinkProps = {
@@ -89,13 +90,15 @@ export const Header = () => {
       <Container>
         <HeaderSubContainer className={containerClassName}>
           <PersonalInformation>
-            <Avatar
-              src={miniProfilePic}
-              alt="Diogo Izele's avatar"
-              width={48}
-              height={48}
-              quality={90}
-            />
+            <AvatarContainer>
+              <Avatar
+                src={miniProfilePic}
+                alt="Diogo Izele's avatar"
+                width={48}
+                height={48}
+                quality={90}
+              />
+            </AvatarContainer>
             <PersonalName>Diogo Izele</PersonalName>
           </PersonalInformation>
           {isMobileView && (
@@ -130,11 +133,11 @@ export const Header = () => {
               {strings.header.about}
             </NavLink>
             <NavLink
-              isActive={asPath === "/projects"}
-              href="/projects"
+              isActive={false}
+              href="https://blog.diogoizele.com"
               onClick={handleCloseMobileMenu}
             >
-              {strings.header.projects}
+              {strings.header.blog}
             </NavLink>
             <NavLink
               isActive={asPath === "/contact"}
@@ -151,7 +154,7 @@ export const Header = () => {
             mode={themeMode}
           />
 
-          <LangSwitch isMenuOpen={mobileExpandedMenu} />
+          {/* <LangSwitch isMenuOpen={mobileExpandedMenu} /> */}
         </Nav>
       </Container>
     </ContainerWrapper>

@@ -50,8 +50,8 @@ export const Terminal = () => {
             <TerminalLsLink href="/about">
               {strings.home.terminal.about}
             </TerminalLsLink>
-            <TerminalLsLink href="/projects">
-              {strings.home.terminal.projects}
+            <TerminalLsLink href="https://blog.diogoizele.com">
+              {strings.home.terminal.blog}
             </TerminalLsLink>
             <TerminalLsLink href="/contact">
               {strings.home.terminal.contact}

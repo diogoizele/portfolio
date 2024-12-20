@@ -79,10 +79,28 @@ export const Container = styled.div`
   }
 `;
 
+export const AvatarContainer = styled.div`
+  display: flex;
+  align-items: center;
+
+  box-sizing: content-box;
+
+  background-color: ${colors.gray.A400};
+
+  border-radius: 50%;
+`;
+
 export const Avatar = styled(Image)`
   border-radius: 50%;
 
-  box-shadow: 0 0 1px ${({ theme }) => theme.colors.textDisabled};
+  transform: scale(0.96);
+
+  transition: transform 200ms ease-in-out, padding 200ms ease-in-out;
+
+  border: 0px;
+  :hover {
+    transform: scale(1.05);
+  }
 `;
 
 export const PersonalInformation = styled.div`

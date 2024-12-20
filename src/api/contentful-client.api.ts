@@ -6,8 +6,7 @@ import { SocialMediaModel, companyModel, educationModel } from "models";
 
 import type { CompanyEntry, EducationEntry, SocialMediaEntry } from "types";
 
-const { CONTENTFUL_ACCESS_TOKEN } = process.env;
-const { CONTENTFUL_SPACE } = process.env;
+const { CONTENTFUL_ACCESS_TOKEN, CONTENTFUL_SPACE } = process.env;
 
 const client = createClient({
   space: CONTENTFUL_SPACE,

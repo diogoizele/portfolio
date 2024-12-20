@@ -3,6 +3,7 @@ export const strings = {
     home: "Home",
     about: "About",
     projects: "Projects",
+    blog: "Blog",
     contact: "Contact",
     mobile: {
       view: {
@@ -30,6 +31,7 @@ export const strings = {
       home: "Home",
       about: "About",
       projects: "Projects",
+      blog: "Blog",
       contact: "Contact",
       greetings: "Hello, my name is Diogo Izele",
       subtitle: "I'm a Full Stack developer",
