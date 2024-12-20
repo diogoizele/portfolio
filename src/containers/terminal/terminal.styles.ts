@@ -57,7 +57,7 @@ export const TerminalCommandContainer = styled.span`
   flex-direction: column-reverse;
   width: 100%;
 
-  height: 17rem;
+  height: 15.6rem;
   gap: 1rem;
   overflow-y: auto;
 
@@ -66,6 +66,14 @@ export const TerminalCommandContainer = styled.span`
   }
 
   scrollbar-width: none;
+
+  @media (max-width: 1080px) {
+    height: 17rem;
+  }
+
+  @media (max-width: 720px) {
+    height: 18.5rem;
+  }
 `;
 
 export const TerminalHeaderContainer = styled.header`
