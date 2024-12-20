@@ -41,12 +41,11 @@ export const Container = styled.div`
 
 export const TerminalContentContainer = styled.div`
   width: 100%;
-
-  padding: 1rem;
+  margin-top: 1rem;
+  height: 24rem;
 
   display: flex;
   flex-direction: column;
-  align-self: flex-start;
 
   gap: 0.5rem;
 
@@ -55,9 +54,18 @@ export const TerminalContentContainer = styled.div`
 
 export const TerminalCommandContainer = styled.span`
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
+  width: 100%;
 
-  gap: 0.5rem;
+  height: 17rem;
+  gap: 1rem;
+  overflow-y: auto;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  scrollbar-width: none;
 `;
 
 export const TerminalHeaderContainer = styled.header`
@@ -156,20 +164,69 @@ export const TerminalLsCommands = styled.span`
   color: ${({ theme }) => theme.colors.textSecondary};
 `;
 
-export const TerminalLsLinksContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-
-  gap: 0.5rem;
+export const TerminalInput = styled.input`
+  width: 100%;
+  height: 32px;
+  padding: 0 1rem;
+  border: none;
+  background: transparent;
+  outline: none;
+  color: ${({ theme }) => theme.colors.textPrimary};
+  position: absolute;
+  bottom: 0.8rem;
 `;
 
-export const TerminalLsLink = styled(Link)`
+export const TerminalInputOverlay = styled.div`
+  height: 32px;
+  padding-left: 1rem;
+  border: none;
+  background: transparent;
+  outline: none;
+  color: ${({ theme }) => theme.colors.textPrimary};
+  position: absolute;
+  bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  white-space: pre-wrap;
+`;
+
+export const Divider = styled.div`
+  margin: 0 auto;
+  width: 98%;
+  height: 1px;
+  background: ${({ theme }) => theme.colors.backgroundQuaternary};
+  opacity: 0.1;
+`;
+
+export const TerminalInputContainer = styled.div`
+  display: flex;
+  gap: 0.2rem;
+  width: 100%;
+`;
+
+export const Path = styled.div`
+  color: ${({ theme }) => theme.colors.primary};
+  font-weight: 600;
   font-size: 1.2rem;
+  padding-left: 1rem;
+`;
 
-  color: ${({ theme }) => theme.colors.textTertiary};
+export const TerminalResponse = styled.pre<{ isCommand?: boolean }>`
+  font-size: 0.9rem;
 
-  &:hover {
-    color: ${({ theme }) => theme.colors.textSecondary};
-    transition: color 180ms ease-in-out;
-  }
+  padding: 0 1rem;
+  color: ${({ theme, isCommand }) =>
+    isCommand ? theme.colors.textPrimary : theme.colors.textTertiary};
+  white-space: pre-wrap;
+`;
+
+export const TerminalRecognizedCommand = styled.span`
+  color: ${({ theme }) => theme.colors.primary};
+`;
+
+export const TerminalResponseContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.5rem;
 `;
