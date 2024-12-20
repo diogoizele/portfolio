@@ -5,6 +5,7 @@ export const strings: typeof enStrings.strings = {
     home: "Início",
     about: "Sobre",
     projects: "Projetos",
+    blog: "Blog",
     contact: "Contato",
     mobile: {
       view: {
@@ -32,6 +33,7 @@ export const strings: typeof enStrings.strings = {
       home: "Início",
       about: "Sobre",
       projects: "Projetos",
+      blog: "Blog",
       contact: "Contato",
       greetings: "Olá, me chamo Diogo Izele",
       subtitle: "Sou um desenvolvedor Full Stack",
