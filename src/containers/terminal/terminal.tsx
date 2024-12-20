@@ -169,13 +169,9 @@ export const Terminal = () => {
       <TerminalContentContainer>
         <TerminalCommandContainer ref={terminalContainerRef}>
           {terminalResponses.map((response, index) => (
-            <TerminalResponseContainer>
-              <TerminalResponse key={index} isCommand>
-                {response.command}
-              </TerminalResponse>
-              <TerminalResponse key={`${index}-response`}>
-                {response.response}
-              </TerminalResponse>
+            <TerminalResponseContainer key={index}>
+              <TerminalResponse isCommand>{response.command}</TerminalResponse>
+              <TerminalResponse>{response.response}</TerminalResponse>
             </TerminalResponseContainer>
           ))}
         </TerminalCommandContainer>
