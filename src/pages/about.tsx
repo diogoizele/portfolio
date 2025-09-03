@@ -20,7 +20,6 @@ import {
   MyPicture,
   ParagraphiesContainer,
   PersonalContainer,
-  Title,
 } from "styles/pages/about.styles";
 
 import type {
@@ -28,6 +27,7 @@ import type {
   EducationProps,
   SpotifyCurrentTrackResponse,
 } from "types";
+import { AnimatedTitle } from "../components/animated-title/animated-title";
 
 interface Props {
   spotify?: SpotifyCurrentTrackResponse;
@@ -55,9 +55,9 @@ export default function About({ spotify, experiences, education }: Props) {
         url="https://diogoizele.com/about"
       />
       <Container>
-        <Title id="about-me">
+        <AnimatedTitle id="about-me">
           <Link href="#about-me">{strings.about.title}</Link>
-        </Title>
+        </AnimatedTitle>
         <Content>
           <ImageContainer>
             <Memoji
@@ -131,17 +131,17 @@ export default function About({ spotify, experiences, education }: Props) {
             />
           </ImageContainer>
         </Content>
-        <Title id="experiences">
+        <AnimatedTitle id="experiences">
           <Link href="#experiences">Experiences.</Link>
-        </Title>
+        </AnimatedTitle>
         <Companies
           companies={injectAppIconsAtContentful(experiences, {
             method: "hightlight",
           })}
         />
-        <Title id="education">
+        <AnimatedTitle id="education">
           <Link href="#education">Education.</Link>
-        </Title>
+        </AnimatedTitle>
         <Education education={education} />
         <SpotifyCard {...spotify} />
       </Container>

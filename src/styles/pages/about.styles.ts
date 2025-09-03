@@ -53,19 +53,6 @@ export const Content = styled.div`
   }
 `;
 
-export const Title = styled.h2`
-  font-size: 3.5rem;
-  font-weight: 900;
-
-  color: ${({ theme }) => theme.colors.primary};
-
-  padding-top: 3rem;
-  padding-bottom: 1rem;
-
-  @media (max-width: 590px) {
-    padding-top: 5rem;
-  }
-`;
 
 export const Memoji = styled(Image)``;
 

@@ -7,7 +7,7 @@ import { HiMenu } from "react-icons/hi";
 import { useApp, useThemeMode, useWindow } from "hooks";
 import { ThemeSwitch } from "components";
 
-import miniProfilePic from "assets/images/mini-profile-pic-2.webp";
+import miniProfilePic from "assets/images/mini-profile-pic-3.webp";
 
 import {
   Container,
