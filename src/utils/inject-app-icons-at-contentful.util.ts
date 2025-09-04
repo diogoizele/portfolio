@@ -9,6 +9,8 @@ export function injectAppIconsAtContentful(
   entry: any[],
   options?: OptionsProps
 ) {
+  if (!entry || entry.length === 0) return [];
+
   switch (options?.method) {
     case "hightlight":
       return entry.map(({ highlights, ...rest }) => ({

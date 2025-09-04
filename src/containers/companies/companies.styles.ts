@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { linearGradient } from "utils";
+import { alpha, linearGradient } from "utils";
 
 export const Container = styled.div`
   display: flex;
@@ -10,61 +10,46 @@ export const Container = styled.div`
   margin-top: 0.5rem;
 
   gap: 1rem;
+  background: ${({ theme }) => alpha(theme.colors.backgroundPrimary, 0.9)};
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 `;
 
 export const CompanyContainer = styled.section`
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.5rem;
 
   width: 100%;
-
-  position: relative;
-  left: 0;
 `;
 
-interface LineProps {
-  position: number;
-  isShowing: boolean;
-  width: number;
-}
-
-export const Line = styled.div<LineProps>`
+export const TitleContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  height: 4px;
+  gap: 1rem;
 
-  background: ${({ theme }) => theme.colors.backgroundTertiary};
-
-  border-radius: 2px;
-
-  position: absolute;
-  z-index: -1;
-  top: 42px;
+  &::after {
+    content: "";
+    flex: 1;
+    background-color: ${(props) =>
+      alpha(props.theme.colors.textQuaternary, 0.2)};
+    height: 1px;
+    margin-left: 1rem;
+  }
 
   &::before {
     content: "";
-    height: 4px;
-    width: ${({ width }) => width}px;
-
-    background: ${({ theme }) =>
-      linearGradient(90, [
-        theme.colors.backgroundTertiary,
-        theme.colors.primary,
-        theme.colors.backgroundTertiary,
-      ])};
-
-    border-radius: 2px;
-
-    position: absolute;
-    left: ${({ position }) => position}px;
-
-    opacity: ${({ isShowing }) => (isShowing ? "1" : "0")};
-
-    transition: left 400ms ease-in-out, opacity 0.5s;
-
-    box-shadow: 0 0 150px 10px ${({ theme }) => theme.colors.secondary};
-
-    z-index: -1;
+    flex: 1;
+    background-color: ${(props) =>
+      alpha(props.theme.colors.textQuaternary, 0.2)};
+    height: 1px;
+    margin-right: 1rem;
   }
 `;

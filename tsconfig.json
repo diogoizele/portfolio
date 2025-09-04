@@ -21,7 +21,9 @@
       "containers/*": ["containers/*"],
       "models/*": ["models/*"],
       "pages/*": ["pages/*"],
-      "styles/*": ["styles/*"]
+      "styles/*": ["styles/*"],
+      "utils/*": ["utils/*"],
+      "static/*": ["static/*"]
     },
     "moduleResolution": "node"
   },

@@ -53,7 +53,6 @@ export const Content = styled.div`
   }
 `;
 
-
 export const Memoji = styled(Image)``;
 
 export const ImageContainer = styled.div`
@@ -119,5 +118,26 @@ export const MyPicture = styled(Image)`
   @media (max-width: 590px) {
     filter: grayscale(0);
     box-shadow: 0 0 2px ${({ theme }) => theme.colors.black};
+  }
+`;
+
+export const Footer = styled.footer`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 3rem;
+  padding: 1rem 0;
+
+  @media (max-width: 590px) {
+    flex-direction: column;
+  }
+
+  span {
+    &::before {
+      content: ">";
+      margin-right: 0.5rem;
+      color: ${({ theme }) => theme.colors.secondary};
+    }
   }
 `;

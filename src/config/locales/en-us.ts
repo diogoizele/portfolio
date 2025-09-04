@@ -50,23 +50,17 @@ export const strings = {
       fourth: "And I'm a",
       fifth: {
         roles: [
-          "Full Stack Developer",
-          "System Analyst",
-          "Tech Enthusiast",
-          "Problem Solver",
+          "Mobile Developer",
+          "React Native Developer",
+          "iOS Developer",
+          "Android Developer",
         ],
       },
     },
     presentation: {
-      first: `I've always been very interested in how things worked "under the hood".
-      When I entered technical high school in computer science at the Instituto Federal
-      Sul Rio-Grandense, I saw that computing caught my attention more than I
-      had imagined, mainly the creation of applications and systems. That's when
-      I decided to pursue a career in technology and become a developer.`,
-      second: `Among the many things I've learned from working in Information Technology
-      I recognize that it is essential to have good logical thinking, to be persistent, determined,
-      adaptable, patient and enjoy solving problems.`,
-      third: "Do you have any questions? Contact me!",
+      first: `My journey in technology began in technical high school, and over the years I've worked across web, full-stack, and mobile. Today, I'm focused on building reliable and scalable mobile applications with React Native, while also diving deeper into native iOS and Android development to strengthen my foundation as a mobile engineer.`,
+      second: `Through my professional experience I've learned that delivering quality software is not just about writing code. It requires attention to detail, strong logical reasoning, persistence, adaptability, and a mindset oriented toward problem-solving and continuous improvement.`,
+      third: `If you want to discuss mobile development, React Native, or share ideas about the future of apps, feel free to reach out.`,
       download: {
         title: "Download Resume",
         description: "Download Diogo Izele's Resume PDF",

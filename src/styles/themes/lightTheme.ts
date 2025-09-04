@@ -1,5 +1,5 @@
 import { CustomThemeType, ThemeMode } from "styles/theme.types";
-import backgroundImage from "../../../public/background-light.png";
+import backgroundImage from "../../../public/background-light-2.png";
 import * as colors from "styles/colors";
 
 export const lightTheme: CustomThemeType = {
@@ -7,10 +7,10 @@ export const lightTheme: CustomThemeType = {
     white: colors.common.white,
     black: colors.common.black,
 
-    primary: colors.teal.A600,
-    secondary: colors.teal.B700,
-    tertiary: colors.teal.B400,
-    quaternary: colors.teal.A300,
+    primary: "#FF8A65", // colors.teal.A600,
+    secondary: "#FF5722", // colors.teal.B700,
+    tertiary: "#FFCCBC", // colors.teal.B400,
+    quaternary: "#FFE0D6", // colors.teal.A300,
 
     error: colors.actions.error,
     warning: colors.actions.warning,

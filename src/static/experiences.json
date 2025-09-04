@@ -1,0 +1,104 @@
+[
+  {
+    "company": "CWI Software",
+    "startDate": "2022-07-22",
+    "endDate": null,
+    "experiences": [
+      {
+        "client": "Banco ABC Brasil",
+        "position": "Mobile Developer",
+        "startDate": "2025-03-10",
+        "endDate": null,
+        "location": "Remote",
+        "period": "Full-time",
+        "skills": [
+          "React Native",
+          "Kotlin",
+          "Java",
+          "Swift",
+          "TypeScript",
+          "Xcode",
+          "Android Studio"
+        ],
+        "mainTasks": [
+          "Implementing features using iOS and Android SDKs",
+          "Building advanced mobile banking features cross-platform",
+          "Bridging React Native with native modules"
+        ]
+      },
+      {
+        "client": "Lojas Renner S.A.",
+        "position": "Full-stack Developer",
+        "startDate": "2023-08-01",
+        "endDate": "2025-03-09",
+        "location": "Remote",
+        "period": "Full-time",
+        "skills": [
+          "React",
+          "TypeScript",
+          "Spring Boot",
+          "Node.js",
+          "REST APIs",
+          "SQL",
+          "Oracle DB"
+        ],
+        "mainTasks": [
+          "Maintaining and supporting large-scale e-commerce systems",
+          "Investigating and resolving critical production issues",
+          "Developing backend services with Java Spring Boot"
+        ]
+      },
+      {
+        "client": "Camicado",
+        "position": "Mobile Developer",
+        "startDate": "2022-07-22",
+        "endDate": "2023-08-01",
+        "location": "Remote",
+        "period": "Internship",
+        "skills": [
+          "React Native",
+          "TypeScript",
+          "Styled Components",
+          "Jest",
+          "Detox",
+          "Firebase",
+          "Redux"
+        ],
+        "mainTasks": [
+          "Supporting development of Camicado mobile application",
+          "Fixing UI issues and app bugs",
+          "Implementing minor features under senior guidance"
+        ]
+      }
+    ]
+  },
+  {
+    "company": "SB Sistemas",
+    "startDate": "2021-12-02",
+    "endDate": "2022-07-22",
+    "experiences": [
+      {
+        "client": null,
+        "position": "Frontend & Mobile Developer",
+        "startDate": "2021-12-01",
+        "endDate": "2022-07-22",
+        "location": "Marau, RS",
+        "period": "Full-time",
+        "skills": [
+          "TypeScript",
+          "React",
+          "React Native",
+          "Design System",
+          "HTML",
+          "CSS",
+          "Styled Components"
+        ],
+        "mainTasks": [
+          "Building reusable and well-typed UI components",
+          "Contributing to internal company-wide design system",
+          "Developing solar energy mobile app with React Native (Expo)"
+        ]
+      }
+    ]
+  }
+]

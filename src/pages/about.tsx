@@ -15,6 +15,7 @@ import myPictureImg from "assets/images/i-reading-pic.jpeg";
 import {
   Container,
   Content,
+  Footer,
   ImageContainer,
   Memoji,
   MyPicture,
@@ -144,6 +145,12 @@ export default function About({ spotify, experiences, education }: Props) {
         </AnimatedTitle>
         <Education education={education} />
         <SpotifyCard {...spotify} />
+        <Footer>
+          <Text.Body color={(theme) => theme.colors.textQuaternary}>
+            <span></span>
+            Ready for new challenges and opportunities
+          </Text.Body>
+        </Footer>
       </Container>
     </>
   );
@@ -154,8 +161,8 @@ export async function getStaticProps() {
   try {
     // const spotify = await currentPlayingTrack();
 
-    const experiences = await getExperienceContent();
-    const education = await getEducationContent();
+    const experiences = (await getExperienceContent()) ?? [];
+    const education = (await getEducationContent()) ?? [];
 
     return {
       props: {
