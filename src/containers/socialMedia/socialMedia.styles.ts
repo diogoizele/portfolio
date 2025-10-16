@@ -9,8 +9,8 @@ export const Container = styled.div`
   left: 1rem;
   top: 50%;
   transform: translateY(-50%);
-
-  padding: 1rem;
+  
+  padding: 1rem 0.5rem;
   box-shadow: 0 0 2px
     ${({ theme }) => {
       const { themeMode } = useThemeMode();
@@ -36,14 +36,15 @@ export const Container = styled.div`
   gap: 1rem;
 
   @media screen and (max-width: 760px) {
-    left: 0;
-    bottom: 0;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
     top: unset;
-    transform: unset;
 
+    transform: unset;
     border-radius: unset;
 
-    width: 100%;
+ 
     padding: 1rem 6rem;
     gap: 2.3rem;
   
@@ -57,9 +58,14 @@ export const Container = styled.div`
 `;
 
 export const SocialMediaAnchor = styled(Link)`
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.secondary};
 
   cursor: pointer;
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   box-sizing: content-box;
 

@@ -32,7 +32,7 @@ export const ThemeSwitchContainer = styled.button<ThemeSwitchContainerProps>`
     z-index: 2;
 
     bottom: 2rem;
-    right: 3rem;
+    right: 2rem;
 
     background: ${({ theme }) => theme.colors.backgroundTertiary};
 

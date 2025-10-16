@@ -1,6 +1,8 @@
 import { FiGithub, FiLinkedin, FiTwitter, FiYoutube } from "react-icons/fi";
 
 import { Container, SocialMediaAnchor } from "./socialMedia.styles";
+import { useLiquidGlass } from "../../hooks";
+import { useTheme } from "styled-components";
 
 interface SocialMediaLinkProps {
   href: string;
@@ -11,16 +13,29 @@ interface SocialMediaLinkProps {
 const ICONS_SIZE = 30;
 
 const SocialMediaLink = ({ href, icon, title }: SocialMediaLinkProps) => {
+  const theme = useTheme();
+  const glassStyle = useLiquidGlass({
+    borderRadius: 16,
+    alpha: 0.4,
+background: false,
+  });
+
   return (
-    <SocialMediaAnchor title={title} href={href} target="_blank">
+    <SocialMediaAnchor style={glassStyle} title={title} href={href} target="_blank">
       {icon}
     </SocialMediaAnchor>
   );
 };
 
 export const SocialMedia = () => {
+  const glassStyle = useLiquidGlass({
+    alpha: 0.0,
+    blur: 20,
+    saturation: 180,
+  });
+
   return (
-    <Container>
+    <Container style={glassStyle}>
       <SocialMediaLink
         href="https://github.com/diogoizele"
         icon={<FiGithub size={ICONS_SIZE} />}
